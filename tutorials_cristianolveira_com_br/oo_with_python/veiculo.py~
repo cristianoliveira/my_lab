@@ -1,0 +1,66 @@
+class Veiculo(object):
+  
+   # estes atributos serão visiveis e compartilhados entre todas as instancias inclusive quando alterado.
+   cor_padrao   = "preto" # Ford style: "qualquer cor desde que seja preto" 
+   quantidade_rodas  = 0      
+   quantidade_portas = 0      
+   
+  
+   def __init__(self, pMarca):
+       self.marca           = pMarca
+       # Este atributo somente sera visivel para a instancia.
+       self.cor_atual         = self.cor_padrao 
+       self.quantidade_rodas  = self.quantidade_rodas      
+       self.quantidade_portas = self.quantidade_portas      
+ 
+   def muda_cor(self, pNovaCor):
+       self.cor_instancia = pNovaCor
+   
+   def tipo(self):
+       return type(self)
+ 
+   def show(self):
+       print "TIPO: %s \n MARCA: %s \n COR DEFAULT/ATUAL: %s / %s \n QTDE RODAS: %s" % (
+                self.tipo(), 
+		self.marca, 
+		self.cor_padrao, 
+		self.cor_atual, 
+		self.quantidade_rodas)
+
+# Classe Carro filha do Veiculo
+class Carro(Veiculo):
+      
+      #Seta novos valores default para o tipo Carro
+      cor_padrao   = "prata" # Ford style: "qualquer cor desde que seja preto" 
+      quantidade_rodas  = 4      
+      quantidade_portas = 2      
+	
+      
+class Moto(Veiculo):
+      
+      cor_padrao   = "preto" # Ford style: "qualquer cor desde que seja preto" 
+      quantidade_rodas  = 2 
+      
+
+"""
+def main():
+    uno = Veiculo("Fiat")
+    uno.show() # MARCA: Fiat COR DEFAULT: preto COR CUSTOMIZADA: preto
+   
+    uno.muda_cor("amarelo")
+    uno.show() # MARCA: Fiat COR DEFAULT: preto COR CUSTOMIZADA: amarelo
+
+    # Alterei a propriedade para todas as instancias.
+    Veiculo.cor_classe = "Laranja"
+
+    palio = Veiculo("Fiat")
+    
+    print "Palio"
+    palio.show() # MARCA: Fiat COR DEFAULT: Laranja COR CUSTOMIZADA: Laranja
+
+    print "Uno"
+    uno.show()  # MARCA: Fiat COR DEFAULT: Laranja COR CUSTOMIZADA: amarelo
+   
+#executa o codigo
+main()
+"""
