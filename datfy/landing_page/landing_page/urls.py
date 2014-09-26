@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     #url(r'^$', 'landing_page.views.main', name='main'),
     # url(r'^blog/', include('blog.urls')),
 
-    # url(r'^cliente/' , views.cliente , name='cliente'),
+    #url(r'^cliente/' , views.cliente , name='cliente'),
     url(r'^admin/'   , include(admin.site.urls)),
     url(r'^'         , views.home    , name='home'),
 )

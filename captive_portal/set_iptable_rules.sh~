@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo "Flushing iptables rules... " + $1
+
+sudo iptables -A POSTROUTING -t nat -o $1 -j MASQUERADE
+echo "1"
+sudo iptables -t mangle -N internet #cria a chain internet
+echo "1"
+sudo iptables -t mangle -A PREROUTING -i $1 -p tcp -m tcp --dport 80 -j internet #redireciona o trafico para a chain internet
+echo "1"
+sudo iptables -t mangle -A PREROUTING -i $1 -p tcp -m tcp --dport 443 -j internet #redireciona o trafico para a chain internet
+echo "1"
+sudo iptables -t mangle -A internet -j MARK --set-mark 99
+echo "1"
+sudo iptables -t nat -A PREROUTING -i $1 -p tcp -m mark --mark 99 tcp --dport 80 -j DNAT --to-destination 127.0.0.1
+echo "1"
+sudo iptables -t nat -A PREROUTING -i $1 -p tcp -m mark --mark 99 tcp --dport 443 -j DNAT --to-destination 127.0.0.1
+
+echo "Done"
