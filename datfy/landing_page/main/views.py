@@ -13,10 +13,10 @@ def home(request):
 
     form_interesse = InteresseForm()
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST['email'] != "":
         obrigado       = 1
         form_interesse = 0
-        
+
         exists_interessado  = Interessado.objects.filter(email = request.POST['email']).exists()
 
         if not exists_interessado:
