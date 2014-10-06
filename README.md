@@ -1,6 +1,6 @@
 My Lab
 ==========
-Some experimentals projects in Django / Java / Ruby / MongoDB / R and others.
+Some experimentals projects.
 
 If any code in this repository is useful for you, I will be glad if you use.
 When I think someone of this projects deserv have they own repository. I will create and move all files.
