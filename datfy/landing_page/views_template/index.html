@@ -61,8 +61,9 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h1>Datfy.com</h1>
+            <h1>datfy.com</h1>
             <h3>Datfy + Wifi = Você conhecendo seu cliente.</h3>
+            <h3>Sem cadastros.</h3>
             <br>
             {% if obrigado == 1 %}
                 <div><h3>Muito Obrigado. Manteremos contato!</h3></div>
@@ -173,8 +174,13 @@
                     <p>Quer ser informado no lançamento oficial?</p>
                         <form id="form_int" method="post" action="">
                             {% csrf_token %}
-                            {{ form_interesse.email }}
-                            <input class="btn btn-lg btn-light" type="submit" name="Me informe" value="Me informe" />
+                            <div class="input_email">
+                                <label title="email">Email</label>
+                                {{ form_interesse.email }}
+                            </div>
+                            <div>
+                                <input class="btn btn-lg btn-light" type="submit" name="Me informe" value="Me informe" />
+                            </div>
                         </form>
                     <!-- <a href="#" class="btn btn-lg btn-light">Eu quero!</a> -->
                     <!-- <a href="#" class="btn btn-lg btn-dark">Look at Me!</a> -->
@@ -253,9 +259,11 @@
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                 if (target.length) {
+                    
                     $('html,body').animate({
                         scrollTop: target.offset().top
                     }, 1000);
+                    
                     return false;
                 }
             }
@@ -263,6 +271,8 @@
     });
 
     $(function () {
+            var obrigado = {{ obrigado }}
+
             var header = $('#top');
             var backgrounds = [
               'url(../assets/img/bg.jpg) no-repeat center center scroll', 
@@ -272,14 +282,25 @@
             var current = 0;
 
              function nextBackground() {
+
+                if(obrigado)
+                {
+                    //bye!
+                    window.location = "http://www.google.com";
+                }
                 
-                header.css("background",backgrounds[current = ++current % backgrounds.length]);
-                header.css("background-size","100%");
-                header.css("transition", "background 2s linear");
-                header.css("-webkit-background-size","cover");
-                header.css("-moz-background-size", "cover");
-                header.css("background-size", "cover");
-                header.css("-o-background-size", "cover");
+                $('#top').fadeTo('slow',0, function () {
+                    // body...
+                    header.css("background",backgrounds[current = ++current % backgrounds.length]);
+                    header.css("background-size","100%");
+                    header.css("transition", "background 2s linear");
+                    header.css("-webkit-background-size","cover");
+                    header.css("-moz-background-size", "cover");
+                    header.css("background-size", "cover");
+                    header.css("-o-background-size", "cover");
+                
+                })
+
                 // if(current == 1){
                 //     header.css("color", "#FFF");
                 //     $('#top h3').css("backgrounds","#000")
@@ -290,7 +311,10 @@
                 //     $('#top h3').fadeTo('slow',1)
                 // }
                 
+                
                 setTimeout(nextBackground, 8000);
+
+                $('#top').fadeTo('fast',1)
             }
             setTimeout(nextBackground, 5000);
             // header.css('background', backgrounds[0]);

@@ -16,13 +16,13 @@ sudo iptables -t mangle -N internet #cria a chain internet
 echo "."
 sudo iptables -t mangle -A PREROUTING -i $1 -p tcp -m tcp --dport 80 -j internet #redireciona o trafico para a chain internet
 echo "."
-#sudo iptables -t mangle -A PREROUTING -i $1 -p tcp -m tcp --dport 443 -j internet #redireciona o trafico para a chain internet
+sudo iptables -t mangle -A PREROUTING -i $1 -p tcp -m tcp --dport 443 -j internet #redireciona o trafico para a chain internet
 echo "."
 sudo iptables -t mangle -A internet -j MARK --set-mark 99
 echo "."
 sudo iptables -t nat -A PREROUTING -i $1 -p tcp -m mark --mark 99 -m tcp --dport 80 -j DNAT --to-destination $2
 echo "."
-#sudo iptables -t nat -A PREROUTING -i $1 -p tcp -m mark --mark 99 -m tcp --dport 443 -j DNAT --to-destination 10.42.0.1:8000
+sudo iptables -t nat -A PREROUTING -i $1 -p tcp -m mark --mark 99 -m tcp --dport 443 -j DNAT --to-destination $2
 echo "."
 #sudo iptables -t nat -A PREROUTING -i $1 -p tcp -m mark --mark 99 -m tcp --dport 443 -j DNAT --to-destination 127.0.0.1
 

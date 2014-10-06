@@ -1,0 +1,151 @@
+body{ font-family: Microsoft New Tai Lue, Dai Banna SIL Book, sans-serif; background-color: #EEEEEE;  }
+a{ text-decoration: none; color: #101010; } 
+img , image{ border: 0;}
+
+#body-margim{margin: 29px;}
+
+#content { width: 1000px; margin: 0 auto;}
+#content li{ margin-left: 10px; }
+
+#header { height: 141px; width: 1000px; border-bottom: 2px solid #101010; margin:  0 0 20px 0; }
+#headerFixo { background-color: #EEEEEE; position: fixed; height: 140px; width: 1000px; padding-top: 30px;  margin:  0 0 450px 0;  top: 0; bottom: 0; border-bottom: 2px solid #101010; }
+#logo {float: left;font-size: 16px; width: 260px;}
+#logo img{float: left; margin: 10px 15px;}
+#logo-fixo {float: left; font-size: 16px; width: 260px;}
+#logo-fixo img{float: left; margin: 11px 16px;}
+#divisor {float: left; background-color: #101010; height: 2px; width: 800px;}
+
+#menu{ float:right ; margin:114px 50px 0 0; height: 18px;}
+.menuItem{float: left;}
+.menuItem a{padding: 5px 20px; height: 18px;}
+.menuItem a:hover{background-color: #FF7F00;  padding: 5px 20px;}
+#menuItemSelecionado {padding: 5px 20px; background-color: #FF7F00;}
+
+#intro{height: 350px; width: 1000px;}
+#menuIntro{background-color: #101010;  height: 80px; margin: 20px 0; padding: 0 220px; }
+.menuIntroItem{margin: 0 30px; float: left; width: 120px;}
+.menuIntroItem a{ text-decoration: none;}
+.menuIntroItem img{width: 35px; height: 35px; margin: 10px 40px 0;}
+.menuIntroItem h2{color: #EEEEEE; font-size: 11px; text-align: center; margin: 5px 0;}
+
+#painel { height: 450px; }
+#painel h1:hover{ color: #101010; }
+
+#link-download a{float: left; margin: 2px 53px ; font-size: 26px;}
+#link-download a:hover{color: #FF7F00;}
+
+#conteudoEstetiSys { margin:0 0 50px 0; }
+
+#menuFooter{background-color: #101010; width: auto;  height: 80px;}
+#menuFooter h3{color: #EEEEEE; padding:  20px 10px; font-size: 26px}
+
+#slides .slide {padding:20px; width:1000px; height:270px; display:block; }
+.slide h1{font-size: 24px;}
+.slide a{ float: left; font-weight: bold; }
+.slide a:hover{ color: #FF7F00; }
+.slide p{width: 400px; }
+#slides .next,#slides .prev { position:absolute; top:107px; left:-39px; width:24px; height:43px; display:block; z-index:101; }
+.slides_container{ width: 1000px; }
+.pagination li { float:left; margin:0 1px; list-style:none; }
+.pagination li a { display:block; width:12px; height:18px; background-image:url(../imagens/page_not_selected.png); float:left; overflow:hidden; }
+.pagination li.current a { background-image:url(../imagens/page_selected.png); color: #FF7F00;}
+
+.parteConteudo{ float: left;}
+.conteudoPaginaFixo{ margin-top: 160px; }
+
+.textoEsquerda { float: left; height: 400px; width: 400px;}
+
+.textoDireita { float: right; width: 500px;}
+.textoDireita a{ color: #FF7F00; }
+.textoDireita a:hover{ font-weight: bold; }
+
+.imagemEsquerda {  float: left; }
+.imagemDireita{  float: right; padding: 20px; margin: 0 20px;}
+
+.conteudoProduto{ height: 420px; padding: 10px; border-bottom: solid 1px #101010;}
+
+.redesSociais{
+    margin: 20px;
+}
+
+.fb-like-box{
+    width: 500px;
+    float: left;
+}
+
+.twitter-timeline{
+    width: 450px !important;
+    float: right;
+}
+
+#twitter-widget-0 {
+    width: 450px !important;
+    
+}
+
+#fixme {
+  /* Netscape 4, IE 4.x-5.0/Win and other lesser browsers will use this */
+  position: absolute; right: 20px; bottom: 10px;
+}
+.navegacao {position: fixed; float: right; width: 100px; right: 10px; top: 200px; background:#000 ;}
+.menuItemNavegacao { }
+.menuItemNavegacao a{ text-decoration: none;}
+.menuItemNavegacao img{width: 30px; margin: 0 35px; }
+.menuItemNavegacao h2{color: #EEEEEE; font-size: 12px; text-align: center; margin: 5px 0;}
+
+.visibleDiv, #topLeft, #topRight, #bottomLeft, #bottomRight
+{
+    position: fixed;
+    width: 150px;
+    border: solid 1px #e1e1e1;
+    vertical-align: middle;
+    background: #ffdab9;
+    text-align: center;
+}
+
+.campoFormulario {
+    width: 300px;
+    height: 28px;
+}
+
+#form_contato
+{
+    height: 450px;
+}
+
+#form_contato div{
+    width: 380px;
+    height: 28px;
+}
+#form_contato input{
+    width: 300px;
+    float: right;
+}
+#form_contato textarea
+{
+    height: 120px;
+}
+
+#localizacao
+{
+    width: 450px;
+    float: right;
+    height: 200px;
+}
+
+#footerSite {
+    font-size: 12px; 
+    text-align: center;
+    padding: 20px 0;
+    float: left;
+    width: 1000px;
+    border-top: 2px solid #101010;
+    margin-top: 10px;
+   /* 
+    background-color: #000;
+    
+   */
+    height: 50px;
+}
+
+

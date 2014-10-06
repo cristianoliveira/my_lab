@@ -1,0 +1,34 @@
+<h1>Listing partidas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Descricao</th>
+      <th>Tipo</th>
+      <th>Dia semana</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @partidas.each do |partida| %>
+      <tr>
+        <td><%= partida.descricao %></td>
+        <td><%= partida.tipo %></td>
+        <td><%= partida.dia_semana %></td>
+        <td><%= link_to 'Show', partida %></td>
+        <td><%= link_to 'Edit', edit_partida_path(partida) %></td>
+        <td><%= link_to 'Destroy', partida, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Jogadores', "/partida/#{partida.id}/jogadores" %></td>
+        <td><%= link_to 'Gera Equipes', "/partida/#{partida.id}/gera_equipes" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Partida', new_partida_path %>

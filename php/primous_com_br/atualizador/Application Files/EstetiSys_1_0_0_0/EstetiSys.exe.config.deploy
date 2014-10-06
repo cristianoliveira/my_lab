@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="EstetiSysUPDATE.DADOS.Dados" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+            <section name="EstetiSysUPDATE.DADOS.VersaoSistema" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+            <section name="EstetiSysUPDATE.VersaoSistema" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <userSettings>
+        <EstetiSysUPDATE.DADOS.Dados>
+            <setting name="VersaoAplicacao" serializeAs="String">
+                <value>2.0</value>
+            </setting>
+            <setting name="ftp" serializeAs="String">
+                <value>ftp://ftp.cristianoliveira.com.br</value>
+            </setting>
+            <setting name="user" serializeAs="String">
+                <value>atualizador@cristianoliveira.com.br</value>
+            </setting>
+            <setting name="senha" serializeAs="String">
+                <value>@tualiza</value>
+            </setting>
+        </EstetiSysUPDATE.DADOS.Dados>
+        <EstetiSysUPDATE.DADOS.VersaoSistema>
+            <setting name="VersaoAplicacao" serializeAs="String">
+                <value>1.0</value>
+            </setting>
+            <setting name="ftp" serializeAs="String">
+                <value>ftp.cristianoliveira.com.br</value>
+            </setting>
+            <setting name="user" serializeAs="String">
+                <value>atualizador@cristianoliveira.com.br</value>
+            </setting>
+            <setting name="senha" serializeAs="String">
+                <value>@tualiza</value>
+            </setting>
+        </EstetiSysUPDATE.DADOS.VersaoSistema>
+        <EstetiSysUPDATE.VersaoSistema>
+            <setting name="VersaoAplicacao" serializeAs="String">
+                <value>1.0</value>
+            </setting>
+        </EstetiSysUPDATE.VersaoSistema>
+    </userSettings>
+</configuration>

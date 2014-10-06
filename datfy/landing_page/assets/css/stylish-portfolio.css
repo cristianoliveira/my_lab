@@ -223,6 +223,10 @@ hr.small {
 
 #id_email {
      margin: 10px;
+     width: 300px;
+     height: 40px;
+     color: black;
+     padding: 5px;
 }
 
 /* Call to Action */
