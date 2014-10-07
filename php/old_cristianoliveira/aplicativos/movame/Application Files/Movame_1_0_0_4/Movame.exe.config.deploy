@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<configSections>
+		<sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+			<section name="Movame.MODELS.Memoria" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+   <section name="SincronizaPasta.Memoria" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+		</sectionGroup>
+	</configSections>
+	<userSettings>
+		<Movame.MODELS.Memoria>
+   <setting name="destino" serializeAs="String">
+    <value>C:\</value>
+   </setting>
+   <setting name="origem" serializeAs="String">
+    <value>C:\</value>
+   </setting>
+   <setting name="extensoes" serializeAs="String">
+    <value>fmx,rep,plx</value>
+   </setting>
+   <setting name="listMover" serializeAs="Xml">
+    <value>
+     <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <string>txt#C:\TMP#0</string>
+      <string>ext;asd#E:\#0</string>
+     </ArrayOfString>
+    </value>
+   </setting>
+   <setting name="confirmar" serializeAs="String">
+    <value>0</value>
+   </setting>
+   <setting name="avancado" serializeAs="String">
+    <value>False</value>
+   </setting>
+  </Movame.MODELS.Memoria>
+  <SincronizaPasta.Memoria>
+   <setting name="destino" serializeAs="String">
+    <value>C:\</value>
+   </setting>
+   <setting name="origem" serializeAs="String">
+    <value>C:\</value>
+   </setting>
+   <setting name="extensoes" serializeAs="String">
+    <value>fmx,rep,plx</value>
+   </setting>
+  </SincronizaPasta.Memoria>
+	</userSettings>
+</configuration>

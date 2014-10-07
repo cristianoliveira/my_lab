@@ -1,0 +1,53 @@
+<%= form_for(@jogador) do |f| %>
+  <% if @jogador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jogador.errors.count, "error") %> prohibited this jogador from being saved:</h2>
+
+      <ul>
+      <% @jogador.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :habilidade %><br>
+    <%= f.number_field :habilidade %>
+  </div>
+  <div class="field">
+    <%= f.label :hab_defesa %><br>
+    <%= f.number_field :hab_defesa %>
+  </div>
+  <div class="field">
+    <%= f.label :hab_meio %><br>
+    <%= f.number_field :hab_meio %>
+  </div>
+  <div class="field">
+    <%= f.label :hab_ataque %><br>
+    <%= f.number_field :hab_ataque %>
+  </div>
+  <div class="field">
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :mensalista %><br>
+    <%= f.check_box :mensalista %>
+  </div>
+  <div class="field">
+    <%= f.label :ativo %><br>
+    <%= f.check_box :ativo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

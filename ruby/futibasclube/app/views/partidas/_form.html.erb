@@ -1,0 +1,29 @@
+<%= form_for(@partida) do |f| %>
+  <% if @partida.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@partida.errors.count, "error") %> prohibited this partida from being saved:</h2>
+
+      <ul>
+      <% @partida.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label        :tipo %><br>
+    <%= f.select   :tipo, options_for_select(Partida::TIPOS) %>
+  </div>
+  <div class="field">
+    <%= f.label :dia_semana %><br>
+    <%= f.number_field :dia_semana %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

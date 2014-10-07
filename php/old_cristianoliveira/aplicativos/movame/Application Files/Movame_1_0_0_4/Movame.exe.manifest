@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Movame.exe" version="1.0.0.4" publicKeyToken="9063c4e76327aef6" language="pt-BR" processorArchitecture="x86" type="win32" />
+  <description asmv2:iconFile="Resources\AppIcone.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Movame" version="1.0.4975.43106" language="neutral" processorArchitecture="x86" />
+    <commandLine file="Movame.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet version="1" class="System.Security.NamedPermissionSet" Name="LocalIntranet" Description="Default rights given to applications on the local intranet" Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!-- UAC Manifest Options
+            If you want to change the Windows User Account Control level replace the 
+            requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+            Specifying requestedExecutionLevel node will disable file and registry virtualization.
+            If you want to utilize File and Registry Virtualization for backward 
+            compatibility then delete the requestedExecutionLevel node.
+        -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Movame.exe" size="99840">
+      <assemblyIdentity name="Movame" version="1.0.4975.43106" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>jBlK2lf/77IXZEGQUjiVXL+rJi4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Images\logo.png" size="2814">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>XwQ8uXCOYaPnqez+mjX9caT8glQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Movame.exe.config" size="1966">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>oKRlCkhpwSP+jxD9rMbc2ZVfoAE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\AppIcone.ico" size="4286">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>v2sYXSk28EVoL/LG4yom7oXedzI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <!-- A list of all Windows versions that this application is designed to work with. Windows will automatically select the most compatible environment.-->
+      <!-- If your application is designed to work with Windows 7, uncomment the following supportedOS node-->
+      <!--<supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>-->
+    </application>
+  </compatibility>
+<publisherIdentity name="CN=system\cristian.oliveira" issuerKeyHash="2671f8cf70ced883bbce4b253679e117e5155ab9" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>LciLZ71wht7hJ6zTpEfyQWm0DD0=</DigestValue></Reference></SignedInfo><SignatureValue>dcUZHFhpOatBeSm+hpZHGwT7Ow1GSLmRbV0pW93x8WLBhc4E4GIcXqYiG0TmpseORWh1wj0dIhaDuWig8Dsne0kajVLOExm3N+ZyLaArYnSPynKJS6GC76Tg7RHgNnNuiRltRr3xp+21pDU9mYwbmi5Hzg336zej9EOdu5QRErY=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>jrQJ91gBCSR8sC7hr7pwmjpav24VDTdLqlBRP6PGl+/0HuvhlasmGPxXstBYUMBhyngzuCE5RDTUDqc1VzKT16JOdulwlHuwVA1LYX7k0sg/tE/g+LCAsIqE0JypHyS86mIDxCeGE+IVfWIEsBSYJmgMfYortAs8Enq2OLn6v78=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="3d0cb46941f247a4d3ac27e1de8670bd678bc82d" Description="" Url=""><as:assemblyIdentity name="Movame.exe" version="1.0.0.4" publicKeyToken="9063c4e76327aef6" language="pt-BR" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=system\cristian.oliveira</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>IrZK5oddzTd0C+azOw842K6+pNg=</DigestValue></Reference></SignedInfo><SignatureValue>FsnH89xnvhAWO6rQH0HIromti19Qfkgz58RQzFjFukZfz91XmW0qhh8qIgCV83R9Wkp0C2puZ2AQWe/kFpnOCVneOFYxpdFyhdP9bBqiMDPqBFdHZwRp/axuHTgqM/N69Cch2uCGdQSDAj2ttwMBEVnBEArGz4T1KQRhRkEQvbM=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>jrQJ91gBCSR8sC7hr7pwmjpav24VDTdLqlBRP6PGl+/0HuvhlasmGPxXstBYUMBhyngzuCE5RDTUDqc1VzKT16JOdulwlHuwVA1LYX7k0sg/tE/g+LCAsIqE0JypHyS86mIDxCeGE+IVfWIEsBSYJmgMfYortAs8Enq2OLn6v78=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB+TCCAWKgAwIBAgIQLJ+MS7HpzbJMhV7FA1gHNDANBgkqhkiG9w0BAQUFADA7MTkwNwYDVQQDHjAAcwB5AHMAdABlAG0AXABjAHIAaQBzAHQAaQBhAG4ALgBvAGwAaQB2AGUAaQByAGEwHhcNMTMwNjA0MDIyNzM0WhcNMTQwNjA0MDgyNzM0WjA7MTkwNwYDVQQDHjAAcwB5AHMAdABlAG0AXABjAHIAaQBzAHQAaQBhAG4ALgBvAGwAaQB2AGUAaQByAGEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAI60CfdYAQkkfLAu4a+6cJo6Wr9uFQ03S6pQUT+jxpfv9B7r4ZWrJhj8V7LQWFDAYcp4M7ghOUQ01A6nNVcyk9eiTnbpcJR7sFQNS2F+5NLIP7RP4PiwgLCKhNCcqR8kvOpiA8QnhhPiFX1iBLAUmCZoDH2KK7QLPBJ6tji5+r+/AgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAFypmY1EVJr6Zk2qEVYpGb6hqK5oYhI2g4F1uh9JCJ8zqSLvFlCQbH6Uz8w/i1oA5hNhGcFdqIGviX4H3TN9xj2Va5Klgc4azOCqRsSF50qBEPuBtcmlqM6VVErNibcaJlpSiAPjUTglku2H5St6AuZr4fRiyaJLgWnzJGaNp3jM=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

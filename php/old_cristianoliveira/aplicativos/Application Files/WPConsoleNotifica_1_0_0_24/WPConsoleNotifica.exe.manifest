@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="WPConsoleNotifica.exe" version="1.0.0.24" publicKeyToken="572d2371c281c066" language="neutral" processorArchitecture="x86" type="win32" />
+  <description asmv2:iconFile="WPNotificaIcon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="WPConsoleNotifica" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <commandLine file="WPConsoleNotifica.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Oracle.DataAccess.dll" size="1015808">
+      <assemblyIdentity name="Oracle.DataAccess" version="2.112.1.0" publicKeyToken="89B483F429C47342" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>eZ1YCxxFwIYRMJlQA6GHOaIhRbA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WPConsoleNotifica.exe" size="93696">
+      <assemblyIdentity name="WPConsoleNotifica" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>ImCABDHHb9sjWpqZ950MJlI16Gw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="WPConsoleNotifica.exe.config" size="2564">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>dVzLky4CQzR2i0uHmn5R9IwQlE4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="WPNotificaIcon.ico" size="17542">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>6ZayY/g1ZjoBw/nFGJn3YYmfMYo=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=FOCCO\cristian.rosa" issuerKeyHash="64651553115a4b7f2db448fa39ca304cf2be4321" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>PxW8EiFHaunkchqFm/P+JSAFd1g=</DigestValue></Reference></SignedInfo><SignatureValue>NevD7N9oFBR8WMVUI45YtWGD6FBwzpFDI5B0I2MaUyLfFDJpjWNcKDzmg8APptG0O3e3Z2uUdHU0nMq6tTEbhHbmBWV9oaxzXI0GvaH/ch3D1ydLlsEEXwx2d98Y/S4+okdV95hhMr7JcKltUI4jHIO4VW0e6E74EfMQT4ixmJQ=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>8O0XUvgZdjw+8UHBcb6zv6MZgxG/wBc6nHmRSGcRRF8bpru5eSZEhaz5wDhcpcf1DB9quNlToKBhBUoJf6Bf+C3R7b29Pd6mWW7+3HLl0z+tgqDEfwM0lVXB+VLYjMbsxwKegiXLTzJUKOyXWGux8FdrbO3+5wIe1eXYsAi897U=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="5877052025fef39b851a72e4e96a472112bc153f" Description="" Url=""><as:assemblyIdentity name="WPConsoleNotifica.exe" version="1.0.0.24" publicKeyToken="572d2371c281c066" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=FOCCO\cristian.rosa</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>cAnCSYEhhsd6i4yi97jcyzKeyBI=</DigestValue></Reference></SignedInfo><SignatureValue>EJiusOlQe5cKP+muYh+8JnlO0wko8mLbXhebp2W04RQfdXzYuyyAyZNMTAtf3UCPM3qwfN0yt9+JVL8iZykk8GgIwV9ojXg8Fmrsd+SeoNzbPvNcnLG2vFZBCL02GL788KAmv0VN1wV0OsPvncksi2m6T3mgsDv/MSNi+DTdLJQ=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>8O0XUvgZdjw+8UHBcb6zv6MZgxG/wBc6nHmRSGcRRF8bpru5eSZEhaz5wDhcpcf1DB9quNlToKBhBUoJf6Bf+C3R7b29Pd6mWW7+3HLl0z+tgqDEfwM0lVXB+VLYjMbsxwKegiXLTzJUKOyXWGux8FdrbO3+5wIe1eXYsAi897U=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB5TCCAU6gAwIBAgIQFOotJDCR2IlBI0zwB0do4DANBgkqhkiG9w0BAQUFADAxMS8wLQYDVQQDHiYARgBPAEMAQwBPAFwAYwByAGkAcwB0AGkAYQBuAC4AcgBvAHMAYTAeFw0xNDAyMjgxMjE2MzVaFw0xNTAyMjgxODE2MzVaMDExLzAtBgNVBAMeJgBGAE8AQwBDAE8AXABjAHIAaQBzAHQAaQBhAG4ALgByAG8AcwBhMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDw7RdS+Bl2PD7xQcFxvrO/oxmDEb/AFzqceZFIZxFEXxumu7l5JkSFrPnAOFylx/UMH2q42VOgoGEFSgl/oF/4LdHtvb093qZZbv7ccuXTP62CoMR/AzSVVcH5UtiMxuzHAp6CJctPMlQo7JdYa7HwV2ts7f7nAh7V5diwCLz3tQIDAQABMA0GCSqGSIb3DQEBBQUAA4GBAC6dM0aS7wxKoHOMKBfk1hJFkK+nvk55RR6Pf7FS6XontR+UFBlXZaHi3e2/JT0kAy+1S2UuDWPObrZEovmN7GVNGxkiZhhvuDDzDeC3wCdnFHxL3vGcxSWQaKTeWjWUdDyPDBjxFltTfXccE0ijNwR0SZGn5YOlqBuW2TrhwYeX</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
