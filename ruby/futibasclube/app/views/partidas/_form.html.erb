@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :descricao %><br>
-    <%= f.text_field :descricao %>
+    <%= f.label       :descricao %><br>
+    <%= f.text_field  :descricao %>
   </div>
   <div class="field">
-    <%= f.label        :tipo %><br>
-    <%= f.select   :tipo, options_for_select(Partida::TIPOS) %>
+    <%= f.label    :tipo %><br>
+    <%= f.select   :tipo, options_for_select(Partida::TIPOS.each_with_index.map { |n, i| [n, i] }) %>
   </div>
   <div class="field">
-    <%= f.label :dia_semana %><br>
-    <%= f.number_field :dia_semana %>
+    <%= f.label    :dia_semana %><br>
+    <%= f.select   :dia_semana, options_for_select(Partida::DIAS_SEMANA.each_with_index.map { |n, i| [n,i] }) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :salvar %>
   </div>
 <% end %>

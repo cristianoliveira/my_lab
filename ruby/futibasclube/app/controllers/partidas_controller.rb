@@ -32,11 +32,11 @@ class PartidasController < ApplicationController
         getUsuarioSessao.usuario_partidas.create(partida: @partida)
         getUsuarioSessao.save
     
-        format.html { redirect_to @partida, notice: 'Partida was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @partida }
+        format.html { redirect_to "/partidas/", notice: 'Partida was successfully created.' }
+      
       else
         format.html { render action: 'new' }
-        format.json { render json: @partida.errors, status: :unprocessable_entity }
+      
       end
     end
   end
@@ -44,15 +44,11 @@ class PartidasController < ApplicationController
   # PATCH/PUT /partidas/1
   # PATCH/PUT /partidas/1.json
   def update
-    p "@@@@@@@@@ TIPO " + params[:tipo]
-
     respond_to do |format|
       if @partida.update(partida_params)
-        format.html { redirect_to @partida, notice: 'Partida was successfully updated.' }
-        format.json { head :no_content }
+         format.html { redirect_to "/partidas/", notice: 'Partida was successfully created.' }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @partida.errors, status: :unprocessable_entity }
+         format.html { render action: 'edit' }
       end
     end
   end

@@ -37,11 +37,9 @@ class JogadorsController < ApplicationController
 
     respond_to do |format|
       if @jogador.save
-        format.html { redirect_to @jogador, notice: 'Jogador was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @jogador }
+        format.html { redirect_to "/jogadors", notice: 'Jogador was successfully created.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @jogador.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,11 +49,9 @@ class JogadorsController < ApplicationController
   def update
     respond_to do |format|
       if @jogador.update(jogador_params)
-        format.html { redirect_to @jogador, notice: 'Jogador was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to "/jogadors", notice: 'Jogador was successfully updated.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @jogador.errors, status: :unprocessable_entity }
       end
     end
   end

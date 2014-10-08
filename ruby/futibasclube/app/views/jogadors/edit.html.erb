@@ -1,6 +1,15 @@
-<h1>Editing jogador</h1>
+<header id="header-admin" class="header-admin">
+    <div >
+        <h3>Epaço do Gerente</h3>
+    </div>
+</header>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @jogador %> |
-<%= link_to 'Back', jogadors_path %>
+<div class="admin-header-list">
+  <h3>Edição de Jogador</h3>
+   <div class="btn-novo-header">
+	   <%= link_to 'Voltar', jogadors_path, class:"btn btn-dark btn-header"%>
+   </div>
+</div>
+<div class="jogador-edit-form">
+	<%= render 'form' %>
+</div>

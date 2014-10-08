@@ -1,45 +1,54 @@
-<h1>Listing jogadors</h1>
 
-<table>
+<header id="header-admin" class="header-admin">
+    <div >
+        <h3>Epaço do Gerente</h3>
+    </div>
+</header>
+
+<div class="admin-header-list">
+  <h3>Lista de Jogadores</h3>
+  <div class="btn-novo-header">
+      <a class="btn btn-dark" href="/partidas">Partidas</a>
+  </div>
+
+  <div class="btn-novo-header">
+      <a class="btn btn-dark" href="/jogadors/new">Novo Jogador</a>
+  </div>
+</div>
+<div class="main_content">
+    <table class="admin-list table table-striped">
   <thead>
     <tr>
-      <th>Partida</th>
       <th>Nome</th>
       <th>Habilidade</th>
-      <th>Hab defesa</th>
-      <th>Hab meio</th>
-      <th>Hab ataque</th>
+      <th>Defesa</th>
+      <th>Meia</th>
+      <th>Ataque</th>
       <th>Telefone</th>
       <th>Email</th>
       <th>Mensalista</th>
       <th>Ativo</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Ações</th>
     </tr>
   </thead>
 
   <tbody>
     <% @jogadors.each do |jogador| %>
-      <tr>
-        <td><%= jogador.partida %></td>
-        <td><%= jogador.nome %></td>
-        <td><%= jogador.habilidade %></td>
-        <td><%= jogador.hab_defesa %></td>
-        <td><%= jogador.hab_meio %></td>
-        <td><%= jogador.hab_ataque %></td>
-        <td><%= jogador.telefone %></td>
-        <td><%= jogador.email %></td>
-        <td><%= jogador.mensalista %></td>
-        <td><%= jogador.ativo %></td>
-        <td><%= link_to 'Show', jogador %></td>
-        <td><%= link_to 'Edit', edit_jogador_path(jogador) %></td>
-        <td><%= link_to 'Destroy', jogador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="admin-list-row">
+        <td class="jogador-list-grande" ><%= jogador.nome %></td>
+        <td class="jogador-list-pequeno"><%= jogador.habilidade %></td>
+        <td class="jogador-list-pequeno"><%= jogador.hab_defesa %></td>
+        <td class="jogador-list-pequeno"><%= jogador.hab_meio %></td>
+        <td class="jogador-list-pequeno"><%= jogador.hab_ataque %></td>
+        <td class="jogador-list-medio">  <%= jogador.telefone %></td>
+        <td class="jogador-list-medio">  <%= jogador.email %></td>
+        <td class="jogador-list-pequeno"> <%= jogador.desc_mensalista %></td>
+        <td class="jogador-list-pequeno"> <%= jogador.desc_ativo %></td>
+        <td>
+             <%= link_to 'Editar', edit_jogador_path(jogador), class:"btn btn-acao" %>
+             <%= link_to 'Delete', jogador, method: :delete, data: { confirm: 'Confirma ação?' }, class:"btn btn-acao" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Jogador', new_jogador_path %>

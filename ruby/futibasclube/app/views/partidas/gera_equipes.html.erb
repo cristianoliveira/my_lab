@@ -1,47 +1,61 @@
-<h1>Equipes</h1>
+<header id="header-admin" class="header-admin">
+    <div >
+        <h3>Epaço do Gerente</h3>
+    </div>
+</header>
 
-<h2>Equipes A</h2>
+<div class="admin-header-list">
+  <h3>Geração de equipes</h3>
+  <div class="btn-novo-header">
+      <%= link_to 'Voltar', "/partidas", class:"btn btn-dark" %>
+  </div>
+  <div class="btn-novo-header">
+      <%= link_to 'Gera Equipes', "/partida/#{@partida.id}/gera_equipes", class:"btn btn-dark" %>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Jogador</th>
-      <th>Habilidade</th>
-    </tr>
-  </thead>
+<div class="main_content">
+  <div class="equipe-table">
+        <h2>Equipes A</h2>
 
-  <tbody>
-    <% @equipes[0].getJogadoresArray.each do |jog| %>
-      <tr>
-        <td><%= jog.nome %></td>
-        <td><%= jog.habilidade %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Jogador</th>
+              <th>Habilidade</th>
+            </tr>
+          </thead>
 
-<br>
+          <tbody>
+            <% @equipes[0].getJogadoresArray.each do |jog| %>
+              <tr>
+                <td><%= jog.nome %></td>
+                <td class="equipe-list-pequeno"><%= jog.habilidade %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+  </div>
+  
+  <div class="equipe-table">
+      <h2>Equipes B</h2>
 
-<h2>Equipes B</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Jogador</th>
+            <th>Habilidade</th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Jogador</th>
-      <th>Habilidade</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @equipes[1].getJogadoresArray.each do |jog| %>
-      <tr>
-        <td><%= jog.nome %></td>
-        <td><%= jog.habilidade %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'New Partida', new_partida_path %>
-<%= link_to 'Salvar', "/partida/#{@partida.id}/salva_equipes" %>
-
+        <tbody>
+          <% @equipes[1].getJogadoresArray.each do |jog| %>
+            <tr>
+              <td><%= jog.nome %></td>
+              <td class="equipe-list-pequeno"><%= jog.habilidade %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
