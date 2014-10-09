@@ -11,8 +11,12 @@ class Equipe < ActiveRecord::Base
          @arrayJogadores << pJogador
   end
 
-  def getJogadoresArray
-      @arrayJogadores
+  def get_jogadores
+      if @arrayJogadores
+         @arrayJogadores
+      else
+         []
+      end
   end
   
   def size

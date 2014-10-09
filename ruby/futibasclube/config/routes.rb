@@ -9,6 +9,7 @@ Futibasclube::Application.routes.draw do
   
   get  "usuarios/login"                   => 'usuarios#login_after_cadastro'
   post "usuarios/login"
+  get  "usuario/logoff"                   => 'usuarios#logoff'
   get  "gerente/novo"                     => 'usuarios#new'
   post "usuarios/create"                  => 'usuarios#create'
   resources :usuarios

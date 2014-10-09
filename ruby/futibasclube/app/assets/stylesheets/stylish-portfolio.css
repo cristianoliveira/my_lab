@@ -306,12 +306,17 @@ footer {
     color: white;
 }
 
+.btn-admin-sair {
+    margin: 5px;
+    float: right;
+}
+
 #header-admin{
     height: 40px;
 }
 
+
 .admin-header-list h3{
-    float: left;
     margin: 15px;
 }
 
@@ -339,6 +344,18 @@ footer {
     background: #cccccc;
 }
 
+.form-default input, select{
+    margin: 10px;
+    width: 250px;
+    height: 30px;
+}
+
+.form-default label{
+    height: 30px;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
 .form-centralized {
     margin: auto;
     width: 300px;
@@ -347,7 +364,6 @@ footer {
 .form-centralized form{
     margin: 20px auto;
     padding: 20px;
-    background-color: #eeeeee;
 }
 
 .form-centralized input, select{
@@ -357,9 +373,9 @@ footer {
 }
 
 .form-centralized label{
-    width: 150px;
     height: 30px;
     font-size: 20px;
+    margin: 10px 0;
 }
 
 /*  Jogadores  */
@@ -379,7 +395,6 @@ footer {
     width: 600px;
     margin: auto;
     padding: 1%;
-    background-color: #eeeeee;
 
 }
 
@@ -413,4 +428,12 @@ footer {
 .equipe-list-pequeno{
     width: 10%;
     padding: 10px;
+}
+
+.msg_error{
+    color: red;
+}
+
+.menu-header{
+    background-color: #53a1b8;
 }

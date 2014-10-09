@@ -8,15 +8,15 @@ class Partida < ActiveRecord::Base
   
   @equipesPartida
  
-  def geraEquipes
+  def gera_equipes
        @equipesPartida = [Equipe.new(descricao: "A"), Equipe.new(descricao: "B")]
        
-       divideJogadores();
+       divide_jogadores();
       
        return @equipesPartida     
   end
 
-  def divideJogadores
+  def divide_jogadores
      
      begin
         maisHabilidoso  = self.jogadors.maximum(:habilidade);

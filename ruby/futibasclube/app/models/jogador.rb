@@ -3,7 +3,9 @@ class Jogador < ActiveRecord::Base
   
   has_many :equipes_jogadors
   has_many :equipes, :through => :equipes_jogadors
-  
+
+  HABILIDADES = ["Perna de pau", "Mais ou menos", "Bom jogador", "Joga muito"]
+
   def desc_mensalista
   	  if self.mensalista
   	  	 "Sim"

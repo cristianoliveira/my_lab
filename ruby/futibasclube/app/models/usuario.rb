@@ -6,8 +6,8 @@ class Usuario < ActiveRecord::Base
   
   has_one  :detalhes_usuario  
  
-  validates :senha, confirmation:true, presence: true
-  validates :email, confirmation: true
+  validates :senha, confirmation: true, presence: true
+  validates :email, confirmation: true, presence: true
   
   def senha=(value)
     write_attribute(:senha, self.class.sha1(value))

@@ -2,7 +2,8 @@
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
   def index
-    @usuarios = Usuario.all
+    redirect_to "/"
+    # @usuarios = Usuario.all
   end
 
   def show
@@ -10,6 +11,7 @@
 
   def new
     @usuario = Usuario.new
+    @msg_error = flash[:msg_error]
   end
 
   def edit
@@ -18,12 +20,11 @@
   def create
     @usuario = Usuario.new(usuario_params)
 
-    p "##################AAA"
-
     if @usuario.save
         flash[:email_cadastro] = @usuario.email
         redirect_to "/usuarios/login"
     else
+        flash[:msg_error] = @usuario.errors
         render action: 'new'
     end
   end
@@ -51,7 +52,7 @@
   def login
       usuario   = Usuario.new(email: params[:email], senha: params[:senha])
       if usuario.existe
-         setUsuarioSessao(usuario)
+         set_usuario_sessao(usuario)
          redirect_to "/partidas/"
       else
          @msg_erro = "Senha invalida."
@@ -68,6 +69,11 @@
 
   def login_after_cadastro
      render "main/index"
+  end
+
+  def logoff
+      del_usuario_sessao()
+      redirect_to "/"
   end
   
   private

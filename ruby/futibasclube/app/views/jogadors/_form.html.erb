@@ -33,11 +33,11 @@
       <h3>Habilidades do jogador</h3>
       <div class="field">
         <%= f.label :habilidade %><br>
-        <%= f.number_field :habilidade %>
+        <%= f.select :habilidade, options_for_select(Jogador::HABILIDADES.each_with_index.map { |e, i| [e,i] }) , value: @jogador.habilidade %>
       </div>
       <div class="field">
         <%= f.label "Defesa" %><br>
-        <%= f.number_field :hab_defesa %>
+        <%= f.select :hab_defesa, options_for_select(Jogador::HABILIDADES.each_with_index.map { |e, i| [e,i] }) %>
       </div>
       <div class="field">
         <%= f.label "Meia" %><br>

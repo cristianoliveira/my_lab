@@ -1,11 +1,11 @@
 require 'date'
 class PartidasController < ApplicationController
   before_action :set_partida, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /partidas
   # GET /partidas.json
   def index
-    @partidas = getUsuarioSessao.partidas.all
+    @partidas = get_usuario_sessao.partidas.all
     render :layout => "admin" 
   end
 
@@ -16,7 +16,7 @@ class PartidasController < ApplicationController
 
   # GET /partidas/new
   def new
-    @partida = getUsuarioSessao.partidas.new
+    @partida = get_usuario_sessao.partidas.new
   end
 
   # GET /partidas/1/edit
@@ -26,11 +26,11 @@ class PartidasController < ApplicationController
   # POST /partidas
   # POST /partidas.json
   def create
-    @partida = getUsuarioSessao.partidas.new(partida_params)
+    @partida = get_usuario_sessao.partidas.new(partida_params)
     respond_to do |format|
       if @partida.save
-        getUsuarioSessao.usuario_partidas.create(partida: @partida)
-        getUsuarioSessao.save
+        get_usuario_sessao.usuario_partidas.create(partida: @partida)
+        get_usuario_sessao.save
     
         format.html { redirect_to "/partidas/", notice: 'Partida was successfully created.' }
       
@@ -64,41 +64,42 @@ class PartidasController < ApplicationController
   end
 
   def gera_equipes
-      
-      @partida = getUsuarioSessao.partidas.find(params[:partida_id])
-      @equipes = @partida.geraEquipes
-      cookies[:equipe_a] = ActiveSupport::JSON.encode(@equipes[0].getJogadoresArray.map{|x| x.id })
-      cookies[:equipe_b] = ActiveSupport::JSON.encode(@equipes[1].getJogadoresArray.map{|x| x.id })
-       
+  
+        @partida = get_usuario_sessao.partidas.find(params[:partida_id])
+        @equipes = @partida.gera_equipes
+        cookies[:equipe_a] = ActiveSupport::JSON.encode(@equipes[0].get_jogadores.map{|x| x.id })
+        cookies[:equipe_b] = ActiveSupport::JSON.encode(@equipes[1].get_jogadores.map{|x| x.id })
+  
   end
+
 
   def salva_equipes
       hoje = Date.now
-      equipeA  = Equipe.new(descricao: "A", data: hoje)
-      equipeA.equipes_jogadors.new(data_jogo: hoje) 
-      equipeB  = Equipe.new(descricao: "B", data: hoje)
-      equipeB.equipes_jogadors.new(data_jogo: hoje)
+      equipe_a  = Equipe.new(descricao: "A", data: hoje)
+      equipe_a.equipes_jogadors.new(data_jogo: hoje) 
+      equipe_b  = Equipe.new(descricao: "B", data: hoje)
+      equipe_b.equipes_jogadors.new(data_jogo: hoje)
       
       equipe_a = ActiveSupport::JSON.decode(cookies[:equipe_a])
       equipe_b = ActiveSupport::JSON.decode(cookies[:equipe_b])
 
       equipe_a.each do |jog_id|
-         equipeA.jogadors << Jogador.find(jog_id)
+         equipe_a.jogadors << Jogador.find(jog_id)
       end
 
       equipe_b.each do |jog_id|
-         equipeB.jogadors << Jogador.find(jog_id)
+         equipe_b.jogadors << Jogador.find(jog_id)
       end
       
-       equipeA.save
-       equipeB.save
+       equipe_a.save
+       equipe_b.save
       
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_partida
-      @partida = getUsuarioSessao.partidas.find(params[:id])
+      @partida = get_usuario_sessao.partidas.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

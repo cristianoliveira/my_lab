@@ -6,10 +6,10 @@ class JogadorsController < ApplicationController
   def index
    
     if !params[:partida_id]
-      partida = getPartida
+      partida = get_partida
     else
-      partida = getUsuarioSessao.partidas.find(params[:partida_id])
-      setPartida(partida)
+      partida = get_usuario_sessao.partidas.find(params[:partida_id])
+      set_partida(partida)
 
     end
 
@@ -23,7 +23,7 @@ class JogadorsController < ApplicationController
 
   # GET /jogadors/new
   def new
-    @jogador = getPartida.jogadors.new
+    @jogador = get_partida.jogadors.new
   end
 
   # GET /jogadors/1/edit
@@ -33,7 +33,7 @@ class JogadorsController < ApplicationController
   # POST /jogadors
   # POST /jogadors.json
   def create
-    @jogador = getPartida.jogadors.new(jogador_params)
+    @jogador = get_partida.jogadors.new(jogador_params)
 
     respond_to do |format|
       if @jogador.save
@@ -69,7 +69,7 @@ class JogadorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_jogador
-      @jogador = getPartida.jogadors.find(params[:id])
+      @jogador = get_partida.jogadors.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -77,11 +77,11 @@ class JogadorsController < ApplicationController
       params.require(:jogador).permit(:partida_id, :nome, :habilidade, :hab_defesa, :hab_meio, :hab_ataque, :telefone, :email, :mensalista, :ativo)
     end
 
-    def setPartida(pPartida)
+    def set_partida(pPartida)
         session[:partida_id] = pPartida.id 
     end
    
-    def getPartida 
-        getUsuarioSessao.partidas.find(session[:partida_id])
+    def get_partida 
+        get_usuario_sessao.partidas.find(session[:partida_id])
     end
 end
