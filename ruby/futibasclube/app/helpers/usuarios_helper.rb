@@ -5,7 +5,18 @@ module UsuariosHelper
    end
 
    def get_usuario_sessao
-       Usuario.find(session['usuario_id'])
+       begin
+           usuario = Usuario.find(session['usuario_id'])
+           if usuario
+              return usuario
+           else   
+              redirect_to "/"
+           end
+           
+       rescue Exception => e
+           p "ERRO BUSCA USUARIO #{e}"
+           nil 
+       end
    end
 
    def del_usuario_sessao
@@ -13,7 +24,7 @@ module UsuariosHelper
    end
 
    def has_usuario_sessao
-       !session[:usuario_id].nil? 
+       get_usuario_sessao 
    end
 
 end

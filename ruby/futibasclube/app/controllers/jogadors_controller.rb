@@ -1,19 +1,20 @@
 class JogadorsController < ApplicationController
   before_action :set_jogador, only: [:show, :edit, :update, :destroy]
+  before_action :get_partida, only: [:new, :edit, :create]
 
   # GET /jogadors
   # GET /jogadors.json
   def index
-   
+    
     if !params[:partida_id]
-      partida = get_partida
+      @partida = get_partida
     else
-      partida = get_usuario_sessao.partidas.find(params[:partida_id])
-      set_partida(partida)
+      @partida = get_usuario_sessao.partidas.find(params[:partida_id])
+      set_partida(@partida)
 
     end
 
-     @jogadors = partida.jogadors.all
+     @jogadors = @partida.jogadors.all
   end
 
   # GET /jogadors/1
@@ -23,7 +24,7 @@ class JogadorsController < ApplicationController
 
   # GET /jogadors/new
   def new
-    @jogador = get_partida.jogadors.new
+    @jogador = @partida.jogadors.new
   end
 
   # GET /jogadors/1/edit
@@ -33,7 +34,7 @@ class JogadorsController < ApplicationController
   # POST /jogadors
   # POST /jogadors.json
   def create
-    @jogador = get_partida.jogadors.new(jogador_params)
+    @jogador = @partida.jogadors.new(jogador_params)
 
     respond_to do |format|
       if @jogador.save
@@ -82,6 +83,6 @@ class JogadorsController < ApplicationController
     end
    
     def get_partida 
-        get_usuario_sessao.partidas.find(session[:partida_id])
+        @partida = get_usuario_sessao.partidas.find(session[:partida_id])
     end
 end

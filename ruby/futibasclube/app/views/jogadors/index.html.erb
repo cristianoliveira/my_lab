@@ -5,7 +5,7 @@
   </div>
 
   <div class="btn-novo-header">
-      <a class="btn btn-dark" href="/jogadors/new">Novo Jogador</a>
+      <%= link_to 'Novo Jogador', "/partida/#{@partida.id}/jogador/novo", class: "btn btn-dark" %>
   </div>
 </div>
 <div class="main_content">

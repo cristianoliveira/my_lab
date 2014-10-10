@@ -5,8 +5,14 @@ class PartidasController < ApplicationController
   # GET /partidas
   # GET /partidas.json
   def index
-    @partidas = get_usuario_sessao.partidas.all
-    render :layout => "admin" 
+    usuario   = get_usuario_sessao
+
+    if usuario
+        @partidas = usuario.partidas.all
+        render :layout => "admin"
+    else
+        redirect_to "/"
+    end 
   end
 
   # GET /partidas/1
@@ -99,7 +105,12 @@ class PartidasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_partida
-      @partida = get_usuario_sessao.partidas.find(params[:id])
+      begin
+         @partida = get_usuario_sessao.partidas.find(params[:id])
+      rescue Exception => e
+          p "ERRO METHOD set_partida #{e}"
+          redirect_to "/"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

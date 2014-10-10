@@ -14,7 +14,8 @@ Futibasclube::Application.routes.draw do
   post "usuarios/create"                  => 'usuarios#create'
   resources :usuarios
   
-  get  "partida/:partida_id/jogadores/"   => 'jogadors#index'
+  get  "partida/:partida_id/jogadores/"     => 'jogadors#index'
+  get  "partida/:partida_id/jogador/novo"   => 'jogadors#new'
   resources :jogadors
 
   
