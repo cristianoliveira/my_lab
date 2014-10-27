@@ -10,11 +10,6 @@ class welcomeCONTROLLER extends CI_Controller {
 		$this->load->helper('assets');
 		$paramVIEW['css'] 	= load_css(array('style.css','superfish.css','pagenavi-css.css','slider.css'));
 		$paramVIEW['js'] 	= load_js(array('jquery.js','s3Slider.js'));
-		$paramVIEW['meta']	= "java, php, android, ruby on rails, c#, tutoriais";
-		$paramVIEW['img1']	= site_url('images/sites.jpg');
-		$paramVIEW['img2']	= site_url('images/software.jpg');
-		$paramVIEW['img3']	= site_url('images/app_mobile.jpg');
-		
 		
 		$this->load->view('default/cabecalhoVIEW',$paramVIEW);
 		$this->load->view('conteudo/homeVIEW');
