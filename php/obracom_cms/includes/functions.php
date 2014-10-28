@@ -553,7 +553,19 @@ function showSessionMessage()
 	} 
 }
 
+function siteUrl($url=''){
+	
+	$url_site = $_SERVER[SERVER_NAME];
 
+	if(empty($url))
+	{
+		return "http://$url_site";
+	}
+	else
+	{
+		return "http://$url_site/$url";
+	}
+}
 
 
 ?>

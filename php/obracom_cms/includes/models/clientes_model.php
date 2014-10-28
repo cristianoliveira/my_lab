@@ -4,25 +4,19 @@
 
 /* Cliente Model
 *  Encarregado de acessar os dados do cliente no banco de dados.
-*    
 
-TABLE SCHEMA:
-create table clientes 
-( 
-   idcliente          INT(10)      NOT NULL AUTO_INCREMENT,
-   nome_cliente       VARCHAR(200) NOT NULL COMMENT 'Nome completo',
-   cpf                VARCHAR(30)  NOT NULL,
-   genero             VARCHAR(1)   NOT NULL COMMENT '(M) Masculino / (F) Feminino',
-   nascimento         DATE,
-   telefone_principal VARCHAR(30),
-   telefone_celular   VARCHAR(30),
-   telefone_comercial VARCHAR(30),
-   apelido_cliente    VARCHAR(200),
-   email_cliente      VARCHAR(200),
-   senha              VARCHAR(200),
-   UNIQUE (idcliente),
-   PRIMARY KEY (idcliente) 
-) ENGINE = MYISAM;
+
+id	int(10)	Não 	 	 
+cliente_id	int(10)	Não 	 	 
+endereco	varchar(100)	Sim 	NULL 	 
+numero	int(10)	Sim 	NULL 	 
+complemento	varchar(100)	Sim 	NULL 	 
+referencia	text	Sim 	NULL 	 
+bairro	varchar(50)	Sim 	NULL 	 
+cidade	varchar(100)	Sim 	NULL 	 
+estado	varchar(2)	Sim 	NULL 	 
+cep	int(8)	Sim 	NULL 	 
+tipo	enum('residencial', 'comercial', 'outro')	Sim 	NULL 	 
 
 
 */
@@ -31,15 +25,17 @@ class ClientesModel extends Model{
 	
 	function __construct()
     {
-		$this->table  = 'clientes';
-        $this->col_id = 'idcliente';
+		$this->table  = 'fd_clientes';
+        $this->col_id = 'id';
     }
 	
 	public function postParameters()
 	{
 		//Obrigatorios
 		$data = array(
-			'nome_cliente'       => $_POST['nome_cliente']
+			  'nome'               => $_POST['nome']
+			 ,'email'              => $_POST['email']
+			 ,'senha'              => $_POST['senha'] 
 			 ,'cpf'                => $_POST['cpf']
 			 ,'genero'             => $_POST['genero']
 			 ,'nascimento'         => $_POST['nascimento']

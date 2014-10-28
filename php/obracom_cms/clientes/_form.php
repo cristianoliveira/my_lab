@@ -1,24 +1,33 @@
 <form id="clientes_form" class="form-default" action="<= $action_form ?>" method="post" enctype="multipart/form-data">    
     <fieldset>
 
-        <?php if(isset($cliente['idcliente'])) { ?>
+        <?php if(isset($cliente['id'])) { ?>
         <input class ="text-input medium-input required"
                 type  ="hidden"
                 id    ="id"
                 name  ="id"
                 maxlength="255"
-                value="<?= $cliente['idcliente'] ?>" 
+                value="<?= $cliente['id'] ?>" 
                 required/>
         <?php } ?>
         <div>
             <label>Nome</label>
             <input class ="text-input medium-input required"
                     type  ="text"
-                    id    ="nome_cliente"
-                    name  ="nome_cliente"
+                    id    ="nome"
+                    name  ="nome"
                     maxlength="255"
-                    value="<?= $cliente['nome_cliente'] ?>" 
+                    value="<?= $cliente['nome'] ?>" 
                     required/>
+        </div>
+        <div>
+            <label>Email</label>
+            <input class="text-input medium-input required"
+                    type ="text"
+                    id   ="email"
+                    name ="email"
+                    maxlength="255"
+                    value="<?= $cliente['email'] ?>" required/>
         </div>
         <div>
             <label>CPF</label>
@@ -79,7 +88,17 @@
                     id   ="senha"
                     name ="senha"
                     maxlength="255"
-                    value="<?= $cliente[0]['senha'] ?>" 
+                    value="<?= $cliente['senha'] ?>" 
+                    required/>
+        </div>
+        <div>
+            <label>Confirmaçao Senha</label>
+            <input class="text-input medium-input required"
+                    type ="password"
+                    id   ="senha_confirmacao"
+                    name ="senha_confirmacao"
+                    maxlength="255"
+                    value="<?= $cliente['senha'] ?>" 
                     required/>
         </div>
         <div>
