@@ -6,17 +6,17 @@
                    id="nome" 
                    name="nome_usuario" 
                    maxlength="150" 
-                   value="<?= $usuario['nome_usuario'] ?>"/>
+                   value="<?= if_exist($usuario['nome']) ?>"/>
         </div>
 
         <div>
-            <label for="conta">Usuário </label>
+            <label for="usuario">Usuário </label>
             <input class="text-input large-input"
                    type="text"
-                   id="conta"
-                   name="conta"
+                   id="usuario"
+                   name="usuario"
                    maxlength="100"
-                   value="<?= $usuario['conta'] ?>"/>
+                   value="<?= if_exist($usuario['usuario']) ?>"/>
             <br/><small> Este será o usuário que dá acesso ao login do gerenciador.</small>
         </div>
 
@@ -26,7 +26,7 @@
                    id="senha" 
                    name="senha"
                    maxlength="255" 
-                   value="<?= $usuario['senha'] ?>" 
+                   value="<?= if_exist($usuario['usuario']) ?>" 
                    type="password"/>
         </div>
 
@@ -37,7 +37,7 @@
                    id="email" 
                    name="email_usuario" 
                    maxlength="320" 
-                   value="<?= $usuario['email_usuario'] ?>"/>
+                   value="<?= if_exist($usuario['email_usuario']) ?>"/>
         </div>
 
         <div>

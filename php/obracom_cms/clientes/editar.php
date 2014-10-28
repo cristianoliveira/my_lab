@@ -4,7 +4,9 @@ include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 include("../includes/functions.php");
 include("../includes/logs.php");
+
 include("../includes/models/clientes_model.php");
+include("../includes/helpers/variaveis_helper.php");
 
 //Pega Dados e Mostra-os.
 $clientes  = new ClientesModel();
@@ -18,19 +20,6 @@ if(empty($cliente))
 $clientes_tab = $clientes_gerenciar = "current";
 
 ?>
-<script type="text/javascript" src="../fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <script type="text/javascript" src="../fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <link rel="stylesheet" type="text/css" href="../fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-     
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $("a#example1").fancybox();
-
-        });
-    </script>
-
-
 <body>
 
     <div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
@@ -56,7 +45,6 @@ $clientes_tab = $clientes_gerenciar = "current";
             <div class="content-box-content">
                 
                 <?php 
-
                     $acao        = "Atualizar";
                     $form_action = "acao.php?a=2";
                     include "_form.php";

@@ -1,5 +1,7 @@
 <?php  
 include("../includes/cabecalho.php"); 
+
+include("../includes/helpers/variaveis_helper.php"); 
 include('../includes/check_authentication.php');
 ?>
 

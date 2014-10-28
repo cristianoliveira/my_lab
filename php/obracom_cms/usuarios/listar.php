@@ -30,7 +30,8 @@ include("../includes/models/usuarios_model.php");
             <!-- Page Head -->
             <h2>Lista de Usuários cadastrados</h2>
             <p id="page-intro">Abaixo estão listados todos os usuários.</p>
-            <?php  showSessionMessage(); ?>
+            
+			<?php  showSessionMessage(); ?>
             
                   <div class="content-box"><!-- Start Content Box -->
 
@@ -66,17 +67,17 @@ include("../includes/models/usuarios_model.php");
                             <?php  foreach($listUsuarios as $usuario) { ?>
                                 <tr>
                                     <td class="current">
-                                        <a href="#" title=""> <?php echo $usuario['nome_usuario'] ; ?> </a>
+                                        <a href="#" title=""> <?php echo $usuario['nome'] ; ?> </a>
                                     </td>
                                     <td class="">
                                         &nbsp;
                                     </td>
                                     <td>
                                         <!-- Icons -->
-                                        <a href="editar.php?p=8&g=2&id=<?php echo $usuario['idusuario']; ?>"title="Editar o usuário.">
+                                        <a href="editar.php?p=8&g=2&id=<?php echo $usuario['id']; ?>"title="Editar o usuário.">
                                             <img src="../imagens/icones/pencil.png"alt="Editar"/>
                                         </a>
-                                        <a href="acao.php?a=3&id=<?php echo $usuario['idusuario']; ?>" 
+                                        <a href="acao.php?a=3&id=<?php echo $usuario['id']; ?>" 
                                            title="Excluir o usuario" class="item-confirmar"  
                                            onclick="if(!confirm('Você tem certeza que deseja excluir esse usuario? ATENÇÃO: Você pode ficar SEM ACESSO ao sistema.')) return false;" >
                                             <img src="../imagens/icones/cross.png"alt="Excluir"/>

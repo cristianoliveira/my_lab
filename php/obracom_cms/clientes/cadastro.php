@@ -2,9 +2,12 @@
 include("../includes/cabecalho.php");
 include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
-  
+
+include("../includes/helpers/variaveis_helper.php");
+
   //Menu Sidebar
   $clientes_tab = $clientes_adicionar = "current";
+  
 ?>
 
 <body class="produtos form">

@@ -4,8 +4,9 @@ include('../includes/check_authentication.php');
 // include("../includes/database_connection.php");
 include("../includes/functions.php");
 include("../includes/logs.php");
-include("../includes/models/clientes_model.php");
 
+include("../includes/models/clientes_model.php");
+include("../includes/helpers/variaveis_helper.php");
 
     $clientes = new ClientesModel();
 
@@ -56,6 +57,9 @@ confirmaExclusaoCliente = function()
                                 <th class="current">
                                     <a href="/clientes/listar.php?ordem=email&desc=1" class="down">Email</a>
                                 </th>
+                                <th class="current">
+                                    <a href="/clientes/listar.php?ordem=telefone&desc=1" class="down">Telefone Principal</a>
+                                </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>
                             </tr>
@@ -65,20 +69,23 @@ confirmaExclusaoCliente = function()
                             <?php foreach ($listClientes as $cliente) {  ?>
                                 <tr>
                                     <td>
-                                        <a href="editar.php?id=<?= $cliente['idcliente']; ?>" title="Editar cliente">
-                                             <?php echo $cliente['nome_cliente']; ?>
+                                        <a href="editar.php?id=<?= $cliente['id'] ?>" title="Editar cliente">
+                                             <?php echo if_null($cliente['nome'], $cliente['razao_social']); ?>
                                         </a>
                                     </td>
                                     <td>
-                                        <?php echo $cliente['email_cliente']; ?>
+                                        <?php echo $cliente['email']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $cliente['telefone_principal']; ?>
                                     </td>
                                     <td>&nbsp;</td>
                                     <td nowrap><!-- Icons -->
-                                        <a href="editar.php?id=<?= $cliente['idcliente']; ?>" 
+                                        <a href="editar.php?id=<?= $cliente['id']; ?>" 
                                             title="Editar a cliente"> 
                                                 <img src="../imagens/icones/pencil.png"alt="Editar" border="0" align="left"/> 
                                         </a> 
-                                        <a href="acao.php?a=3&id=<?= $cliente['idcliente']; ?>" 
+                                        <a href="acao.php?a=3&id=<?= $cliente['id']; ?>" 
                                             title="Excluir a cliente" 
                                             class="item-confirmar"  
                                             onclick="return confirmaExclusaoCliente()"> 

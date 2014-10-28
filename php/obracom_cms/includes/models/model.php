@@ -1,6 +1,6 @@
 <?php
-include('../includes/models/SQLBuilder.php');
 include("../includes/database_connection.php");
+include_once('SQLBuilder.php');
 
 class Model{
     
@@ -27,7 +27,6 @@ class Model{
 
     public function get_first()
     {
-        $return = array();
         $sql    = mysql_query($this->sqlBuilder) or die("Erro ao afetuar tentar acessar o banco de dados");
         return mysql_fetch_array($sql);
     }
@@ -147,22 +146,34 @@ class Model{
 		return $quantreg;
 	}
 	
-	public function insert($dadosCliente = array())
+	public function insert($dados = array())
     {
-        $this->buildSql()->insert($this->table, $dadosCliente);
+        $this->buildSql()->insert($this->table, $dados);
         return $this->execute_insert();
     }
 
-    public function update($dadosCliente = array(), $where='')
+    public function update($dados = array(), $where='')
     {
-        $this->buildSql()->update($this->table, $dadosCliente)
+        $this->buildSql()->update($this->table, $dados)
                          ->where($where);
         return $this->execute_insert();
     }
-
+	
+	public function updateById($id, $dados = array())
+    {
+        $this->buildSql()->update($this->table, $dados)
+                          ->where($this->col_id." = $id");
+        return $this->execute_insert();
+    }
+	
 	public function delete($where)
 	{
 		$this->buildSql()->delete($this->table, $where);
+        return $this->execute();
+	}
+	
+	public function deleteById($id){
+		$this->buildSql()->delete($this->table, $this->col_id." = $id");
         return $this->execute();
 	}
 	

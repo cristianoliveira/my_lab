@@ -4,14 +4,17 @@ include("../includes/functions.php");
 include("../includes/logs.php");
 
 include("../includes/models/clientes_model.php");
-include("../includes/helpers/messagem_helper.php");
+include("../includes/helpers/mensagem_helper.php");
+include("../includes/helpers/variaveis_helper.php");
 
 
     $clientes     = new ClientesModel();
-    $dadosCliente = $_POST;
-    $acao         = isset($_GET["a"])? $_GET["a"] : -1; 
+    $dadosCliente = $clientes->postParameters(Parameter::POST());
+	
+    $acao         = Parameter::GET('a', 0); //isset($_GET["a"])? $_GET["a"] : -1; 
     $idcliente    = $clientes->getParameterID();
-
+	
+	log_file(" cliente ID = $idcliente");
             
     switch ($acao) {
         case 1: // INSERT
@@ -27,23 +30,23 @@ include("../includes/helpers/messagem_helper.php");
 
         case 2: // UPDATE
             
-            if($clientes->update($dadosCliente, "idcliente = $idcliente"))
+            if($clientes->update($dadosCliente, "id = $idcliente"))
             {
                 MensagemHelper::updateSucesso();
             }
             else
-                MensageHelper::erro();
+                MensagemHelper::erro();
 
             break;
 
         case 3: // DELETE
             
-            if($clientes->delete("idcliente = $idcliente"))
+            if($clientes->delete("id = $idcliente"))
             {
                 MensagemHelper::deleteSucesso();
             }
             else
-                MensageHelper::erro();
+                MensagemHelper::erro();
                             
             break;
     }

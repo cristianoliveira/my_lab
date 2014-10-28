@@ -567,5 +567,10 @@ function siteUrl($url=''){
 	}
 }
 
+function echoIfIsset($var_name)
+{
+	if(isset($$var_name))
+	   echo $var_name;
+}
 
 ?>

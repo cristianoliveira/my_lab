@@ -5,10 +5,11 @@ include("../includes/logs.php");
 
 include("../includes/helpers/messagem_helper.php");
 include("../includes/models/usuarios_model.php");
+include("../includes/helpers/variaveis_helper.php");
 
     $usuarios     = new UsuariosModel();
     $dadosUsuario = $_POST;
-    $acao         = isset($_GET["a"])? $_GET["a"] : -1; 
+    $acao         = par_get('a');//isset($_GET["a"])? $_GET["a"] : -1; 
     
     switch ($acao) {
         case 1: // INSERT
@@ -26,7 +27,7 @@ include("../includes/models/usuarios_model.php");
             
              $idusuario = $usuarios->getParameterID();
 
-            if($usuarios->update($dadosUsuario, "idusuario = $idusuario"))
+            if($usuarios->updateById($idusuario, $dadosUsuario))
             {
                 MensagemHelper::updateSucesso();
             }
@@ -39,7 +40,7 @@ include("../includes/models/usuarios_model.php");
             
             $idusuario = $usuarios->getParameterID();
 
-            if($usuarios->delete("idusuario = $idusuario"))
+            if($usuarios->deleteById($idusuario))
             {
                 MensagemHelper::deleteSucesso();
             }

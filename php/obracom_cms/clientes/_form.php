@@ -1,110 +1,249 @@
-<form id="clientes_form" class="form-default" action="<= $action_form ?>" method="post" enctype="multipart/form-data">    
-    <fieldset>
+<form class="form-default" method="post" action="<?= $form_action ?>" id="form-dados-cadastrais" >
+        
+    <?php if(isset($cliente['id'])) { ?>
+		<input type="hidden"  
+			   name="id" 
+			   value="<?= $cliente['id'] ?>"
+		/>
+    <?php } ?>
+        
+        <div>
+            <div class="radio-input">            
+                <input type="radio" 
+                       id="pessoa_tipo_fisica"  
+                       name="pessoa_tipo" 
+                       value="fisica" 
+                       <?= (if_exist($cliente['cpf'])!="")? 'checked="checked"' : '' ?>
+                >
+                     Pessoa Física
+                </input>
+                <input type="radio" 
+                       id="pessoa_tipo_juridica" 
+                       name="pessoa_tipo" 
+                       value="juridica"
+                       <?= (if_exist($cliente['cnpj'])!="")? 'checked="checked"' : '' ?>
+                >
+                     Pessoa Jurídica
+                </input>
+            </div>
 
-        <?php if(isset($cliente['id'])) { ?>
-        <input class ="text-input medium-input required"
-                type  ="hidden"
-                id    ="id"
-                name  ="id"
-                maxlength="255"
-                value="<?= $cliente['id'] ?>" 
-                required/>
-        <?php } ?>
-        <div>
-            <label>Nome</label>
-            <input class ="text-input medium-input required"
-                    type  ="text"
-                    id    ="nome"
-                    name  ="nome"
-                    maxlength="255"
-                    value="<?= $cliente['nome'] ?>" 
-                    required/>
-        </div>
-        <div>
-            <label>Email</label>
-            <input class="text-input medium-input required"
-                    type ="text"
-                    id   ="email"
-                    name ="email"
-                    maxlength="255"
-                    value="<?= $cliente['email'] ?>" required/>
-        </div>
-        <div>
-            <label>CPF</label>
-            <input class="text-input medium-input required"
-                    type ="text"
-                    id   ="cpf"
-                    name ="cpf"
-                    maxlength="255"
-                    value="<?= $cliente['cpf'] ?>" required/>
-        </div>
-        <div>
-            <label>Sexo</label>
-            <select name="genero" id="genero" value="<?= $cliente['genero'] ?>">
-                <option value="M">Masculino</option>
-                <option value="F">Feminino</option>
-            </select>
-        </div>
-        <div>
-            <label>Data Nascimento</label>
-            <input class="text-input medium-input required"
-                    type ="date"
-                    id   ="nascimento"
-                    name ="nascimento"
-                    maxlength="255"
-                    value="<?= $cliente['nome_cliente'] ?>"/>
-        </div>
-        <div>
-            <label>Telefone Principal</label>
-            <input class="text-input small-input required"
-                    type ="phone"
-                    id   ="telefone_principal_prefix"
-                    name ="telefone_principal_prefix"
-                    maxlength="3"
-                    value="<?= substr($cliente['telefone_principal'], 0 , 3) ?>" 
-                    required/>
-            <input class="text-input medium-input required"
-                    type ="phone"
-                    id   ="telefone_principal"
-                    name ="telefone_principal"
-                    maxlength="9"
-                    value="<?= substr($cliente['telefone_principal'], 3, strlen($cliente['telefone_principal'])-3) ?>" 
-                    required/>
-        </div>
-        <div>
-            <label>Email</label>
-            <input class="text-input medium-input required"
-                    type ="email"
-                    id   ="email_cliente"
-                    name ="email_cliente"
-                    maxlength="255"
-                    value="<?= $cliente['email_cliente'] ?>" 
-                    required/>
-        </div>
-        <div>
-            <label>Senha</label>
-            <input class="text-input medium-input required"
-                    type ="password"
-                    id   ="senha"
-                    name ="senha"
-                    maxlength="255"
-                    value="<?= $cliente['senha'] ?>" 
-                    required/>
-        </div>
-        <div>
-            <label>Confirmaçao Senha</label>
-            <input class="text-input medium-input required"
-                    type ="password"
-                    id   ="senha_confirmacao"
-                    name ="senha_confirmacao"
-                    maxlength="255"
-                    value="<?= $cliente['senha'] ?>" 
-                    required/>
-        </div>
-        <div>
-            <input class="button"type="submit" value="<?= $acao ?>"/>
-        </div>
-    </fieldset>
+            <div class="pessoa_fisica">
+                <label>Nome completo &#42;</label>
+                <input type="text" 
+                       class="text-input large-input required" 
+                       id="form_nome" 
+                       name="nome" 
+                       maxlength="100" 
+                       value="<?= if_exist($cliente['nome']) ?>" 
+                />
+            </div>
+            <div class="pessoa_fisica">
+                <label>CPF &#42;</label>
+                <input type="text" 
+                       class="text-input required" 
+                       id="form_cpf" 
+                       name="cpf" 
+                       maxlength="11" 
+                       value="<?= if_exist($cliente['cpf']) ?>" 
+                />
+                <br />
+                <p><span>(Apenas números, sem pontos ou traços)</span></p>
+            </div>
 
-    <div class="clear"></div><!-- End .clear -->
+            <div class="pessoa_juridica">
+                <label>Razão social &#42;</label>
+                <input type="text" 
+                       class="text-input large-input required" 
+                       id="form_razao_social" 
+                       name="razao_social" 
+                       maxlength="100" 
+                       value="<?= if_exist($cliente['razao_social']) ?>" 
+                />
+            </div>
+            <div class="pessoa_juridica">
+                <label>CNPJ &#42;</label>
+                <input type="text" 
+                       class="text-input required" 
+                       id="form_cnpj" 
+                       name="cnpj" 
+                       maxlength="14" 
+                       value="<?= if_exist($cliente['cnpj']) ?>" 
+                />
+                <br />
+                <p><span>(Apenas números, sem pontos ou traços)</span></p>
+            </div>
+            <div class="pessoa_juridica">
+                <label>Nome do responsável &#42;</label>
+                <input type="text" 
+                       class="text-input large-input required" 
+                       id="form_responsavel_nome" 
+                       name="responsavel_nome" 
+                       maxlength="100" 
+                       value="<?= if_exist($cliente['responsavel_nome']) ?>" />
+            </div>
+            <div class="pessoa_juridica">
+                <label>CPF do responsável &#42;</label>
+                <input type="text" 
+                       class="text-input required" 
+                       id="form_responsavel_cpf" 
+                       name="responsavel_cpf" 
+                       maxlength="11" 
+                       value="<?= if_exist($cliente['responsavel_cpf']) ?>" 
+                />
+                <br />
+                <p><span>(Apenas números, sem pontos ou traços)</span></p>
+            </div>
+
+            <div>
+                <label>Sexo &#42;</label>
+                <select name="genero" id="form_genero" class="text-input required">
+                  <option value="">Selecione</option>    
+                  <option value="feminino"  <?= (if_exist($cliente['genero']) == "feminino")? "selected" : ""; ?> >
+                        Feminino
+                  </option>
+                  <option value="masculino" <?= (if_exist($cliente['genero']) == "masculino")? "selected" : ""; ?> >
+                        Masculino
+                  </option>
+                </select>
+            </div>
+            <div>
+                <label>Data de Nascimento &#42;</label>
+                <input type="text" 
+                       class="text-input small-text required" 
+                       id="form_nascimento"
+                       name="nascimento"  
+                       maxlength="10" 
+                       value="<?= if_exist($cliente['nascimento']) ?>" />
+                <br />
+                <p><span>(DD/MM/AAAA)</span></p>
+            </div>
+            <div>
+                <label>Telefone Principal &#42;</label>
+                <input type="text" 
+                       class="text-input ddd" 
+                       id="ddd_telefone_principal" 
+                       name="ddd_telefone_principal" 
+                       maxlength="2" 
+                       value="<?= substr(if_exist($cliente['telefone_principal']),0,2) ?>" />
+                -
+                <input type="text" 
+                       class="text-input required telefone" 
+                       id="telefone_principal" 
+                       name="telefone_principal" 
+                       maxlength="8" 
+                       value="<?= substr(if_exist($cliente['telefone_principal']),2) ?>" />
+                <p><span>(DDD - Telefone)</span></p>
+            </div>
+            <div>
+                <label class="nao-obrigatorio">Telefone Celular</label>
+                <input type="text" 
+                       class="text-input ddd" 
+                       id="ddd_telefone_celular" 
+                       name="ddd_telefone_celular" 
+                       maxlength="2" 
+                       value="<?= substr(if_exist($cliente['telefone_celular']),0,2) ?>" />
+                - 
+                <input type="text" 
+                       class="text-input telefone" 
+                       id="telefone_celular" 
+                       name="telefone_celular" 
+                       maxlength="8" 
+                       value="<?= substr(if_exist($cliente['telefone_celular']),2) ?>" /><br />
+                <p><span>(DDD - Telefone) (Opcional)</span></p>
+            </div>
+            <div>
+                <label class="nao-obrigatorio">Telefone Comercial</label>
+                <input type="text" 
+                       class="text-input ddd" 
+                       id="ddd_telefone_comercial" 
+                       name="ddd_telefone_comercial" 
+                       maxlength="2" 
+                       value="<?= substr(if_exist($cliente['telefone_comercial']),0,2) ?>" />
+                - 
+                <input type="text" 
+                       class="text-input telefone" 
+                       id="form_tel_celular" 
+                       name="telefone_comercial" 
+                       maxlength="8" 
+                       value="<?= substr(if_exist($cliente['telefone_comercial']),2) ?>" /><br />
+                <p><span>(DDD - Telefone) (Opcional)</span></p>
+            </div>
+            <div class="separador"></div>
+            <div>
+                <label>Como gostaria de ser chamado? &#42;</label>
+                <input type="text" 
+                        class="text-input required padrao" 
+                        id="form_apedivdo" 
+                        name="apelido" 
+                        maxlength="100" 
+                        value="<?= if_exist($cliente['apelido']) ?>"
+                />
+                <br />
+                <p><span>(Primeiro nome, sobrenome, apedivdo, etc...)</span></p>
+            </div>
+            <div>
+                <label>E-mail &#42;</label>
+                <input type="text" 
+                        class="text-input required" 
+                        id="form_email" 
+                        name="email" 
+                        maxlength="255" 
+                        value="<?= if_exist($cliente['email']) ?>" 
+                />
+            </div>
+            <div>
+                <label>Senha &#42;</label>
+                <input type="password" 
+                        class="text-input required padrao" 
+                        name="senha" 
+                        id="form_senha" 
+                />
+                <br />
+                <p><span>Sua senha deve ter no mínimo de 6 caracteres</span></p>
+            </div>
+            <div>
+                <label>Confirme a senha &#42;</label>
+                <input type="password" 
+                        class="text-input required padrao" 
+                        name="confirma_senha" 
+                        id="form_confirma_senha" 
+                />
+            </div>
+            <div class="continuar">
+                <button type="submit">Enviar</button>
+            </div>
+        </div>            
+            
+    <div id="form_cadastro_notification"></div>
 </form>
+<script>
+    $(function(){
+         var value = $( "input:checked" ).val();
+        
+        if(value == 'fisica')
+        { 
+            $('.pessoa_juridica').hide();
+            $('.pessoa_fisica').show();
+        }
+        else
+        {
+            $('.pessoa_fisica').hide();
+            $('.pessoa_juridica').show();
+        }
+    });
+    
+    $('input').click(function(){
+        var value = $( "input:checked" ).val();
+        
+        if(value == 'fisica')
+        { 
+            $('.pessoa_juridica').hide();
+            $('.pessoa_fisica').show();
+        }
+        else
+        {
+            $('.pessoa_fisica').hide();
+            $('.pessoa_juridica').show();
+        }
+    });
+</script>

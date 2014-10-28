@@ -1,5 +1,5 @@
 <?php
-  
+ include_once "../includes/logs.php";
  class SQLBuilder
  {
     
@@ -201,7 +201,7 @@
 
         $this->clean();
 
-        error_log('###SQL '.$return);
+        log_file('###SQL '.$return);
 
 
         return $return.';';

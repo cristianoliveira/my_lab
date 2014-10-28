@@ -891,3 +891,11 @@ input[readonly] {color:#999!important}
     border-style: none;
     margin: 2px;
 }
+
+.radio-input input{
+	margin: 5px;
+}
+
+.ddd {
+	width: 20px;
+}

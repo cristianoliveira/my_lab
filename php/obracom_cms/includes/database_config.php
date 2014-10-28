@@ -23,7 +23,7 @@ $db_database_name = 'obracom_exemplocms';
 $base = 'http://localhost/exemplo_cms';
 */
 
-$db_host = 'mysql.movelclube.com.br:3306';
+$db_host = 'mysql.movelclube.com.br';
 $db_user = 'movelclube';
 $db_pass = 'j6t4h2';
 $db_database_name = 'movelclube';
