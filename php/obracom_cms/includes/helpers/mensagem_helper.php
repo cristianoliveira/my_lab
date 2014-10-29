@@ -2,24 +2,27 @@
 
 class MensagemHelper{
     
-    public static function insertSucesso()
+    public static function insertSucesso($mensagem = "Cadastro efetuado com sucesso!")
     {
-        $_SESSION['ok']  = "Cadastro efetuado com sucesso!";
+        $_SESSION['ok']  = $mensagem;
     }
 
-    public static function updateSucesso()
+    public static function updateSucesso($mensagem = "Atualizado o registro com sucesso!")
     {
-        $_SESSION['ok'] = "Atualizado o registro com sucesso!";
+        $_SESSION['ok'] = $mensagem;
     } 
 
-    public static function deleteSucesso()
+    public static function deleteSucesso($mensagem = "Removido o registro com sucesso!")
     {
-        $_SESSION['ok'] = "Removido o registro com sucesso!";
+        $_SESSION['ok'] = $mensagem;
     } 
 
-    public static function erro()
+    public static function erro($mensagem = '')
     {
-        $_SESSION['erro']  = "Ops! Desculpe-nos. Não foi possível salvar, tente novamente mais tarde ou contate o suporte.";
+		if(empty($mensagem))
+           $_SESSION['erro']  = "Ops! Desculpe-nos. Não foi possível salvar, tente novamente mais tarde ou contate o suporte.";
+		else
+		   $_SESSION['erro']  = $mensagem;
     }
 
     public static function showSessionMensagem()

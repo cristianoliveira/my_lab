@@ -879,17 +879,18 @@ input[readonly] {color:#999!important}
     margin: 5px auto;
 }
 
-.seletor-cor{
-    width: 30px;
-    height: 10px;
+.cor-seletor .cor-adicionada{
+    width: 60px;
+    height: 20px;
     border-style: none;
     margin: 2px;
 }
 
-.cor-adicionada{
-    width: 50px;
-    border-style: none;
-    margin: 2px;
+#cor-button-modelo{
+	visibility:hidden;
+}
+
+#cor-painel{
 }
 
 .radio-input input{

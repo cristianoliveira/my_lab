@@ -49,8 +49,12 @@ class Model{
         $result = mysql_query($this->sqlBuilder);
 
         if ($result) {
-            $id_grupo = mysql_insert_id();
+            //Não sei se é utilizado em outro lugar
+			$id_grupo = mysql_insert_id();
             $_SESSION['uidc'] = $id_grupo;
+			
+			$this->setLastId();
+			
             return true;
         } else {
             return false;
@@ -62,8 +66,12 @@ class Model{
         $result = mysql_query($this->sqlBuilder);
 
         if ($result) {
+		    //Não sei se é utilizado em outro lugar
             $id_grupo = mysql_insert_id();
             $_SESSION['uidc'] = $id_grupo;
+			
+			$this->setLastId();
+			
             return true;
         } else {
             error_log(mysql_error($conexao));
@@ -75,7 +83,8 @@ class Model{
     {
         $result = mysql_query($this->sqlBuilder);
         if ($result) {
-            return true;
+            $this->setLastId();
+			return true;
         } else {
             error_log(mysql_error($conexao));
             return false;
@@ -154,6 +163,10 @@ class Model{
 
     public function update($dados = array(), $where='')
     {
+		if(isset($dados[$col_id])){
+		   unset($dados[$col_id]);
+		}
+		
         $this->buildSql()->update($this->table, $dados)
                          ->where($where);
         return $this->execute_insert();
@@ -161,8 +174,13 @@ class Model{
 	
 	public function updateById($id, $dados = array())
     {
+		if(isset($dados[$col_id])){
+		   unset($dados[$col_id]);
+		}
+		
         $this->buildSql()->update($this->table, $dados)
                           ->where($this->col_id." = $id");
+						  
         return $this->execute_insert();
     }
 	
@@ -175,6 +193,22 @@ class Model{
 	public function deleteById($id){
 		$this->buildSql()->delete($this->table, $this->col_id." = $id");
         return $this->execute();
+	}
+	
+	public function setLastId()
+	{
+		try{
+			$last_id = mysql_insert_id();
+			$_SESSION['last_id'] = $last_id;
+		}catch(Exception $ex)
+		{
+			$_SESSION['last_id'] = "";
+		}
+	}
+	
+	public function getLastId()
+	{
+		return mysql_insert_id();
 	}
 	
 }

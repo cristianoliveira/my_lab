@@ -5,8 +5,9 @@
             <label>Categoria</label>
             <select id="categoria" name="categoria" >
                 <?php foreach ($listCategorias as $cat) { ?>
-                    <option value="<?= $cat['idcategorias'] ?>" <?= $cat['idcategorias'] == $produto['categoria_id'] ? 'selected': ''; ?> />
-                        <?= $cat['nome_categoria'] ?>
+                    <option value="<?= $cat['id'] ?>" 
+					    <?= $cat['id'] == if_exist($produto['categoria_id']) ? 'selected': ''; ?> />
+                        <?= $cat['nome'] ?>
                     </option>
                 <?php } ?>
             </select>
@@ -14,30 +15,51 @@
 
         <div>
             <label>Imagem Principal</label>
-            <input id="imagem_principal" class="text-input" name="imagem_principal" type="file" />
+            <input id="imagem" class="text-input" name="imagem" type="file" />
         </div>
 
         <div id="cores">
             <div>
-                <label>Cores 
-                   <input id="cor"
-                           name="modelo"
-                           class="seletor-cor color"
+                <label>Cores</label>
+				<div>
+				Clique para selecionar
+					<input id="cor"
+                           class="cor-seletor color"
                            type="text"
                            maxlength="10"
-                           value="<?= $produto['nome_produto'] ?>"/>
-                   <input id="adiciona-cor" 
-                          type="button" 
-                          value="+" 
+						   readonly
+						   />
+                    <input id="adiciona-cor" 
+                           type="button" 
+                           value="+" 
                           >
-                   <input id="remove-cor"
-                          class="botao-remove" 
-                          type="button" 
-                          value="-"
-                          visibility="false" 
+                    <input id="cor-button-modelo"
+                           class="botao-remove" 
+                           type="button" 
+                           value="-" 
                           >
-                </label>
+				</div>
+                   
             </div>
+			<div id="cor-painel">
+				<?php 
+				  $i = 0;
+				  if(isset($coresProduto))
+					 foreach($coresProduto as $cor) { 
+				?>
+					<input id="<?= "cor[$i]" ?>" 
+							name="<?= "cor[$i]" ?>" 
+							class="cor-adicionada <?= "cor-adicionada-$i" ?> valid" 
+							type="text" 
+							maxlength="10" 
+							value="" 
+							readonly 
+							style="background-color: <?= $cor ?>;">
+				<?php 
+						$i++;
+					 } 
+			    ?>
+			</div>
         </div>
 
 
@@ -48,12 +70,78 @@
                    id="nome"
                    name="nome"
                    maxlength="255"
-                   value="<?= $produto['nome_produto'] ?>"/>
+                   value="<?= if_exist($produto['nome']) ?>"/>
         </div>
 
+		<div>
+            <label>Nome Seo</label>
+            <input class="text-input medium-input required"
+                   type="text"
+                   id="nome_seo"
+                   name="nome_seo"
+                   maxlength="255"
+                   value="<?= if_exist($produto['nome_seo']) ?>"/>
+        </div>
+		
+		<div>
+            <label>Código</label>
+            <input class="text-input small-input required"
+                   type="text"
+                   id="codigo"
+                   name="codigo"
+                   maxlength="255"
+                   value="<?= if_exist($produto['codigo']) ?>"/>
+        </div>
+		
+		<div>
+            <label>Resumo</label>
+            <input class="text-input medium-input required"
+                   type="text"
+                   id="resumo"
+                   name="resumo"
+                   maxlength="255"
+                   value="<?= if_exist($produto['resumo']) ?>"/>
+        </div>
 
-
-
+		<div>
+            <label>Descrição</label>
+		    <textarea class="text-input textarea" 
+			          id="descricao" 
+					  name="descricao" 
+					  cols="79" 
+					  rows="15">
+				<?= if_exist($produto['descricao']) ?>
+			</textarea>
+        </div>
+		
+		<div>
+            <label>Valor Original</label>
+            <input class="text-input small-input required"
+                   type="text"
+                   id="valor_original"
+                   name="valor_original"
+                   maxlength="255"
+                   value="<?= if_exist($produto['valor_original']) ?>"/>
+        </div>
+		
+		<div>
+            <label>Valor Promocional</label>
+            <input class="text-input small-input required"
+                   type="text"
+                   id="valor_promocional"
+                   name="valor_promocional"
+                   maxlength="255"
+                   value="<?= if_exist($produto['valor_promocional']) ?>"/>
+        </div>
+		
+		<div>
+            <label for="oferta_imperdivel_home">Oferta Imperdível?</label>
+            <input type="checkbox"
+                   id="oferta_imperdivel_home"
+                   name="oferta_imperdivel_home"
+                   value="<?= if_exist($produto['oferta_imperdivel_home']) ?>"/>
+        </div>
+		
         <?php  if (isset($produto['image_name1'])) { ?>
 
         <p>
@@ -64,24 +152,6 @@
         </p>
         <?php  } ?>
 
-        <p>
-            <label for="imagem">Novo Arquivo </label>
-            <input class="text-input" type="file" name="imagemnova" id="imagemnova" /><br />
-            <small>Edite a imagem na Ferramenta Crop, <a href="../crop/index.php">clique aqui para editar a imagem.</a></small></p>
-
-            <p class="required-input">
-                <label for="cod_estados">Categoria</label>
-                <select name="cod_estados" id="cod_estados">
-                    <?php  
-                    while($row = mysql_fetch_array($sql_pegaCategoria)){ ?>
-                    <option value="<?php  echo $row['idcategorias'] ?>" <?php  if ($row['idcategorias'] == $manda['categoria_id']) { echo 'selected="selected"'; } ?>><?php  echo $row['nome_categoria']; ?>
-                    </option><?php  } ?>
-
-
-                </select>
-            </td>
-        </tr>
-    </p>
 
     <p>
         <input class="button"type="submit"value="<?= $acao ?>"/>
@@ -99,16 +169,6 @@
             },
     });
 
-    removeCor = function(e){
-        $(".botao-remove").click(function(){
-            valor = $(this).id
-            cor   = valor[1]
-
-            $("#".cor).remove();
-            $(this).remove();
-        })
-    }
-
     $("#adiciona-cor").click(function(){
         quantidade = $('.cor-adicionada').length
         document.getElementById('cor').color.hidePicker()
@@ -116,22 +176,22 @@
         novaCor = $('#cor').clone()
         novaCor.attr("id"    ,"cor["+quantidade+"]")
         novaCor.attr("name"  ,"cor["+quantidade+"]")
-        novaCor.attr("class" ,"cor-adicionada")
+        novaCor.attr("class" ,"cor-adicionada cor-adicionada-"+quantidade)
         
-        botaoRemove = $("#remove-cor").clone(true,true);
-        botaoRemove.attr("id"    ,"remove-cor["+quantidade+"]")
-        botaoRemove.attr("visibility","true");
-
-        novaCor.appendTo('#cores')
-        botaoRemove.appendTo('#cores')
+        botaoRemove = $("#cor-button-modelo").clone(true,true);
+        botaoRemove.attr("id"        ,"remove-"+quantidade)
+        botaoRemove.attr("visibility","visible");
+	    botaoRemove.attr("class"     ,"cor-adicionada-"+quantidade)
+        
+        novaCor.appendTo('#cor-painel')
+        botaoRemove.appendTo('#cor-painel')
     });
 
     $(".botao-remove").click(function(){
             valor = $(this).attr("id").split('-')
             cor   = valor[1]
 
-            $("#".cor).remove();
-            $(valor).remove();
+            $(".cor-adicionada-"+cor).remove();
     });    
    
 </script>

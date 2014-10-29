@@ -2,20 +2,20 @@
 include("../includes/cabecalho.php");
 include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
+
 include("../includes/models/categorias_model.php");
+include("../includes/helpers/variaveis_helper.php");
 
-$categorias     = new CategoriasModel();
-$listCategorias = $categorias->getAll();
+	$categorias     = new CategoriasModel();
+	$listCategorias = $categorias->getAll();
 
-$_COOKIE["produtos"] = "current";
-$_COOKIE["produtos1"]  = "current";
-$_COOKIE["produtos2"]  = "";
+	$_COOKIE["produtos"] = "current";
+	$_COOKIE["produtos1"]  = "current";
+	$_COOKIE["produtos2"]  = "";
 ?>
 
 <script type="text/javascript" src="../js/jscolor/jscolor.js"></script>
-
-<body class="produtos form">
-
+	<body>
     <div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
         <div id="sidebar"><?php  include("../includes/sidebar.php"); ?></div> <!-- End #sidebar -->        
         <div id="main-content"> <!-- Main Content Section with everything -->
@@ -58,8 +58,5 @@ $_COOKIE["produtos2"]  = "";
         
     </div>
 
-
-
-</body>
-
+	</body>
 </html>
