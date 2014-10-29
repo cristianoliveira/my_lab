@@ -6,8 +6,8 @@
 
 		function __construct()
 		{
-			$this->table  = 'categorias';
-			$this->col_id = 'idcategorias';
+			$this->table  = 'fd_categorias';
+			$this->col_id = 'id';
 		}
 		
 	}  

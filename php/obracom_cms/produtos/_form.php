@@ -30,9 +30,11 @@
                           type="button" 
                           value="+" 
                           >
-                   <input id="remove-cor" 
+                   <input id="remove-cor"
+                          class="botao-remove" 
                           type="button" 
-                          value="-" 
+                          value="-"
+                          visibility="false" 
                           >
                 </label>
             </div>
@@ -81,29 +83,6 @@
         </tr>
     </p>
 
-
-    <p>
-        <label for="cod_cidades">Sub-categoria</label>
-        <select name="cod_cidades" id="cod_cidades">
-            <!--option value="">-- Escolha uma subcategoria --</option -->
-            <?php  
-            while($row2 = mysql_fetch_array($sql_pegaCategoria2)){ ?>
-            <option value="<?php  echo $row2['idsubcategorias'] ?>" <?php  if ($row2['idsubcategorias'] == $manda['subcategoria_id']) { echo 'selected="selected"'; } ?>><?php  echo $row2['nome_subcategoria']; ?>
-            </option><?php  } ?>
-
-        </select>
-
-
-    </p>
-
-    <p>
-        <label>Descrição </label>
-        <textarea class="text-input textarea" id="descricao" name="descricao" cols="79" rows="15"><?php  echo $manda['descricao_produto']; ?></textarea>
-    </p>
-
-
-
-
     <p>
         <input class="button"type="submit"value="<?= $acao ?>"/>
     </p>
@@ -119,22 +98,40 @@
                 },
             },
     });
+
+    removeCor = function(e){
+        $(".botao-remove").click(function(){
+            valor = $(this).id
+            cor   = valor[1]
+
+            $("#".cor).remove();
+            $(this).remove();
+        })
+    }
+
     $("#adiciona-cor").click(function(){
         quantidade = $('.cor-adicionada').length
-        novaCor = $('#cor').clone()
         document.getElementById('cor').color.hidePicker()
+        
+        novaCor = $('#cor').clone()
+        novaCor.attr("id"    ,"cor["+quantidade+"]")
         novaCor.attr("name"  ,"cor["+quantidade+"]")
         novaCor.attr("class" ,"cor-adicionada")
+        
+        botaoRemove = $("#remove-cor").clone(true,true);
+        botaoRemove.attr("id"    ,"remove-cor["+quantidade+"]")
+        botaoRemove.attr("visibility","true");
+
         novaCor.appendTo('#cores')
+        botaoRemove.appendTo('#cores')
     });
 
-    $("#remove-cor").click(function(){
-        cor  = $(":focus")
-        clas = cor.attr('class')
-        if(clas==".cor-adicionada"){
-            cor.remove();
-        }
-    });
+    $(".botao-remove").click(function(){
+            valor = $(this).attr("id").split('-')
+            cor   = valor[1]
 
+            $("#".cor).remove();
+            $(valor).remove();
+    });    
    
 </script>

@@ -26,8 +26,9 @@ return false;
 }
 
 function log_file($text){
-	$hora = date('Y-m-d H:i:s'); // Salva a data e hora atual (formato MySQL)
-    $myfile = 'C:\my_lab\php\obracom_cms\log.txt';
+	$data = date('Ymd'); // Salva a data e hora atual (formato MySQL)
+    $hora = date('Y-m-d H:i:s'); // Salva a data e hora atual (formato MySQL)
+    $myfile = "../$data.log";
     
 	$buffer = '';
 	

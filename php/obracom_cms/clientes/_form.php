@@ -1,10 +1,10 @@
-<form class="form-default" method="post" action="<?= $form_action ?>" id="form-dados-cadastrais" >
+<form id="form-cliente" class="form-default" method="post" action="<?= $form_action ?>"  >
         
     <?php if(isset($cliente['id'])) { ?>
-		<input type="hidden"  
-			   name="id" 
-			   value="<?= $cliente['id'] ?>"
-		/>
+    <input type="hidden"  
+            name="id" 
+            value="<?= $cliente['id'] ?>"
+    />
     <?php } ?>
         
         <div>
@@ -110,7 +110,7 @@
                 <label>Data de Nascimento &#42;</label>
                 <input type="text" 
                        class="text-input small-text required" 
-                       id="form_nascimento"
+                       id="nascimento"
                        name="nascimento"  
                        maxlength="10" 
                        value="<?= if_exist($cliente['nascimento']) ?>" />
@@ -205,8 +205,8 @@
                 <label>Confirme a senha &#42;</label>
                 <input type="password" 
                         class="text-input required padrao" 
-                        name="confirma_senha" 
-                        id="form_confirma_senha" 
+                        id="confirmacao_senha" 
+                        name="confirmacao_senha" 
                 />
             </div>
             <div class="continuar">
@@ -217,33 +217,61 @@
     <div id="form_cadastro_notification"></div>
 </form>
 <script>
+    isPessoaFisica = function()
+    {
+       var value = $( "input:checked" ).val();
+       return (value == 'fisica');
+    }
+
+    validaTipoPessoa = function()
+    {
+        if(isPessoaFisica())
+        { 
+            $('.pessoa_juridica').hide();
+            $('.pessoa_juridica').find('input').val("");
+
+            $('.pessoa_fisica').show();
+        }
+        else
+        {
+            $('.pessoa_fisica').hide();
+            $('.pessoa_fisica').find('input').val("");
+
+            $('.pessoa_juridica').show();
+          }
+    };
+
     $(function(){
-         var value = $( "input:checked" ).val();
-        
-        if(value == 'fisica')
-        { 
-            $('.pessoa_juridica').hide();
-            $('.pessoa_fisica').show();
-        }
-        else
-        {
-            $('.pessoa_fisica').hide();
-            $('.pessoa_juridica').show();
-        }
+        validaTipoPessoa();
+        $.validator.messages.required = 'Campo deve ser informado.';
+        $.validator.messages.number   = 'Informe somente números.';
+        $.validator.messages.email    = 'Email incorreto.'
     });
-    
+
     $('input').click(function(){
-        var value = $( "input:checked" ).val();
-        
-        if(value == 'fisica')
-        { 
-            $('.pessoa_juridica').hide();
-            $('.pessoa_fisica').show();
-        }
-        else
-        {
-            $('.pessoa_fisica').hide();
-            $('.pessoa_juridica').show();
-        }
+        validaTipoPessoa();
+
+        $("#form-cliente").validate({
+            rules:
+            {
+                nome            :{ required: '#pessoa_tipo_fisica:checked' },
+                cpf             :{ required: '#pessoa_tipo_fisica:checked'   ,  number:true },
+                razao_social    :{ required: '#pessoa_tipo_juridica:checked' },
+                cnpj            :{ required: '#pessoa_tipo_juridica:checked' ,  number:true },
+                responsavel_nome:{ required: '#pessoa_tipo_juridica:checked' },
+                responsavel_cpf :{ required: '#pessoa_tipo_juridica:checked' },
+                email              :{ required: true , email: true},         
+                genero             :{ required: true },
+                ddd_telefone_principal :  { required: true, number: true },         
+                telefone_principal :      { required: true, number: true },         
+                ddd_telefone_celular:     { number: true },         
+                telefone_celular:         { number: true },
+                ddd_telefone_comercial:   { number: true },         
+                telefone_comercial:       { number: true },
+                confirmacao_senha:        { confirmacaoSenha: true },
+            },
+        })
     });
+
+    $("#nascimento").datepicker({showButtonPanel: true});
 </script>

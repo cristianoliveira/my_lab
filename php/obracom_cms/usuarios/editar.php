@@ -7,14 +7,15 @@ include("../includes/logs.php");
 include_once("../includes/helpers/variaveis_helper.php");
 include_once("../includes/models/usuarios_model.php");
 
-$usuarios  = new UsuariosModel();
-$idusuario = par_get("id");
-$usuario   = $usuarios->getById($idusuario);
+    $usuarios  = new UsuariosModel();
+    $idusuario = par_get("id");
+    $usuario   = $usuarios->getById($idusuario);
 
-if(empty($usuario))
-    header('Location:listar.php?p=8&g=2');
+    if(empty($usuario))
+        header('Location:listar.php?p=8&g=2');
 	
-	print_r($usuario['id']);
+    $usuarios_tab = $usuarios_gerenciar = "current";
+
 ?>
 <body class="destaques formulario">
 

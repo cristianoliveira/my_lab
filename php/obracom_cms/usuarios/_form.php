@@ -1,10 +1,20 @@
 <form class="form-default" action="<?= $action_form ?>" id="banners_form" method="post" enctype="multipart/form-data">    <fieldset>
+        
+    <?php if(isset($usuario['id'])) { ?>
+              <input class="text-input small-input required" 
+                     type="hidden" 
+                     id="nome" 
+                     name="nome" 
+                     maxlength="150" 
+                     value="<?= if_exist($usuario['id']) ?>"/>
+
+    <?php } ?>
         <div>
             <label for="nome">Nome Completo</label>
             <input class="text-input small-input required" 
                    type="text" 
                    id="nome" 
-                   name="nome_usuario" 
+                   name="nome" 
                    maxlength="150" 
                    value="<?= if_exist($usuario['nome']) ?>"/>
         </div>
@@ -26,18 +36,7 @@
                    id="senha" 
                    name="senha"
                    maxlength="255" 
-                   value="<?= if_exist($usuario['usuario']) ?>" 
                    type="password"/>
-        </div>
-
-        <div>
-            <label for="email">E-mail </label>
-            <input class="text-input small-input required" 
-                   type="text" 
-                   id="email" 
-                   name="email_usuario" 
-                   maxlength="320" 
-                   value="<?= if_exist($usuario['email_usuario']) ?>"/>
         </div>
 
         <div>

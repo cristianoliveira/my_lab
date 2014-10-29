@@ -16,6 +16,12 @@ class ClientesModel extends Model{
         $this->col_id = 'id';
     }
 	
+    private function trataDados($dados)
+    {
+    	$dados['senha'] = sha1($dados['senha']);
+    	return $dados;
+    }
+
 	public function postParameters($dados)
 	{
 		//Obrigatorios
@@ -35,16 +41,24 @@ class ClientesModel extends Model{
 			}
 		}
 		
+		if (empty($dados['pessoa_tipo'])) {
+			return null;
+		}
+
 		unset($dados['pessoa_tipo']);
-		
-		if(isset($dados['senha']))
-			if($dados['senha']!=$dados['confirma_senha'])
-				return null;
-			else
-				unset($dados['confirma_senha']);
-		
 		unset($dados['id']);
 		
+		if(isset($dados['senha']))
+			if($dados['senha']!=$dados['confirmacao_senha'])
+			{
+				return null;
+			}
+			else
+			{
+			    unset($dados['confirmacao_senha']);
+				$this->trataDados($dados);	
+			}
+
 		return $dados;
 	}
 

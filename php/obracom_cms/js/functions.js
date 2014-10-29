@@ -508,3 +508,8 @@ jQuery.validator.addMethod("imagemTypeValidate", function(value, element) {
 
 }, "Tipo inválido.");
 
+jQuery.validator.addMethod("confirmacaoSenha", function(value, element)
+{	
+	var confirmacao = $('#senha').val();
+	return confirmacao == value;	
+}, "Senha não confere."); 

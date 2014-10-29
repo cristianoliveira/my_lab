@@ -25,11 +25,11 @@
     private $insert  = '';
     private $update  = '';
    
- 	public function select($string)
- 	{
- 		$this->select = sprintf($this::_SELECT, $string);
- 		return $this;
- 	}
+    public function select($string)
+    {
+        $this->select = sprintf($this::_SELECT, $string);
+        return $this;
+    }
 
     public function update($table, $columns_values = array(), $where='')
     {
@@ -54,11 +54,11 @@
         return $this;
     }
 
- 	public function from($string)
- 	{
+     public function from($string)
+     {
         $this->from  = sprintf($this::_FROM, $string);
- 		return $this;
- 	}
+         return $this;
+     }
 
     public function join($table, $condicao)
     {
@@ -66,8 +66,8 @@
         return $this;
     }
 
- 	public function where($where)
- 	{
+     public function where($where)
+     {
         $string = '';
         
          
@@ -85,8 +85,8 @@
 
            $this->where = sprintf($this::_WHERE, $string); 
         }
- 		return $this;
- 	}
+        return $this;
+     }
 
     public function _and($string)
     {
@@ -139,11 +139,12 @@
                 $insertVal .= ",$value";
         }
 
-        $this->insert = sprintf($this::_INSERT
-                               , $table
-                               , substr($insertCol, 1)
-                               , substr($insertVal, 1)
-                               );
+        if(!empty($insertCol) and !empty($insertVal))
+            $this->insert = sprintf($this::_INSERT
+                                   , $table
+                                   , substr($insertCol, 1)
+                                   , substr($insertVal, 1)
+                                   );
         return $this;
     }
 

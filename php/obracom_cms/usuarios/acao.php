@@ -3,7 +3,7 @@ include('../includes/check_authentication.php');
 include("../includes/functions.php");
 include("../includes/logs.php");
 
-include("../includes/helpers/messagem_helper.php");
+include("../includes/helpers/mensagem_helper.php");
 include("../includes/models/usuarios_model.php");
 include("../includes/helpers/variaveis_helper.php");
 

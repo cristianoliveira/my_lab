@@ -4,120 +4,96 @@ include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 include("../includes/functions.php");
 include("../includes/logs.php");
+include("../includes/models/categorias_model.php");
 
-//######### INICIO Paginação
-        $numreg = 10; // Quantos registros por página vai ser mostrado
-        if (!isset($_GET['pg'])) {
-                @$_GET['pg'] = 0;
-        }
-        $inicial = $_GET['pg'] * $numreg;
+    $categorias = new CategoriasModel();
+
+    paginacao(10);
         
-//######### FIM dados Paginação
-        
-        // Faz o Select pegando o registro inicial até a quantidade de registros para página
-        $sql = mysql_query("SELECT * FROM categorias LIMIT $inicial, $numreg");
+    $listcategorias = $categorias->getLimit($inicial, $numreg);
+    $quantreg       = $categorias->getCount();
 
-        // Serve para contar quantos registros você tem na sua tabela para fazer a paginação
-        $sql_conta = mysql_query("SELECT * FROM categorias");        
-        $quantreg = mysql_num_rows($sql_conta); // Quantidade de registros pra paginação
-
-$_COOKIE["categorias"]="current";
-$_COOKIE["categorias1"]="";
-$_COOKIE["categorias2"]="current";
-
+    $categorias_tab = $categorias_gerenciar = "current";
 ?>
 
+<body>
 
-<body class="produtos lista">
+        <div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
+        <div id="sidebar"><?php  include("../includes/sidebar.php"); ?></div> <!-- End #sidebar -->
+        <div id="main-content"> <!-- Main Content Section with everything -->
 
-	<div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
-	<div id="sidebar"><?php  include("../includes/sidebar.php"); ?></div> <!-- End #sidebar -->		
-	<div id="main-content"> <!-- Main Content Section with everything -->
-
-		<!-- Page Head -->
-		<h2>Lista de Categorias cadastradas</h2>
-		<p id="page-intro">Abaixo estão todas categorias cadastradas no site, bem como em qual categoria. </p>
- <?php  if(@$_SESSION['erro']!="") { ?>
-<div id="errado" class="notification error png_bg"><a href="#" class="close"><img src="../imagens/icones/cross_grey_small.png" title="Fechar esta notificação" alt="fechar" /></a><div> <?php  print $_SESSION['erro']; ?> </div> </div>	
-			<?php  $_SESSION['erro']=""; } ?>
+            <!-- Page Head -->
+            <h2>Lista de Usuários cadastrados</h2>
+            <p id="page-intro">Abaixo estão listados todos os usuários.</p>
             
-			<?php  if(@$_SESSION['ok']!="") { ?>
-			<div class="notification success png_bg"><a class="close" href="#"><img alt="fechar" title="Fechar esta notificação" src="../imagens/icones/cross_grey_small.png"/></a><div> <strong> <?php  print $_SESSION['ok']; ?></strong></div></div>
-			<?php  $_SESSION['ok']=""; } ?>
-		<div class="content-box"><!-- Start Content Box -->
+			<?php  showSessionMessage(); ?>
+            
+                  <div class="content-box"><!-- Start Content Box -->
 
-		  <div class="content-box-header">
+                        <div class="content-box-header">
 
-				<h3>Categorias</h3>
+                            <h3>Destaques</h3>
+                          <input class="destaques button botao-cadastrar" type="button" value="Cadastrar um usuário"  onclick="javascript: location.href='cadastro.php?p=8&g=1';"  />
+                          <div class="clear"></div>
 
-				<input type="button" value="Cadastrar nova categoria" class="produto button botao-cadastrar" onClick="javascript: location.href='cadastro.php';">
+                        </div> <!-- End .content-box-header -->
 
-				<div class="clear"></div>
+                    <div class="content-box-content">
 
-			</div> <!-- End .content-box-header -->
+                        <table>
 
-			<div class="content-box-content">
+                            <thead>
+                                <tr>
+                                    <th class="current"><a href="#"class="down">Título</a></th>                            <th class="">&nbsp;</th>                            <th>Ações</th>
+                                </tr>
+                            </thead>
 
-				<table width="592">
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3">
+                                        <?php  include("../includes/_paginate.php"); ?>
+                                         <!-- End .pagination -->                                
+                                        <div class="clear"></div>
+                                    </td>
+                                </tr>
+                            </tfoot>
 
-					<thead>
-						<tr>
-						  <th class="current"><a href="/produtos/ordenar-por/nome/ordem/desc" class="down">Nome</a></th>
-                          <th class="current">&nbsp;</th>
-							<th class="current">Ações</th>
-						</tr>
-					</thead>
+                            <tbody>
+                            <?php  foreach($listcategorias as $categoria) { ?>
+                                <tr>
+                                    <td class="current">
+                                        <a href="#" title=""> <?php echo $categoria['nome'] ; ?> </a>
+                                    </td>
+                                    <td class="">
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        <!-- Icons -->
+                                        <a href="editar.php?p=8&g=2&id=<?php echo $categoria['id']; ?>"title="Editar o usuário.">
+                                            <img src="../imagens/icones/pencil.png"alt="Editar"/>
+                                        </a>
+                                        <a href="acao.php?a=3&id=<?php echo $categoria['id']; ?>" 
+                                           title="Excluir a categoria" class="item-confirmar"  
+                                           onclick="if(!confirm('Você tem certeza que deseja excluir essa categoria?')) return false;" >
+                                            <img src="../imagens/icones/cross.png"alt="Excluir"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div> <!-- End .content-box-content -->
 
-					<tfoot>
-						<tr>
-							<td colspan="7">
+                </div> <!-- End .content-box -->
 
-								<?php  include("../includes/_paginate.php"); ?>
-								
-								<div class="clear"></div>
-							</td>
-						</tr>
-					</tfoot>
-
-					<tbody>
-                    <?php  $cont = 0;
-// Exibe o resultado da nossa consulta
-while ($row = mysql_fetch_array($sql))
-{ 
-
-?>
-														<tr>
-														  <td ><a href="/produto/editar/3" title="Editar produto &quot;Cadeira&quot;">
-														    <?php echo $row['nome_categoria']; ?>
-														    </a></td>
-                                                            
-                                                          <td>&nbsp;</td>
-									<td nowrap><!-- Icons -->
-									  <a href="editar.php?id=<?php echo $row['idcategorias']; ?>" title="Editar a subcategoria"> <img src="../imagens/icones/pencil.png"alt="Editar" border="0" align="left"/> </a> <a href="acao.php?a=3&id=<?php echo $row['idcategorias']; ?>" title="Excluir a subcategoria" class="item-confirmar"  onclick="if(!confirm('Você tem certeza que deseja excluir essa Categoria? VERIFIQUE SE NÃO HÁ SUB-CATEGORIAS E PRODUTOS RELACIONADOS COM ESSA CATEGORIA. Caso haja, (se for excluída a categoria) os produtos poderão não aparecer no site.')) return false;"> <img src="../imagens/icones/cross.png"alt="Excluir" hspace="5" border="0" align="left"/> </a></td>
-								                    </tr>
-                              <?php  
-$cont = $cont + 1;
-}
-?>  
-                                
-                                
-												</tbody>
-
-				</table>
-
-		  </div> <!-- End .content-box-content -->
-
-		</div> <!-- End .content-box -->
-
-
-			<div id="footer">
-				<small> <!-- Remove this notice or replace it with whatever you want -->
-						&#169; Copyright 2014 Obra Comunicação | <a href="#body-wrapper">Ir para o topo</a>
-				</small>
-			</div><!-- End #footer -->
-			
-		</div> <!-- End #main-content -->
-		
-	</div></body>
-  
+                <div id="footer">
+                    <small> <!-- Remove this notice or replace it with whatever you want -->
+                            © Copyright 2014 OBRA Comunicação | <a href="#body-wrapper">Ir para o topo</a>
+                    </small>
+                </div><!-- End #footer -->
+                
+            </div> <!-- End #main-content -->
+            
+        </div>
+    </body>
 </html>

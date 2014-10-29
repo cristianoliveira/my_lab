@@ -152,3 +152,4 @@ jQuery.validator.addMethod("dateBR", function(value, element)
 	if(ano < 1900)return false;
 	return true;
 }, "Informe uma data válida.");  // Mensagem padrão
+

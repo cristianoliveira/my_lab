@@ -18,8 +18,14 @@ include_once "model.php";
     
     public function insert($dados = array())
     {
-        $dados = trataDados($dados);
-        parent::insert($dados);
+        $dados = $this->trataDados($dados);
+        return parent::insert($dados);
+    }
+
+    public function updateById($id, $dados = array())
+    {
+        $dados = $this->trataDados($dados);
+        return parent::updateById($id, $dados);
     }
     
     public function getFirst($dados = array())

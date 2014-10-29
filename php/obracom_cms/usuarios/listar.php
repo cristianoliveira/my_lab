@@ -4,21 +4,20 @@ include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 include("../includes/functions.php");
 include("../includes/logs.php");
+
+include("../includes/helpers/variaveis_helper.php");
 include("../includes/models/usuarios_model.php");
 
-  $usuarios = new UsuariosModel();
+    $usuarios = new UsuariosModel();
+    
+    $numreg  = 10;
+    $inicial = paginacao($numreg);
 
-  //######### INICIO Paginação
-        $numreg = 10; // Quantos registros por página vai ser mostrado
-        if (!isset($_GET['pg'])) {
-                @$_GET['pg'] = 0;
-        }
-        $inicial = $_GET['pg'] * $numreg;
-        
-//######### FIM dados Paginação
-        
-        $listUsuarios = $usuarios->getLimit($inicial, $numreg);
-        $quantreg     = $usuarios->getCount();
+    $listUsuarios = $usuarios->getLimit($inicial, $numreg);
+    $quantreg     = $usuarios->getCount();
+
+
+    $usuarios_tab = $usuarios_gerenciar = "current";
 ?>
 
 <body>
