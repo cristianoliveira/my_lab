@@ -27,9 +27,9 @@ h1, h2, h3, h4, h5, h6 {
                 }
 
 h1            { font-family: Calibri, Helvetica, Arial, sans-serif; font-size: 31px; font-weight: bold; color: #fff; 
-				  position: absolute; top: -1000px;  /* Remove this line and delete the logo (in the HTML) if you don't want an image as a logo */
-				}
-				
+                  position: absolute; top: -1000px;  /* Remove this line and delete the logo (in the HTML) if you don't want an image as a logo */
+                }
+                
 h2            { font-size: 26px; padding: 0 0 10px 0; }
 h3            { font-size: 17px; padding: 0 0 10px 0; }
 h4            { font-size: 16px; padding: 0 0 5px 0; }
@@ -45,7 +45,7 @@ a:focus     { outline: 1px; }
 strong       { font-weight: bold; color: #333; }
 em           { font-style: italic; color: #333; }
 
-small   		{ font-size: 0.85em; }
+small           { font-size: 0.85em; }
 
 pre           { font-family: monospace; }
 
@@ -59,18 +59,18 @@ p {
 .clear {
                 clear: both;
                 }
-				
+                
 .align-left {
                 float: left;
                 }
-				
+                
 .align-right {
                 float: right;
                 }
 
 /************ Button ************/
 .button {
-				font-family: Verdana, Arial, sans-serif;
+                font-family: Verdana, Arial, sans-serif;
                 display: inline-block;
                 background: #006C93 url('../imagens/bg-button.jpg') top left repeat-x !important;
                 border: 1px solid #39778e !important;
@@ -92,14 +92,14 @@ p {
 .button:active {
                 padding: 5px 7px 3px 7px !important;
                 }
-				
+                
 a.remove-link {
-				color: #bb0000;
-				}
+                color: #bb0000;
+                }
 
 a.remove-link:hover {
-				color: #000;
-				}
+                color: #000;
+                }
 
 /********************************      Sidebar      ********************************/
 
@@ -186,7 +186,7 @@ a.remove-link:hover {
                 list-style: none;
                 margin: 0;
                 text-align: right;
-				padding: 0;
+                padding: 0;
                 }
 #sidebar #main-nav ul .divider {border-bottom: 1px dotted #5094AD}
 
@@ -220,11 +220,11 @@ a.remove-link:hover {
 #messages h4 {
                 padding: 10px 0;
                 }
-				
+                
 #messages fieldset {
                 margin: 0;
                 }
-				
+                
 #messages textarea {
                 margin: 0 0 15px 0;
                 }
@@ -252,12 +252,12 @@ a.remove-link:hover {
                 padding: 0 0 20px 0;
                 }
 
-				
+                
 #footer {
-				border-top: 1px solid #ccc;
-				margin: 40px 0 0 0;
-				padding: 20px 0;
-				font-size: 12px;
+                border-top: 1px solid #ccc;
+                margin: 40px 0 0 0;
+                padding: 20px 0;
+                font-size: 12px;
                 }
 /************ Lists ************/
 
@@ -306,7 +306,7 @@ a.remove-link:hover {
 ul.content-box-tabs {
                 float: right;
                 padding: 12px 15px 0 0 !important;
-				margin: 0 !important;
+                margin: 0 !important;
                 }
 
 ul.content-box-tabs li {
@@ -384,12 +384,12 @@ ul.content-box-tabs li a.current {
 #main-content table tfoot td .bulk-actions {
                 padding: 15px 0 5px 0;
                 } 
-				
+                
 #main-content table tfoot td .bulk-actions select {
                 padding: 4px;
-				border: 1px solid #ccc;
+                border: 1px solid #ccc;
                 }      
-				
+                
 /*************** Pagination ***************/
 
 #main-content .pagination {
@@ -404,7 +404,7 @@ ul.content-box-tabs li a.current {
                 }
 
 .pagination a.number {
-				border: 1px solid #ddd;
+                border: 1px solid #ddd;
                 }
 
 .pagination a.current {
@@ -412,9 +412,9 @@ ul.content-box-tabs li a.current {
                 border-color: #387287 !important;
                 color: #fff !important;
                 }
-				
+                
 .pagination a.current:hover {
-				text-decoration: underline;
+                text-decoration: underline;
                 }
 
 .pagination-showing {font-size: 12px}
@@ -445,18 +445,18 @@ ul.content-box-tabs li a.current {
 
 .shortcut-button:hover {
                 background: #fff;
-				
+                
                 }
-				
+                
 .shortcut-button span:hover {
-				color: #5094AD;
+                color: #5094AD;
                 }
 
 ul.shortcut-buttons-set li {
                 float: left;
                 margin: 0 15px 0 0;
-				padding: 0 !important;
-				background: 0;
+                padding: 0 !important;
+                background: 0;
                 }
 
 /*************** Forms ***************/
@@ -477,8 +477,8 @@ form p small {
                 font-size: 0.75em;
                 color: #777;
                 }
-				
-				
+                
+                
 form input.text-input,
 form select,
 form textarea,
@@ -487,7 +487,7 @@ form .wysiwyg {
                 font-size: 13px;
                 background: #fff url('../imagens/bg-form-field.gif') top left repeat-x;
                 border: 1px solid #d5d5d5;
-				color: #333;
+                color: #333;
                 }
             
 form .small-input {
@@ -503,8 +503,8 @@ form .large-input {
                 }
 form .huge-input {
                 width: 97.5% !important;
-				font-size: 16px !important;
-				padding: 8px !important;
+                font-size: 16px !important;
+                padding: 8px !important;
                 }
                 
 form textarea {
@@ -516,12 +516,12 @@ form select {
                 padding: 4px;
                 background: #fff;
                 }
-				
+                
 form input[type="checkbox"],
 form input[type="radio"] {
-				padding: 0;
+                padding: 0;
                 background: none;
-				border: 0;
+                border: 0;
                 }
 form .required, form .required-input .wysiwyg {border-right: 3px solid #c00!important}
 form input.input-notification-error, form textarea.input-notification-error,
@@ -583,85 +583,85 @@ form select.input-notification-error{border-color:#c00!important}
 /* Notification for form inputs */
 
 span.input-notification, span.input-notification-error {
-				background-position: left 2px;
-				background-repeat: no-repeat;
-				padding: 2px 0 2px 22px;
-				background-color: transparent;
-				margin: 0 0 0 5px;
-				}
+                background-position: left 2px;
+                background-repeat: no-repeat;
+                padding: 2px 0 2px 22px;
+                background-color: transparent;
+                margin: 0 0 0 5px;
+                }
 span.input-notification-error {
-				background-image: url('../imagens/icones/cross_circle.png');
-				color: #665252;
+                background-image: url('../imagens/icones/cross_circle.png');
+                color: #665252;
 }
 /* Notification for login page */
 
 #login-wrapper #login-content .notification {
-				border: 0;
-				background-color: #141414;
-				color: #fff !important;
-				}
+                border: 0;
+                background-color: #141414;
+                color: #fff !important;
+                }
 
 /********************************      Login Page      ********************************/
 
 body#login {
                 color: #fff;
                 background: #222 url('../imagens/bg-login.gif');
-				}
-				
+                }
+                
 #login-wrapper {
                 background: url('../imagens/bg-login-top.png') top left repeat-x;
-				}
+                }
 
 #login-wrapper #login-top {
-				width: 100%;
-				padding: 140px 0 50px 0;
-				text-align: center;
-				}
-				
+                width: 100%;
+                padding: 140px 0 50px 0;
+                text-align: center;
+                }
+                
 #login-wrapper #login-content {
-				text-align: left;
-				width: 300px;
-				margin: 0 auto;
-				}
-				
+                text-align: left;
+                width: 300px;
+                margin: 0 auto;
+                }
+                
 #login-wrapper #login-content label {
-				color: #fff;
-				font-weight: normal;
-				font-size: 14px;
-				font-family: Helvetica, Arial, sans-serif;
-				float: left;
-				width: 70px;
-				padding: 0;
-				}
-				
+                color: #fff;
+                font-weight: normal;
+                font-size: 14px;
+                font-family: Helvetica, Arial, sans-serif;
+                float: left;
+                width: 70px;
+                padding: 0;
+                }
+                
 #login-wrapper #login-content input {
-				width: 200px;
-				float: right;
-				margin: 0 0 20px 0;
-				border: 0;
-				background: #fff;
-				}
-				
+                width: 200px;
+                float: right;
+                margin: 0 0 20px 0;
+                border: 0;
+                background: #fff;
+                }
+                
 #login-wrapper #login-content p {
-				padding: 0;
-				}
-				
+                padding: 0;
+                }
+                
 #login-wrapper #login-content p#remember-password {
-				float: right;
-				}
-				
+                float: right;
+                }
+                
 #login-wrapper #login-content p#remember-password input {
-				float: none;
-				width: auto;
-				border: 0;
-				background: none;
-				margin: 0 10px 0 0;
-				}
-				
+                float: none;
+                width: auto;
+                border: 0;
+                background: none;
+                margin: 0 10px 0 0;
+                }
+                
 #login-wrapper #login-content p .button {
-				width: auto;
-				margin-top: 20px;
-				}
+                width: auto;
+                margin-top: 20px;
+                }
 
 /********************************      jQuery plugins styles      ********************************/
 
@@ -832,11 +832,11 @@ input[readonly] {color:#999!important}
 
 /* CADASTROS DE NOVOS ITENS RELACIONADOS AO PRODUTO */
 .botao-cadastrar{
-	background: #0F7500 url('../imagens/bg-button-big-green.jpg') top left repeat-x !important;
-	border-color: #0F7500!important;
-	font-size: 14px!important;
-	float: right;
-	margin: 5px 6px 0 0
+    background: #0F7500 url('../imagens/bg-button-big-green.jpg') top left repeat-x !important;
+    border-color: #0F7500!important;
+    font-size: 14px!important;
+    float: right;
+    margin: 5px 6px 0 0
 }
 
 /* CAMPOS INTALTERÁVEIS */
@@ -855,54 +855,65 @@ input[readonly] {color:#999!important}
 
 /* Adicionado por Lucas Freitas */
 .label.success {
-	background-color: #46A546;
+    background-color: #46A546;
 }
 
 .label {
-	padding: 5px 10px;
-	margin: 3px 5px;
-	font-size: 12px;
-	font-weight: bold;
-	color: white;
-	text-transform: uppercase;
-	white-space: nowrap;
-	background-color: #46A546;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	float: right;
+    padding: 5px 10px;
+    margin: 3px 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background-color: #46A546;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    float: right;
 }
 
 #errado {width: 100%; height: 40px;}
 
 .form-default div{
-    margin: 5px auto;
+    margin: 8px 0;
 }
 
-.cor-seletor .cor-adicionada{
+.cor-adicionada {
     width: 60px;
     height: 20px;
     border-style: none;
-    margin: 2px;
+    margin: 5px;
+    outline: 0 none;
+    text-align: center;
+}
+
+.cor-seletor {
+    width: 60px;
+    height: 20px;
+    border-style: 1px;
+    margin: 5px;
+    outline: 0 none;
+    text-align: center;
 }
 
 #cor-button-modelo{
-	visibility:hidden;
+    visibility:hidden;
 }
 
 #cor-painel{
 }
 
 .radio-input input{
-	margin: 5px;
+    margin: 5px;
 }
 
 .ddd {
-	width: 20px;
+    width: 20px;
 }
 
 .produto-galeria{
-    width: 100%;
+    width: 500px;
     margin: 0 auto;
 }
 
@@ -918,4 +929,9 @@ input[readonly] {color:#999!important}
 
 .produto-tumb-galeria a{
     display: block;
+}
+
+#enquete-botao-adicionar {
+	width: 5em;
+	margin: 0.6em 0;
 }

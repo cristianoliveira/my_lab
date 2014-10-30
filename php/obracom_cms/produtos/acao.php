@@ -17,11 +17,20 @@ include("../includes/helpers/url_helper.php");
   $produtos      = new ProdutosModel();
   $coresProdutos = new ProdutosCoresModel();
   
-  $acao          = Parameter::GET('a');
+  $acao           = Parameter::GET('a');
+  $editar_galeria = Parameter::POST('editar_galeria',0) == 1 
+                  || $acao == 5 
+                  || $acao == 4;
+                  
   $dados         = Parameter::POST();
   $cores         = $dados['cor'];
-  unset($dados['cor']);
   
+  $dados['oferta_imperdivel_home']   = Parameter::POST('oferta_imperdivel_home',0); 
+  $dados['disponivel']               = Parameter::POST('disponivel',0); 
+  $dados['ativo']                    = Parameter::POST('ativo',0); 
+  
+  unset($dados['cor']);
+  unset($dados['editar_galeria']);  
   
     switch ($acao) {
         case 1: // INSERT
@@ -43,7 +52,6 @@ include("../includes/helpers/url_helper.php");
             break;
 
         case 2: // UPDATE
-            log_file("Update produto ".print_r($dados));
             if($produtos->updateById($dados['id'], $dados))
             {
                 if($coresProdutos->updateCoresDoProduto($dados['id'], $cores))
@@ -114,13 +122,13 @@ include("../includes/helpers/url_helper.php");
                 MensagemHelper::deleteSucesso();
             }else
                 MensagemHelper::erro("Erro ao deletar imagem.");
-
+            
             break;           
         }
     
-    if($acao != 4 && $acao != 5)
-        header('Location:listar.php'); 
+    if($editar_galeria)
+        header('Location:cadastro.php?galeria=1&produto='.if_exist($dados['id'],$newprodutoId));
     else
-        header('Location:cadastro.php?galeria=1&produto='.Parameter::POST('produto', 0));
+        header('Location:listar.php'); 
 
 ?>

@@ -3,23 +3,14 @@ include("../includes/cabecalho.php");
 include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 
-include("../includes/models/categorias_model.php");
-include("../includes/models/produtos_imagens_model.php");
 include("../includes/helpers/variaveis_helper.php");
-
-    $categorias     = new CategoriasModel();
-    $listCategorias = $categorias->getAll();
+include("../includes/models/categorias_model.php");
     
-    $galeria       = Parameter::GET('galeria',0) == '1';
-    
-    if($galeria)
-    {
-        $idProduto      = Parameter::GET('produto'); 
-        $imagensProduto = new ProdutosImagensModel();
-        $listImagens    = $imagensProduto->getImagensFromProduto($idProduto);
-    }
-
+    $categorias        = new CategoriasModel();
+    $listCategorias    = $categorias->getAll(); 
+    $galeria           = Parameter::GET('galeria', 0) == 1; 
     $produtos_tab  = $produtos_tab_adicionar = "current";
+
 ?>
 
 <script type="text/javascript" src="../js/jscolor/jscolor.js"></script>

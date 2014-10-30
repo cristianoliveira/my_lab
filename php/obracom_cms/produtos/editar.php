@@ -9,6 +9,7 @@ include("../includes/models/categorias_model.php");
 include("../includes/models/produtos_cores_model.php");
 include("../includes/models/produtos_imagens_model.php");
 include("../includes/helpers/mensagem_helper.php");
+include("../includes/helpers/variaveis_helper.php");
 
 
     $produtos       = new ProdutosModel();
@@ -22,14 +23,15 @@ include("../includes/helpers/mensagem_helper.php");
 
     $listCategorias    = $categorias->getAll(); 
     $listCores         = $coresProduto->getCoresByProdutoId($produto['id']); 
-
+    
+    $galeria           = Parameter::GET('galeria', 0) == 1; 
+    
     if($galeria)
     {
-        $idProduto      = Parameter::GET('produto'); 
+        $idProduto      = Parameter::GET('id'); 
         $imagensProduto = new ProdutosImagensModel();
         $listImagens    = $imagensProduto->getImagensFromProduto($idProduto);
     }
-
 
     $produtos_tab      = $produtos_tab_gerenciar = "current";
 

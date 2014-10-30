@@ -12,7 +12,7 @@ include("../includes/models/categorias_model.php");
     $categorias = new CategoriasModel();
 
     $numreg   = 10; 
-    $inicial  = isset($_GET['pg']) ? ($_GET['pg'] * $numreg) : 0;
+    $_GET['pg'] = $inicial  = isset($_GET['pg']) ? ($_GET['pg'] * $numreg) : 0;
             
     $listProdutos = $produtos->getLimit($inicial, $numreg);
     $quantreg     = $produtos->getCount(); // Quantidade de registros pra paginação
@@ -72,13 +72,13 @@ include("../includes/models/categorias_model.php");
                                 </a>
                             </td>
                             <td nowrap><!-- Icons -->
-                                <a href="editar.php?id=<?php echo $produto['id']; ?>"title="Editar o produto"> 
+                                <a href="editar.php?id=<?= $produto['id']; ?>"title="Editar o produto"> 
                                     <img src="../imagens/icones/pencil.png"alt="Editar" border="0" align="left" style="padding-left:10px;" /> 
                                 </a>
-                                <a href="galeria.php?id=<?php echo $produto['id']; ?>" title="Editar os downloads de cada produto.">
+                                <a href="editar.php?galeria=1&id=<?= $produto['id']; ?>" title="Editar as imagens do produto.">
                                     <img src="../imagens/pdf.png" width="20" height="20" alt="Galeria" align="left" style="padding-left:10px;" />
                                 </a>
-                                <a href="acao.php?a=3&id=<?php echo $produto['id']; ?>" title="Excluir o produto" class="item-confirmar"  onclick="if(!confirm('Você tem certeza que deseja excluir esse item?')) return false;">
+                                <a href="acao.php?a=3&id=<?= $produto['id']; ?>" title="Excluir o produto" class="item-confirmar"  onclick="if(!confirm('Você tem certeza que deseja excluir esse item?')) return false;">
                                     <img src="../imagens/icones/cross.png"alt="Excluir" hspace="5" border="0" align="left" style="padding-left:10px;" /> 
                                 </a>
                             </td>

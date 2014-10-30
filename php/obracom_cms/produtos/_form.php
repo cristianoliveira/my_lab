@@ -3,15 +3,18 @@
         
         <?php if(isset($produto['id'])) { ?>
             <input type="hidden" name="id" value="<?= $produto['id'] ?>">
-        <?php } ?>
+            <div class="content-box-header">
 
-        <div>
-            <label>Imagens</label>
-            <a href="cadastro.php?galeria=1&produto=<?= $produto['id'] ?>">
-              Imagens do Produto
-            </a>
-        </div>
+                <a class="produto button botao-cadastrar" href="editar.php?galeria=1&id=<?= $produto['id'] ?>">
+					Editar imagens
+				</a>
+				
+                <div class="clear"></div>
 
+            </div>
+       <?php } ?>
+        
+        <input id="editar_galeria" type="hidden" name="editar_galeria" value="<?= if_exist($produto['id'],"false") ?>">
         <div>
             <label>Categoria</label>
             <select id="categoria" name="categoria_id" >
@@ -77,8 +80,7 @@
                 ?>
             </div>
         </div>
-
-
+		
         <div>
             <label>Nome</label>
             <input class="text-input medium-input required"
@@ -155,7 +157,9 @@
             <input type="checkbox"
                    id="oferta_imperdivel_home"
                    name="oferta_imperdivel_home"
-                   value="<?= if_exist($produto['oferta_imperdivel_home']) ?>"/>
+                   value="1"
+				   <?php if(if_exist($produto['oferta_imperdivel_home'],0)==1) echo "checked" ;   ?>
+				   />
         </div>
         
         <div>
@@ -163,7 +167,9 @@
             <input type="checkbox"
                    id="disponivel"
                    name="disponivel"
-                   value="<?= if_exist($produto['disponivel'],1) ?>"/>
+                   value="1"
+				   <?php if(if_exist($produto['disponivel'],0)==1) echo "checked" ;   ?>
+				   />
         </div>
 
         <div>
@@ -171,20 +177,12 @@
             <input type="checkbox"
                    id="ativo"
                    name="ativo"
-                   value="<?= if_exist($produto['ativo'],1) ?>"/>
+                   value="1"
+				   <?php if(if_exist($produto['ativo'],0)==1) echo "checked" ;   ?>
+				   />
         </div>
         
-        <?php  if (isset($produto['image_name1'])) { ?>
-
-        <p>
-            <label for="imagem">Imagem Atual</label>
-            <a id="example1" href="../uploads/produtos/<?php  echo $produto['image_name1']; ?>" target="_blank">&raquo; Clique aqui para visualizar</a>
-            <br />
-
-        </p>
-        <?php  } ?>
-
-
+        
     <p>
         <input class="button"type="submit"value="<?= $acao ?>"/>
     </p>
@@ -192,15 +190,41 @@
 <div class="clear"></div>
 <!-- End .clear -->
 </form>
-<script type="text/javascript">
-    $("#form-produto").validate({
-        rules: {
-                imagem_principal: {
-                    imagemTypeValidate: true,
-                },
-            },
-    });
 
+<div id="dialog-confirm" title="Galeria" hidden>
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;">
+    </span>Deseja editar a galeria de imagens do produto?</p>
+</div>
+
+<script type="text/javascript">
+    
+    $('#form-produto').submit(function(){
+        doSubmit = $('#editar_galeria').val() != "false";
+        if(!doSubmit){
+            $( "#dialog-confirm" ).dialog({
+                  resizable: false,
+                  height:140,
+                  modal: true,
+                  buttons: {
+                    "Sim": function() {
+                      $('#editar_galeria').val("1");
+                    
+                      $('#form-produto').submit();
+                      $( this ).dialog( "close" );
+                    },
+                    "Finalizar Cadastro": function() {
+                      $('#editar_galeria').val("0");
+                      
+                      $('#form-produto').submit();
+                      $( this ).dialog( "close" );
+                    }
+                  }
+            });
+        }
+        return doSubmit;
+
+    });    
+    
     $("#adiciona-cor").click(function(){
         quantidade = $('.cor-adicionada').length
         document.getElementById('cor').color.hidePicker()
@@ -220,10 +244,10 @@
     });
 
     $(".botao-remove").click(function(){
-            valor = $(this).attr("id").split('-')
-            cor   = valor[1]
+        valor = $(this).attr("id").split('-')
+        cor   = valor[1]
 
-            $(".cor-adicionada-"+cor).remove();
+        $(".cor-adicionada-"+cor).remove();
     });    
    
 </script>

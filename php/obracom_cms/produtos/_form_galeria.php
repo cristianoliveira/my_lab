@@ -1,9 +1,16 @@
-<h3> Imagens do Produto </h3>
+<div class="content-box-header">
+	<h3> Imagens do Produto </h3>
+		<a class="produto button botao-cadastrar" href="listar.php">
+			Finalizar
+		</a>
+    <div class="clear"></div>
+</div>
+
 <form id="form-produto" class="form-default" action="<?= $action_form ?>" method="post" enctype="multipart/form-data">    
     <fieldset>
         
         <input name="produto" type="hidden" value="<?= $idProduto ?>" />
-        
+                
         <div class="produto-galeria">
             <label>Upload de imagem</label>
                 <input id="imagem" class="text-input" name="imagem_produto" type="hidden" />
@@ -34,6 +41,8 @@
             }
         ?>
         </div>
+        
+        
     </fieldset>
 <div class="clear"></div>
 <!-- End .clear -->

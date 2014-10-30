@@ -1,15 +1,21 @@
 <?php
 
-function if_exist(&$variable, $return_if_null='')
+function if_exist(&$variable, $returnIfNull='')
 {
 	$variable = str_replace('"', '\'', $variable);
-	return isset($variable)? $variable : $return_if_null;
+	return isset($variable)? $variable : $returnIfNull;
 }
 
-function if_null(&$variable, $return_if_null='')
+function if_null(&$variable, $returnIfNull='')
 {
 	$variable = str_replace('"', '\'', $variable);
-	return (!empty($variable))? $variable : $return_if_null;
+	return (!empty($variable))? $variable : $returnIfNull;
+}
+
+function if_not_null(&$variable, $return='', $returnIfNull='')
+{
+	$variable = str_replace('"', '\'', $variable);
+	return (isset($variable) && !empty($variable))? $return : $returnIfNull;
 }
 
 function par_get($var){

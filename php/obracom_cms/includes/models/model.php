@@ -130,6 +130,9 @@ class Model{
 	
 	public function getById($id)
 	{
+		if(!isset($id))
+		    return false;
+			
 	    $this->buildSql()->select('*')
 		                 ->from($this->table)
 						 ->where($this->col_id." = $id");
@@ -174,6 +177,9 @@ class Model{
 	
 	public function updateById($id, $dados = array())
     {
+		if(!isset($id))
+		    return false;
+			
         if(isset($dados[$this->col_id])){
 		   unset($dados[$this->col_id]);
 		}
@@ -191,6 +197,10 @@ class Model{
 	}
 	
 	public function deleteById($id){
+		
+		if(!isset($id))
+		    return false;
+	
 		$this->buildSql()->delete($this->table, $this->col_id." = $id");
         return $this->execute();
 	}

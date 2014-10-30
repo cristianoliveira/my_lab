@@ -86,6 +86,31 @@ switch ($lista2) {
 			</li>
             
 
+            
+			<li>
+				<a href="#" class="nav-top-item <?= if_exist($banners_tab, 'default') ?>">
+				Banners
+				</a>
+				<ul style="display:none;">
+					<li><a href="<?php echo $ROOT_URL; ?>/banners/cadastro.php" 
+						   class="<?= if_exist($banners_adicionar,'default') ?>"> Adicionar </a></li>
+					<li><a href="<?php echo $ROOT_URL; ?>/banners/listar.php" 
+						   class="<?= if_exist($banners_gerenciar,'default') ?>"> Gerenciar </a></li>
+				</ul>
+			</li>
+			
+			<li>
+				<a href="#" class="nav-top-item <?= $_COOKIE['banners']; ?>">
+				Enquetes
+				</a>
+				<ul style="display:none;">
+					<li><a href="<?php echo $ROOT_URL; ?>/enquetes/cadastro.php" 
+						   class="<?= if_exist($enquetes_adicionar,'default') ?>"> Adicionar </a></li>
+					<li><a href="<?php echo $ROOT_URL; ?>/enquetes/listar.php" 
+						   class="<?= if_exist($enquetes_gerenciar,'default') ?>"> Gerenciar </a></li>
+				</ul>
+			</li>
+            
              <li>
 				<a href="#" class="nav-top-item <?= $_COOKIE['empresa']; ?>">
 				Sobre Nós
@@ -97,19 +122,8 @@ switch ($lista2) {
 				</ul>
 			</li>
         
-            
-			<li>
-				<a href="#" class="nav-top-item <?= $_COOKIE['banners']; ?>">
-				Banners
-				</a>
-				<ul style="display:none;">
-					<li><a href="<?php echo $ROOT_URL; ?>/banners/cadastro.php" class="<?= $_COOKIE["classe6"]; ?>"> Adicionar </a></li>
-					<li><a href="<?php echo $ROOT_URL; ?>/banners/listar.php" class="<?= $_COOKIE["classe7"]; ?>"> Gerenciar </a></li>
-				</ul>
-			</li>
-            
-                         <li>
-				<a href="#" class="nav-top-item <?= $_COOKIE['crop']; ?>">
+            <li>
+				<a href="#" class="nav-top-item <?= if_exist($enquetes_tab, 'default'); ?>">
 				Ferramentas
 				</a>
 
