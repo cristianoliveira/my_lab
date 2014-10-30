@@ -43,7 +43,7 @@
                 <input type="text" 
                        class="opicao text-input large-input required" 
                        id="opicao"  />
-			    <button id="enquete-botao-adicionar" type="submit" >Adicionar</button>
+			    <button id="enquete-botao-adicionar" type="button" >Adicionar</button>
             </div>
 			
 			<div id="enquete-opcoes">
@@ -63,13 +63,14 @@
 		novaCor = $('#opicao').clone()
         novaCor.attr("id"    ,"opicao["+quantidade+"]")
         novaCor.attr("name"  ,"opicao["+quantidade+"]")
-        novaCor.attr("class" ,"opicao-adicionada opicao-adicionada-"+quantidade)
+        novaCor.attr("class" ,"opicao text-input large-input opicao-adicionada-"+quantidade)
         
-        botaoRemove = $("#opicao-button-modelo").clone(true,true);
+        botaoRemove = $("#enquete-botao-adicionar").clone(true,true);
         botaoRemove.attr("id"        ,"remove-"+quantidade)
         botaoRemove.attr("visibility","visible");
         botaoRemove.attr("class"     ,"opicao-adicionada-"+quantidade)
-        
+        botaoRemove.val("-")
+		
         novaCor.appendTo('#enquete-opcoes')
         botaoRemove.appendTo('#enquete-opcoes')
     });
