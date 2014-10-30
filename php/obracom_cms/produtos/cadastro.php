@@ -4,18 +4,27 @@ include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 
 include("../includes/models/categorias_model.php");
+include("../includes/models/produtos_imagens_model.php");
 include("../includes/helpers/variaveis_helper.php");
 
-	$categorias     = new CategoriasModel();
-	$listCategorias = $categorias->getAll();
+    $categorias     = new CategoriasModel();
+    $listCategorias = $categorias->getAll();
+    
+    $galeria       = Parameter::GET('galeria',0) == '1';
+    
+    if($galeria)
+    {
+        $idProduto      = Parameter::GET('produto'); 
+        $imagensProduto = new ProdutosImagensModel();
+        $listImagens    = $imagensProduto->getImagensFromProduto($idProduto);
+    }
 
-	$_COOKIE["produtos"] = "current";
-	$_COOKIE["produtos1"]  = "current";
-	$_COOKIE["produtos2"]  = "";
+    $produtos_tab  = $produtos_tab_adicionar = "current";
 ?>
 
 <script type="text/javascript" src="../js/jscolor/jscolor.js"></script>
-	<body>
+
+<body>
     <div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
         <div id="sidebar"><?php  include("../includes/sidebar.php"); ?></div> <!-- End #sidebar -->        
         <div id="main-content"> <!-- Main Content Section with everything -->
@@ -39,8 +48,17 @@ include("../includes/helpers/variaveis_helper.php");
 
                 <?php 
                      $acao        = "Cadastrar";
-                     $action_form = "acao.php?a=1";
-                     include('_form.php'); 
+                     if(!$galeria)
+                     {
+                        $action_form = "acao.php?a=1";
+                        include('_form.php'); 
+                     }
+                     else
+                     {
+                        $action_form = "acao.php?a=4";
+                        include('_form_galeria.php'); 
+                     }
+
                 ?>
 
                 </div> <!-- End .content-box-content -->
@@ -58,5 +76,5 @@ include("../includes/helpers/variaveis_helper.php");
         
     </div>
 
-	</body>
+    </body>
 </html>

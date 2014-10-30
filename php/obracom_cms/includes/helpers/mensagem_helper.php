@@ -17,12 +17,20 @@ class MensagemHelper{
         $_SESSION['ok'] = $mensagem;
     } 
 
+    public static function sucesso($mensagem = '')
+    {
+        if(empty($mensagem))
+           $_SESSION['ok']  = "Processo realizado com sucesso.";
+        else
+           $_SESSION['ok']  = $mensagem;
+    }
+
     public static function erro($mensagem = '')
     {
-		if(empty($mensagem))
+        if(empty($mensagem))
            $_SESSION['erro']  = "Ops! Desculpe-nos. Não foi possível salvar, tente novamente mais tarde ou contate o suporte.";
-		else
-		   $_SESSION['erro']  = $mensagem;
+        else
+           $_SESSION['erro']  = $mensagem;
     }
 
     public static function showSessionMensagem()

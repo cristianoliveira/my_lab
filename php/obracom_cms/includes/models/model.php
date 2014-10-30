@@ -163,8 +163,8 @@ class Model{
 
     public function update($dados = array(), $where='')
     {
-		if(isset($dados[$col_id])){
-		   unset($dados[$col_id]);
+		if(isset($dados[$this->col_id])){
+		   unset($dados[$this->col_id]);
 		}
 		
         $this->buildSql()->update($this->table, $dados)
@@ -174,8 +174,8 @@ class Model{
 	
 	public function updateById($id, $dados = array())
     {
-		if(isset($dados[$col_id])){
-		   unset($dados[$col_id]);
+        if(isset($dados[$this->col_id])){
+		   unset($dados[$this->col_id]);
 		}
 		
         $this->buildSql()->update($this->table, $dados)

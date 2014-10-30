@@ -37,4 +37,12 @@ class Parameter{
 		else
 			return isset($_POST[$var])? $_POST[$var] : $returnIfNull;
 	}
+
+	public static function FILE($var=null, $returnIfNull = null)
+	{
+		if(empty($var))
+			return isset($_FILES)? $_FILES : $returnIfNull;
+		else
+			return isset($_FILES[$var])? $_FILES[$var] : $returnIfNull;
+	}
 }

@@ -35,6 +35,17 @@
 
 	<!-- Facebox jQuery Plugin -->
 	<script type="text/javascript" src="../js/facebox.js"></script>
+    
+    <!-- Css files-->
+	<link rel="stylesheet" type="text/css" href="../crop/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../crop/css/style-example.css" />
+	<link rel="stylesheet" type="text/css" href="../crop/css/jquery.Jcrop.css" />
+
+	<!-- Js files-->
+	<link href="../crop/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="../crop/scripts/jquery.Jcrop.js"></script>
+	<script type="text/javascript" src="../crop/scripts/jquery.SimpleCropper.js"></script>
+
 
 	<!-- jQuery WYSIWYG Plugin -->
 	<script type="text/javascript" src="../js/jquery.wysiwyg.js"></script>

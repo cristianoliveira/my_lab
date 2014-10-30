@@ -1,2 +1,4 @@
 
 2014-10-29 21:56:52 - ###SQL SELECT *  FROM fd_usuarios WHERE usuario = 'oi'   AND senha   = 'ef67e0868c98e5f0b0e2fcd9b0c4a3bad808f551' 
+2014-10-29 20:29:50 - ###SQL SELECT *  FROM fd_usuarios WHERE usuario = 'oi'   AND senha   = 'ef67e0868c98e5f0b0e2fcd9b0c4a3bad808f551' 
+2014-10-29 22:17:18 - ###SQL SELECT *  FROM fd_usuarios WHERE usuario = 'oi'   AND senha   = 'ef67e0868c98e5f0b0e2fcd9b0c4a3bad808f551' 

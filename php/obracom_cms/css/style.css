@@ -900,3 +900,22 @@ input[readonly] {color:#999!important}
 .ddd {
 	width: 20px;
 }
+
+.produto-galeria{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.produto-tumb-galeria{
+    width: 11em;
+    margin: 5px;
+    float: left;
+}
+
+.produto-tumb-galeria img{
+    width: 10em;
+}
+
+.produto-tumb-galeria a{
+    display: block;
+}

@@ -73,18 +73,6 @@ switch ($lista2) {
 				</ul>
 			</li>
             
-                    			<li>
-				<a href="#" class="nav-top-item <?= $_COOKIE['subcategorias']; ?>">
-				Sub-Categorias
-				</a>
-				<ul style="display:none;">
-					<li><a href="<?php echo $ROOT_URL; ?>/subcategorias/cadastro.php" 
-						   class="<?= $_COOKIE["subcategorias1"]; ?>"> Adicionar </a></li>
-					<li><a href="<?php echo $ROOT_URL; ?>/subcategorias/listar.php" 
-						   class="<?= $_COOKIE["subcategorias2"]; ?>"> Gerenciar </a></li>
-				</ul>
-			</li>
-            
             <li>
 				<a href="#" class="nav-top-item <?= if_exist($produtos_tab, 'default'); ?>">
 				Produtos
