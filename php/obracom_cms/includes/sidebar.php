@@ -98,6 +98,18 @@ switch ($lista2) {
 						   class="<?= if_exist($banners_gerenciar,'default') ?>"> Gerenciar </a></li>
 				</ul>
 			</li>
+
+			<li>
+				<a href="#" class="nav-top-item <?= if_exist($destaques_tab, 'default') ?>">
+				Destaques
+				</a>
+				<ul style="display:none;">
+					<li><a href="<?php echo $ROOT_URL; ?>/destaques/cadastro.php" 
+						   class="<?= if_exist($destaques_adicionar,'default') ?>"> Adicionar </a></li>
+					<li><a href="<?php echo $ROOT_URL; ?>/destaques/listar.php" 
+						   class="<?= if_exist($destaques_gerenciar,'default') ?>"> Gerenciar </a></li>
+				</ul>
+			</li>
 			
 			<li>
 				<a href="#" class="nav-top-item <?= $_COOKIE['banners']; ?>">

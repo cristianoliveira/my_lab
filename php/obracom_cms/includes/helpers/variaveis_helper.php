@@ -26,6 +26,11 @@ function par_post($var){
 	return isset($_POST[$var])? $_POST[$var] : NULL;
 }
 
+function trata_valores($valor)
+{
+	return (empty($valor)) ? "0.00": str_replace(",", ".", $valor['valor_original']);
+}
+
 class Parameter{
 	
 	public static function GET($var=null, $returnIfNull=null)

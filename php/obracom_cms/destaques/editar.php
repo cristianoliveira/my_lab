@@ -5,19 +5,19 @@ include("../includes/database_connection.php");
 include("../includes/functions.php");
 include("../includes/logs.php");
 
-include("../includes/models/banners_model.php");
+include("../includes/models/destaques_model.php");
 include("../includes/helpers/variaveis_helper.php");
 
 //Pega Dados e Mostra-os.
-$banners  = new BannersModel();
+$destaques  = new DestaquesModel();
 
-$idbanner = $banners->getParameterId();
-$banner   = $banners->getById($idbanner);
+$iddestaque = $destaques->getParameterId();
+$destaque   = $destaques->getById($iddestaque);
 
-if(empty($banner))
+if(empty($destaque))
    header('Location:listar.php');
         
-$banners_tab = $banners_gerenciar = "current";
+$destaques_tab = $destaques_gerenciar = "current";
 
 ?>
 <body>
@@ -27,7 +27,7 @@ $banners_tab = $banners_gerenciar = "current";
     <div id="main-content"> <!-- Main Content Section with everything -->
 
         <!-- Page Head -->
-            <h2>Editar banner</h2>
+            <h2>Editar destaque</h2>
             
             <p id="page-intro">Utilize o formulário abaixo para editar uma categoria no site.</p>
             
@@ -36,7 +36,7 @@ $banners_tab = $banners_gerenciar = "current";
         <div class="content-box"><!-- Start Content Box -->
 
         <div class="content-box-header">
-            <h3>Dados banner</h3>
+            <h3>Dados destaque</h3>
                 
                 <div class="clear"></div>
 

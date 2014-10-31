@@ -5,23 +5,23 @@ include('../includes/check_authentication.php');
 include("../includes/functions.php");
 include("../includes/logs.php");
 
-include("../includes/models/banners_model.php");
+include("../includes/models/destaques_model.php");
 include("../includes/helpers/variaveis_helper.php");
 
-    $banners = new BannersModel();
+    $destaques = new DestaquesModel();
 
     $numreg     = 10; 
     $_GET['pg'] = $inicial  = isset($_GET['pg']) ? ($_GET['pg'] * $numreg) : 0;
         
-    $quantreg     = $banners->getCount();
-    $listbanners = $banners->getLimit($inicial, $numreg);
+    $quantreg     = $destaques->getCount();
+    $listdestaques = $destaques->getLimit($inicial, $numreg);
 
-    $banners_tab = $banners_gerenciar = "current";
+    $destaques_tab = $destaques_gerenciar = "current";
 ?>
 <script> 
-confirmaExclusaobanner = function()
+confirmaExclusaodestaque = function()
 {
-    return confirm('Você tem certeza que deseja excluir este banner?');
+    return confirm('Você tem certeza que deseja excluir este destaque?');
 }
 </script>
 
@@ -32,15 +32,15 @@ confirmaExclusaobanner = function()
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
-            <h2>Lista de banners cadastrados</h2>
-            <p id="page-intro">Abaixo estão todos os banners cadastrados no site. </p>
+            <h2>Lista de destaques cadastrados</h2>
+            <p id="page-intro">Abaixo estão todos os destaques cadastrados no site. </p>
                
                <?php showSessionMessage(); ?>
             
             <div class="content-box"><!-- Start Content Box -->
                 <div class="content-box-header">
                     <h3>Categorias</h3>
-                    <input type="button" value="Cadastrar novo banner" 
+                    <input type="button" value="Cadastrar novo destaque" 
                             class="produto button botao-cadastrar" 
                             onClick="javascript: location.href='cadastro.php';">
 
@@ -52,13 +52,13 @@ confirmaExclusaobanner = function()
                         <thead>
                             <tr>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=nome&desc=1" class="down">Titulo</a>
+                                    <a href="/destaques/listar.php?ordem=nome&desc=1" class="down">Titulo</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=email&desc=1" class="down">Link</a>
+                                    <a href="/destaques/listar.php?ordem=email&desc=1" class="down">Link</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=telefone&desc=1" class="down">Imagem</a>
+                                    <a href="/destaques/listar.php?ordem=telefone&desc=1" class="down">Imagem</a>
                                 </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>
@@ -66,29 +66,29 @@ confirmaExclusaobanner = function()
                         </thead>
 
                         <tbody>
-                            <?php foreach ($listbanners as $banner) {  ?>
+                            <?php foreach ($listdestaques as $destaque) {  ?>
                                 <tr>
                                     <td>
-                                        <a href="editar.php?id=<?= $banner['id'] ?>" title="Editar banner">
-                                             <?php echo if_null($banner['titulo'], $banner['razao_social']); ?>
+                                        <a href="editar.php?id=<?= $destaque['id'] ?>" title="Editar destaque">
+                                             <?php echo if_null($destaque['titulo'], $destaque['razao_social']); ?>
                                         </a>
                                     </td>
                                     <td>
-                                        <?php echo $banner['link']; ?>
+                                        <?php echo $destaque['link']; ?>
                                     </td>
                                     <td>
-                                        <img style="width:100px;" src="<?php echo site_url('uploads/banners/'.$banner['imagem']) ?>" />
+                                        <img style="width:100px;" src="<?php echo site_url('uploads/destaques/'.$destaque['imagem']) ?>" />
                                     </td>
                                     <td>&nbsp;</td>
                                     <td nowrap><!-- Icons -->
-                                        <a href="editar.php?id=<?= $banner['id']; ?>" 
-                                            title="Editar a banner"> 
+                                        <a href="editar.php?id=<?= $destaque['id']; ?>" 
+                                            title="Editar a destaque"> 
                                                 <img src="../imagens/icones/pencil.png"alt="Editar" border="0" align="left"/> 
                                         </a> 
-                                        <a href="acao.php?a=3&id=<?= $banner['id']; ?>" 
-                                            title="Excluir a banner" 
+                                        <a href="acao.php?a=3&id=<?= $destaque['id']; ?>" 
+                                            title="Excluir a destaque" 
                                             class="item-confirmar"  
-                                            onclick="return confirmaExclusaobanner()"> 
+                                            onclick="return confirmaExclusaodestaque()"> 
                                                 <img src="../imagens/icones/cross.png" alt="Excluir" hspace="5" border="0" align="left"/> 
                                         </a>
                                     </td>

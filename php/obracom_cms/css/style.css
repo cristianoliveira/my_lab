@@ -935,3 +935,7 @@ input[readonly] {color:#999!important}
 	width: 5em;
 	margin: 0.6em 0;
 }
+
+.mascara-valor {
+    text-align: right;
+}

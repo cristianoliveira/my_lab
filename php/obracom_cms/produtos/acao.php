@@ -16,7 +16,7 @@ include("../includes/helpers/url_helper.php");
 
   $produtos      = new ProdutosModel();
   $coresProdutos = new ProdutosCoresModel();
-  
+
   $acao           = Parameter::GET('a');
   $editar_galeria = Parameter::POST('editar_galeria',0) == 1 
                   || $acao == 5 
@@ -29,6 +29,9 @@ include("../includes/helpers/url_helper.php");
   $dados['disponivel']               = Parameter::POST('disponivel',0); 
   $dados['ativo']                    = Parameter::POST('ativo',0); 
   
+  $dados['valor_original']    = trata_valores($dados['valor_original']);
+  $dados['valor_promocional'] = trata_valores($dados['valor_promocional']);
+
   unset($dados['cor']);
   unset($dados['editar_galeria']);  
   
@@ -42,7 +45,14 @@ include("../includes/helpers/url_helper.php");
                 log_file("newprodutoId = $newprodutoId");
                 
                 if($coresProdutos->insertInProduto($newprodutoId, $cores))
+                {
                    MensagemHelper::insertSucesso();
+                   if($editar_galeria)
+                   {
+                      header('Location:editar.php?galeria=1&id='.$newprodutoId );
+                      return;
+                   }
+                } 
                 else
                    MensagemHelper::erro('Erro ao inserir cores no produto.');
             }
@@ -111,24 +121,30 @@ include("../includes/helpers/url_helper.php");
                 }   
                 
             }
+
+            header('Location:editar.php?galeria=1&id='.$produtoId);
+            return;
+
             break;
         
         case 5: // DELETE GALERIA
 
-            $imagemId = Parameter::GET('imagem');
-            $imagem   = $imagensProdutos->getById($imagemId);
+            $imagensProdutos = new ProdutosImagensModel();
+            $imagemId   = Parameter::GET('id',0);
+            $produtoId  = Parameter::GET('produto',0);
+            $imagem     = $imagensProdutos->getById($imagemId);
             if ($imagensProdutos->deleteById($imagemId)) {
                 unlink($_SERVER[DOCUMENT_ROOT].'/uploads/produtos/'.$imagem['imagem']);
                 MensagemHelper::deleteSucesso();
             }else
                 MensagemHelper::erro("Erro ao deletar imagem.");
             
+            header('Location:editar.php?galeria=1&id='.$produtoId);
+            return;
+            
             break;           
         }
     
-    if($editar_galeria)
-        header('Location:cadastro.php?galeria=1&produto='.if_exist($dados['id'],$newprodutoId));
-    else
         header('Location:listar.php'); 
 
 ?>

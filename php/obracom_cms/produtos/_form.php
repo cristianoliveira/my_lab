@@ -2,19 +2,16 @@
     <fieldset>
         
         <?php if(isset($produto['id'])) { ?>
-            <input type="hidden" name="id" value="<?= $produto['id'] ?>">
-            <div class="content-box-header">
-
-                <a class="produto button botao-cadastrar" href="editar.php?galeria=1&id=<?= $produto['id'] ?>">
-					Editar imagens
-				</a>
-				
-                <div class="clear"></div>
-
-            </div>
+            <input id="id" type="hidden" name="id" value="<?= $produto['id'] ?>">
+            <a class="produto button botao-cadastrar" href="editar.php?galeria=1&id=<?= $produto['id'] ?>">
+                Editar imagens
+            </a>
+        
+            <input id="editar_galeria" type="hidden" name="editar_galeria" value="true">
+       <?php }else{ ?>
+            <input id="editar_galeria" type="hidden" name="editar_galeria" value="false">
        <?php } ?>
         
-        <input id="editar_galeria" type="hidden" name="editar_galeria" value="<?= if_exist($produto['id'],"false") ?>">
         <div>
             <label>Categoria</label>
             <select id="categoria" name="categoria_id" >
@@ -134,7 +131,7 @@
         
         <div>
             <label>Valor Original</label>
-            <input class="text-input small-input required"
+            <input class="text-input small-input mascara-valor required"
                    type="text"
                    id="valor_original"
                    name="valor_original"
@@ -144,7 +141,7 @@
         
         <div>
             <label>Valor Promocional</label>
-            <input class="text-input small-input required"
+            <input class="text-input small-input mascara-valor required"
                    type="text"
                    id="valor_promocional"
                    name="valor_promocional"
@@ -199,6 +196,22 @@
 <script type="text/javascript">
     
     $('#form-produto').submit(function(){
+        
+        if(!$(this).valid())
+          return false;
+
+        $.ajaxSetup({async: false});
+        if(!validaUnico("nome_seo")){
+            alert("Campo nome seo duplicado.");
+            return false;
+
+        }
+        
+        if(!validaUnico("codigo")){
+            alert("Campo nome seo duplicado.");
+            return false; 
+        }
+
         doSubmit = $('#editar_galeria').val() != "false";
         if(!doSubmit){
             $( "#dialog-confirm" ).dialog({
@@ -221,10 +234,30 @@
                   }
             });
         }
+        
         return doSubmit;
 
     });    
     
+    validaUnico = function(campo)
+    {
+        retorno = true;
+        valor = $("#"+campo).val();
+        id    = $("#id").val();
+        if(valor!="" && id==undefined){
+          $.get( "validacao.php?campo="+campo+"&valor="+valor, function( data ) {
+              if (data == "1")
+              {
+                  retorno = false;
+              }else{
+                  retorno = true; 
+              }
+          });
+       }
+
+       return retorno;
+    }
+
     $("#adiciona-cor").click(function(){
         quantidade = $('.cor-adicionada').length
         document.getElementById('cor').color.hidePicker()
@@ -249,5 +282,41 @@
 
         $(".cor-adicionada-"+cor).remove();
     });    
-   
+
+/* MASCARAS */
+$(".mascara-data").mask("99/99/9999",{ placeholder: "dd/mm/yyyy"});
+$(".mascara-valor").focusout(function(){
+      valor = $(this).val();
+      
+      if(valor.indexOf(',')<0)
+         valor = valor+",00";
+
+      valor = valor.replace(/[^0-9]/gi,'');
+      valor = valor.substring(0, valor.length-2)+","+valor.substring(valor.length-2);
+      
+      if(valor.length>4)
+        $(this).val(valor);
+      else
+        $(this).val("");
+        
+});
+$(".mascara-telefone").mask("(999)9999-9999");
+
+jQuery.validator.addMethod("validaUnico", function(value, element)
+{ 
+   return validaUnico(element);  
+}, "Valor já foi utilizado."); 
+
+$.validator.messages.required = 'Campo deve ser informado.';
+$("#form-produto").validate({
+      rules:
+      {
+          nome: { required: true },
+          nome_seo: { required: true },
+          codigo: { required: true },
+          valor_original:           { required: true },         
+          valor_promocional:        { required: true },
+      },
+});
+
 </script>

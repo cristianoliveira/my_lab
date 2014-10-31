@@ -55,10 +55,13 @@ include("../includes/helpers/variaveis_helper.php");
             <div class="content-box"><!-- Start Content Box -->
 
                 <div class="content-box-header">
-
-                    <h3>Dados de um Produto</h3>
-
-                    <div class="clear"></div>
+                <?php if(!$galeria) { ?>
+                          <h3>Dados de um Produto</h3>
+                <?php } else { ?>
+                          <h3>Imagens do Produto</h3>
+                <?php } ?>
+                
+                <div class="clear"></div>
 
                 </div> <!-- End .content-box-header -->
 

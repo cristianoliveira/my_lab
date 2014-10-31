@@ -513,3 +513,23 @@ jQuery.validator.addMethod("confirmacaoSenha", function(value, element)
 	var confirmacao = $('#senha').val();
 	return confirmacao == value;	
 }, "Senha não confere."); 
+
+
+
+jQuery.validator.addMethod("validaValorUnico", function(value, element)
+{	
+	retorno = true;
+    valor = $("#"+campo).val();
+    id    = $("#id").val();
+    if(valor!="" && id==undefined){
+      $.get( "validacao.php?campo="+campo+"&valor="+valor, function( data ) {
+          if (data == "1")
+          {
+              retorno = false;
+          }else{
+              retorno = true; 
+          }
+      });
+   }
+	return retorno;	
+}, "Valor duplicado."); 

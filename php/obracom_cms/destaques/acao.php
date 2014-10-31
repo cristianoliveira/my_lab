@@ -3,12 +3,12 @@ include('../includes/check_authentication.php');
 include("../includes/functions.php");
 include("../includes/logs.php");
 
-include("../includes/models/banners_model.php");
+include("../includes/models/destaques_model.php");
 include("../includes/helpers/mensagem_helper.php");
 include("../includes/helpers/variaveis_helper.php");
 include("../includes/helpers/file_helper.php");
 
-    $banners         = new BannersModel();
+    $destaques         = new DestaquesModel();
     
     $acao            = Parameter::GET('a', 0); //isset($_GET["a"])? $_GET["a"] : -1; 
     $id              = Parameter::POST('id', false);
@@ -18,16 +18,16 @@ include("../includes/helpers/file_helper.php");
     switch ($acao) {
         case 1: // INSERT
             
-               $nomeArquivoServidor = uniqid("banner-");
+               $nomeArquivoServidor = uniqid("destaque-");
 
                log_file('Fazendo upload...'.$imagem);
                 
                 if(FileHelper::base64ToJpg( $imagem
-                                          , $_SERVER[DOCUMENT_ROOT].'/uploads/banners/'.$nomeArquivoServidor.".jpg"))
+                                          , $_SERVER[DOCUMENT_ROOT].'/uploads/destaques/'.$nomeArquivoServidor.".jpg"))
                 {
                     log_file('Upload feito.');
                     
-                    if($banners->insert(array( 'link'      => Parameter::POST('link')  
+                    if($destaques->insert(array( 'link'      => Parameter::POST('link')  
                                                     , 'imagem'    => $nomeArquivoServidor.".jpg"
                                                     , 'titulo'    => Parameter::POST('titulo')))){
 
@@ -44,21 +44,21 @@ include("../includes/helpers/file_helper.php");
             
             if(!$id)
             {
-                MensagemHelper::erro("Selecione um banner.");
+                MensagemHelper::erro("Selecione um destaque.");
             }
             else
             {
                
-               $nomeArquivoServidor = uniqid("banner-");
+               $nomeArquivoServidor = uniqid("destaque-");
 
                log_file('Fazendo upload...'.$imagem);
                 
                 if(FileHelper::base64ToJpg( $imagem
-                                          , $_SERVER[DOCUMENT_ROOT].'/uploads/banners/'.$nomeArquivoServidor.".jpg"))
+                                          , $_SERVER[DOCUMENT_ROOT].'/uploads/destaques/'.$nomeArquivoServidor.".jpg"))
                 {
                     log_file('Upload feito.');
                     
-                    if($banners->updateById( $id
+                    if($destaques->updateById( $id
                                            , array( 'link'      => Parameter::POST('link')  
                                            , 'imagem'    => $nomeArquivoServidor.".jpg"
                                            , 'titulo'    => Parameter::POST('titulo')))){
@@ -76,7 +76,7 @@ include("../includes/helpers/file_helper.php");
 
         case 3: // DELETE
             $id = Parameter::GET('id');
-            if($banners->delete("id = $id"))
+            if($destaques->delete("id = $id"))
             {
                 MensagemHelper::deleteSucesso();
             }

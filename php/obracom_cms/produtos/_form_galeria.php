@@ -1,18 +1,14 @@
-<div class="content-box-header">
-	<h3> Imagens do Produto </h3>
-		<a class="produto button botao-cadastrar" href="listar.php">
-			Finalizar
-		</a>
-    <div class="clear"></div>
-</div>
 
 <form id="form-produto" class="form-default" action="<?= $action_form ?>" method="post" enctype="multipart/form-data">    
     <fieldset>
         
         <input name="produto" type="hidden" value="<?= $idProduto ?>" />
-                
+        <a class="produto button botao-cadastrar" href="listar.php">
+            Finalizar
+        </a>
+        
         <div class="produto-galeria">
-            <label>Upload de imagem</label>
+            <label>Upload de imagem </label>
                 <input id="imagem" class="text-input" name="imagem_produto" type="hidden" />
             
             <div>
@@ -31,11 +27,18 @@
                foreach ($listImagens as $imagem) { 
         ?>
             <div class="produto-tumb-galeria">
-               <img src="../uploads/produtos/<?= $value ?>" />
-               <a   class="" href="../uploads/produtos/<?= $imagem['imagem'] ?>" target="_blank">
-                  &raquo; Clique aqui para visualizar
-               </a>
+                <h5><?= $imagem['titulo'] ?></h5>
+                <img src="<?= "http://$_SERVER[SERVER_NAME]" ?>/uploads/produtos/<?= $imagem['imagem'] ?>" />
+                <div>
+                    <a class="button" style="width:80%; margin:5px 0" href="<?= "http://$_SERVER[SERVER_NAME]" ?>/uploads/produtos/<?= $imagem['imagem'] ?>" target="_blank">
+                      Visualizar
+                    </a>
+                    <a class="button" style="width:80%; margin:5px 0" <?= 'href="acao.php?a=5&produto='.$produto['id'].'&id='.$imagem['id'].'"' ?> >
+                      Remover
+                    </a>
+                </div>
             </div>
+            
         <?php
                }
             }
