@@ -5,6 +5,6 @@ if (isset($_SESSION['usuario_logado_id']) && isset($_SESSION['nome_usuario'])){
 }
 else {
    $_SESSION['flash_error'] = 'Área restrita, é necessário realizar o login.';
-   header("Location: cms/login.php");
+   header("Location: ".site_url('login.php'));
 }
 ?>

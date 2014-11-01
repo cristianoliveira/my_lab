@@ -1,6 +1,6 @@
 <?php
-include('../includes/check_authentication.php');
 include("../includes/functions.php");
+include('../includes/check_authentication.php');
 include("../includes/logs.php");
 
 include("../includes/models/categorias_model.php");

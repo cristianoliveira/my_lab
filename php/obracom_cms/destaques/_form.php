@@ -1,9 +1,9 @@
-<form id="form-banner" class="form-default" method="post" action="<?= $form_action ?>"  >
+<form id="form-destaque" class="form-default" method="post" action="<?= $form_action ?>"  >
         
-    <?php if(isset($banner['id'])) { ?>
+    <?php if(isset($destaque['id'])) { ?>
     <input type="hidden"  
             name="id" 
-            value="<?= $banner['id'] ?>"
+            value="<?= $destaque['id'] ?>"
     />
     <?php } ?>
         
@@ -15,7 +15,7 @@
                        id="titulo" 
                        name="titulo" 
                        maxlength="150" 
-                       value="<?= if_exist($banner['titulo']) ?>"/> 
+                       value="<?= if_exist($destaque['titulo']) ?>"/> 
                 <small> * Somente para uso interno </small>
             </div>
             
@@ -33,13 +33,13 @@
                        id="link"
                        name="link"
                        maxlength="255"
-                       value="<?= if_exist($banner['link']) ?>"/>
+                       value="<?= if_exist($destaque['link']) ?>"/>
                 <br/><small>Digite ou cole no campo acima o link <strong>completo</strong> para o conteúdo.</small>
             </div>
 
-            <?php if(isset($banner['id'])) { ?>
-                <a href="<?= site_url('uploads/banners/'.$banner['imagem']) ?>" target="_blank">
-                  <img src="<?= site_url('uploads/banners/'.$banner['imagem']) ?>" style="width:100px;" />
+            <?php if(isset($destaque['id'])) { ?>
+                <a href="<?= site_url('uploads/destaques/'.$destaque['imagem']) ?>" target="_blank">
+                  <img src="<?= site_url('uploads/destaques/'.$destaque['imagem']) ?>" style="width:100px;" />
                   <br />
                   Visualizar 
                 </a>
@@ -53,7 +53,7 @@
 </form>
 <script type="text/javascript">
     $('#preview-crop').simpleCropper();
-    $('#form-banner').submit(function(){
+    $('#form-destaque').submit(function(){
         img     = $('#preview-crop').find('img');
         source  = img.attr('src');
 

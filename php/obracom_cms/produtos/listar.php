@@ -7,6 +7,7 @@ include("../includes/logs.php");
 
 include("../includes/models/produtos_model.php");
 include("../includes/models/categorias_model.php");
+include("../includes/helpers/variaveis_helper.php");
 
     $produtos   = new ProdutosModel();
     $categorias = new CategoriasModel();

@@ -1,7 +1,8 @@
 <?php  
-include("../includes/cabecalho.php");
+include("../includes/functions.php");
+include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
-include("../includes/database_connection.php");
+include("../includes/logs.php");
 
 include("../includes/helpers/variaveis_helper.php");
 

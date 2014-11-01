@@ -1,20 +1,20 @@
 <?php
- include_once "../includes/logs.php";
+ include_once $_SERVER['DOCUMENT_ROOT']."/includes/logs.php";
  class SQLBuilder
  {
     
-    const _SELECT   = "SELECT %s";
-    const _UPDATE   = "UPDATE %s SET %s";
-    const _FROM     = "  FROM %s";
-    const _WHERE    = " WHERE %s";
-    const _JOIN     = "  JOIN %s ON (%s)";
-    const _AND      = "   AND %s ";
-    const _OR       = "    OR %s ";
-    const _GROUP_BY = " GROUP BY %s ";
-    const _ORDER_BY = " ORDER BY %s ";
-    const _LIMIT    = " LIMIT %s ";
-    const _INSERT   = " INSERT INTO %s (%s) VALUES (%s)";
-    const _DELETE   = " DELETE FROM %s %s";
+    private $_SELECT   = "SELECT %s";
+    private $_UPDATE   = "UPDATE %s SET %s";
+    private $_FROM     = "  FROM %s";
+    private $_WHERE    = " WHERE %s";
+    private $_JOIN     = "  JOIN %s ON (%s)";
+    private $_AND      = "   AND %s ";
+    private $_OR       = "    OR %s ";
+    private $_GROUP_BY = " GROUP BY %s ";
+    private $_ORDER_BY = " ORDER BY %s ";
+    private $_LIMIT    = " LIMIT %s ";
+    private $_INSERT   = " INSERT INTO %s (%s) VALUES (%s)";
+    private $_DELETE   = " DELETE FROM %s %s";
 
     private $select  = "";
     private $from    = "";
@@ -27,7 +27,7 @@
    
     public function select($string)
     {
-        $this->select = sprintf($this::_SELECT, $string);
+        $this->select = sprintf($this->_SELECT, $string);
         return $this;
     }
 
@@ -45,7 +45,7 @@
           }
         }
 
-        $this->update = sprintf($this::_UPDATE, $table, substr($sets, 0,strlen($sets)-1));
+        $this->update = sprintf($this->_UPDATE, $table, substr($sets, 0,strlen($sets)-1));
 
         if (!empty($where)) {
             $this->update .= " WHERE ".$where;
@@ -56,13 +56,13 @@
 
      public function from($string)
      {
-        $this->from  = sprintf($this::_FROM, $string);
+        $this->from  = sprintf($this->_FROM, $string);
          return $this;
      }
 
     public function join($table, $condicao)
     {
-        $this->from  .= sprintf($this::_JOIN, $table, $condicao);
+        $this->from  .= sprintf($this->_JOIN, $table, $condicao);
         return $this;
     }
 
@@ -83,38 +83,38 @@
             else
                 $string = $where;
 
-           $this->where = sprintf($this::_WHERE, $string); 
+           $this->where = sprintf($this->_WHERE, $string); 
         }
         return $this;
      }
 
     public function _and($string)
     {
-        $this->where .= sprintf($this::_AND, $string); 
+        $this->where .= sprintf($this->_AND, $string); 
         return $this;
     }
 
     public function _or($string)
     {
-        $this->where .= sprintf($this::_OR, $string); 
+        $this->where .= sprintf($this->_OR, $string); 
         return $this;
     }
 
     public function groupBy($string)
     {
-        $this->where = sprintf($this::_GROUP_BY, $string); 
+        $this->where = sprintf($this->_GROUP_BY, $string); 
         return $this;
     }
 
     public function orderBy($string)
     {
-        $this->where = sprintf($this::_ORDER_BY, $string); 
+        $this->where = sprintf($this->_ORDER_BY, $string); 
         return $this;
     }
 
     public function limit($init=0, $end=0)
     {
-        $this->limit = sprintf($this::_LIMIT, $init);
+        $this->limit = sprintf($this->_LIMIT, $init);
         
         if ($end >0)
             $this->limit = $this->limit. ", $end";
@@ -140,7 +140,7 @@
         }
 
         if(!empty($insertCol) and !empty($insertVal))
-            $this->insert = sprintf($this::_INSERT
+            $this->insert = sprintf($this->_INSERT
                                    , $table
                                    , substr($insertCol, 1)
                                    , substr($insertVal, 1)
@@ -156,7 +156,7 @@
             $_where .= " WHERE ".$where;
         }
 
-        $this->delete = sprintf($this::_DELETE, $table, $_where);
+        $this->delete = sprintf($this->_DELETE, $table, $_where);
        
         return $this;
     }

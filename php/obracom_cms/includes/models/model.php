@@ -120,11 +120,16 @@ class Model{
 		return $this->get_rows();
 	}
 	
-	public function getLimit($ini, $end = 0)
+	public function getLimit($ini, $end = 0, $orderBy = "")
 	{
-	    $this->buildSql()->select('*')
+	    $builder =  $this->buildSql()
+                         ->select('*')
 		                 ->from($this->table)
 						 ->limit($ini, $end);
+
+        if(!empty($orderBy))
+            $builder->orderBy($orderBy);
+           
 		return $this->get_rows();
 	}
 	
@@ -204,7 +209,7 @@ class Model{
 		$this->buildSql()->delete($this->table, $this->col_id." = $id");
         return $this->execute();
 	}
-	
+
 	public function setLastId()
 	{
 		try{

@@ -2,9 +2,6 @@
 //$ROOT_URL="http://localhost/girardi/cms/"; 
 //$ROOT_URL="/cms/"; 
 
-include_once("../includes/helpers/variaveis_helper.php");
-
-
 $ROOT_URL = "http://$_SERVER[SERVER_NAME]";
 @$lista = $_GET["p"];
 @$lista2 = $_GET["g"];

@@ -1,8 +1,7 @@
 <?php  
+include("../includes/functions.php");
 include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
-// include("../includes/database_connection.php");
-include("../includes/functions.php");
 include("../includes/logs.php");
 
 include("../includes/models/clientes_model.php");
@@ -10,11 +9,12 @@ include("../includes/helpers/variaveis_helper.php");
 
     $clientes = new ClientesModel();
 
-    $numreg     = 10; 
-    $_GET['pg'] = $inicial  = isset($_GET['pg']) ? ($_GET['pg'] * $numreg) : 0;
-        
+    $numreg       = 10; 
+    
+    $_GET['pg']   =  $inicial = Parameter::GET('pg', 0);
+    $orderBy      = Parameter::GET('ordem','');
     $quantreg     = $clientes->getCount();
-    $listClientes = $clientes->getLimit($inicial, $numreg);
+    $listClientes = $clientes->getLimit($inicial, $numreg, $orderBy);
 
     $clientes_tab = $clientes_gerenciar = "current";
 ?>
@@ -58,7 +58,7 @@ confirmaExclusaoCliente = function()
                                     <a href="/clientes/listar.php?ordem=email&desc=1" class="down">Email</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/clientes/listar.php?ordem=telefone&desc=1" class="down">Telefone Principal</a>
+                                    <a href="/clientes/listar.php?ordem=telefone_principal&desc=1" class="down">Telefone Principal</a>
                                 </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>

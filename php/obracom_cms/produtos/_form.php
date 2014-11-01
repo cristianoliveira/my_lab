@@ -44,8 +44,7 @@
                            type="button" 
                            value="+" 
                           >
-                    <input id="cor-button-modelo"
-                           class="botao-remove" 
+                    <input class="botao-remove" 
                            type="button" 
                            value="-" 
                           >
@@ -58,7 +57,7 @@
                   if(isset($listCores))
                      foreach($listCores as $cor) { 
                 ?>
-                    <input id="<?= "cor[$i]" ?>" 
+                    <input id="<?= "cor-$i" ?>" 
                             name="<?= "cor[$i]" ?>" 
                             class="cor-adicionada <?= "cor-adicionada-$i" ?> valid" 
                             type="text" 
@@ -67,11 +66,11 @@
                             readonly 
                             style="background-color: #<?= $cor['cor'] ?>;">
                 
-                     <input id="<?= "remove-$i" ?>" 
+                  <!--    <input id="<?= "remove-$i" ?>" 
                             class="botao-remove <?= "cor-adicionada-$i" ?>" 
                             type="button" 
                             value="-" 
-                            visibility="visible">  
+                            visibility="visible">   -->
                 <?php  $i++;
                      } 
                 ?>
@@ -200,18 +199,6 @@
         if(!$(this).valid())
           return false;
 
-        $.ajaxSetup({async: false});
-        if(!validaUnico("nome_seo")){
-            alert("Campo nome seo duplicado.");
-            return false;
-
-        }
-        
-        if(!validaUnico("codigo")){
-            alert("Campo nome seo duplicado.");
-            return false; 
-        }
-
         doSubmit = $('#editar_galeria').val() != "false";
         if(!doSubmit){
             $( "#dialog-confirm" ).dialog({
@@ -239,48 +226,28 @@
 
     });    
     
-    validaUnico = function(campo)
-    {
-        retorno = true;
-        valor = $("#"+campo).val();
-        id    = $("#id").val();
-        if(valor!="" && id==undefined){
-          $.get( "validacao.php?campo="+campo+"&valor="+valor, function( data ) {
-              if (data == "1")
-              {
-                  retorno = false;
-              }else{
-                  retorno = true; 
-              }
-          });
-       }
-
-       return retorno;
-    }
-
     $("#adiciona-cor").click(function(){
         quantidade = $('.cor-adicionada').length
         document.getElementById('cor').color.hidePicker()
         
         novaCor = $('#cor').clone()
-        novaCor.attr("id"    ,"cor["+quantidade+"]")
+        novaCor.attr("id"    ,"cor-"+quantidade)
         novaCor.attr("name"  ,"cor["+quantidade+"]")
         novaCor.attr("class" ,"cor-adicionada cor-adicionada-"+quantidade)
         
+        /*
         botaoRemove = $("#cor-button-modelo").clone(true,true);
         botaoRemove.attr("id"        ,"remove-"+quantidade)
         botaoRemove.attr("visibility","visible");
         botaoRemove.attr("class"     ,"cor-adicionada-"+quantidade)
         
+        botaoRemove.appendTo('#cor-painel')*/
         novaCor.appendTo('#cor-painel')
-        botaoRemove.appendTo('#cor-painel')
     });
 
     $(".botao-remove").click(function(){
-        valor = $(this).attr("id").split('-')
-        cor   = valor[1]
-
-        $(".cor-adicionada-"+cor).remove();
+        ultimaCor = $('.cor-adicionada:last-child').attr("id");
+        $('#'+ultimaCor).remove();
     });    
 
 /* MASCARAS */
@@ -294,7 +261,7 @@ $(".mascara-valor").focusout(function(){
       valor = valor.replace(/[^0-9]/gi,'');
       valor = valor.substring(0, valor.length-2)+","+valor.substring(valor.length-2);
       
-      if(valor.length>4)
+      if(valor.length>3)
         $(this).val(valor);
       else
         $(this).val("");
@@ -304,7 +271,23 @@ $(".mascara-telefone").mask("(999)9999-9999");
 
 jQuery.validator.addMethod("validaUnico", function(value, element)
 { 
-   return validaUnico(element);  
+    retorno = true;
+    campo = element.id;
+    valor = value;
+    id    = $("#id").val();
+
+    if(valor!="" && id==undefined){
+      $.ajaxSetup({async: false});
+      $.get( "validacao.php?campo="+campo+"&valor="+valor, function( data ) {
+        if (data == "1")
+        {
+            retorno = false;
+        }else{
+            retorno = true; 
+        }
+      });
+    }
+   return retorno;  
 }, "Valor já foi utilizado."); 
 
 $.validator.messages.required = 'Campo deve ser informado.';
@@ -312,8 +295,8 @@ $("#form-produto").validate({
       rules:
       {
           nome: { required: true },
-          nome_seo: { required: true },
-          codigo: { required: true },
+          nome_seo: { required: true , validaUnico:true},
+          codigo: { required: true , validaUnico:true},
           valor_original:           { required: true },         
           valor_promocional:        { required: true },
       },

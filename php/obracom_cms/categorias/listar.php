@@ -1,14 +1,16 @@
 <?php  
+include("../includes/functions.php");
 include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
-include("../includes/database_connection.php");
-include("../includes/functions.php");
 include("../includes/logs.php");
+
+include("../includes/helpers/variaveis_helper.php");
 include("../includes/models/categorias_model.php");
 
     $categorias = new CategoriasModel();
 
-    paginacao(10);
+    $numreg  = 10;  
+    $inicial = paginacao($numreg);
         
     $listcategorias = $categorias->getLimit($inicial, $numreg);
     $quantreg       = $categorias->getCount();
@@ -23,8 +25,8 @@ include("../includes/models/categorias_model.php");
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
-            <h2>Lista de Usuários cadastrados</h2>
-            <p id="page-intro">Abaixo estão listados todos os usuários.</p>
+            <h2>Lista de Categorias</h2>
+            <p id="page-intro">Abaixo estão listados todos os categorias.</p>
             
 			<?php  showSessionMessage(); ?>
             
@@ -33,7 +35,7 @@ include("../includes/models/categorias_model.php");
                         <div class="content-box-header">
 
                             <h3>Destaques</h3>
-                          <input class="destaques button botao-cadastrar" type="button" value="Cadastrar um usuário"  onclick="javascript: location.href='cadastro.php?p=8&g=1';"  />
+                          <input class="destaques button botao-cadastrar" type="button" value="Cadastrar um "  onclick="javascript: location.href='cadastro.php?p=8&g=1';"  />
                           <div class="clear"></div>
 
                         </div> <!-- End .content-box-header -->
@@ -44,7 +46,7 @@ include("../includes/models/categorias_model.php");
 
                             <thead>
                                 <tr>
-                                    <th class="current"><a href="#"class="down">Título</a></th>                            <th class="">&nbsp;</th>                            <th>Ações</th>
+                                    <th class="current"><a href="<?= site_url('categorias/listar.php?ordem=nome&desc=1') ?>"class="down">Título</a></th>                            <th class="">&nbsp;</th>                            <th>Ações</th>
                                 </tr>
                             </thead>
 
@@ -62,14 +64,14 @@ include("../includes/models/categorias_model.php");
                             <?php  foreach($listcategorias as $categoria) { ?>
                                 <tr>
                                     <td class="current">
-                                        <a href="#" title=""> <?php echo $categoria['nome'] ; ?> </a>
+                                        <a href="editar.php?id=<?= $categoria['id'] ?>" title=""> <?php echo $categoria['nome'] ; ?> </a>
                                     </td>
                                     <td class="">
                                         &nbsp;
                                     </td>
                                     <td>
                                         <!-- Icons -->
-                                        <a href="editar.php?p=8&g=2&id=<?php echo $categoria['id']; ?>"title="Editar o usuário.">
+                                        <a href="editar.php&id=<?php echo $categoria['id']; ?>"title="Editar o categoria.">
                                             <img src="../imagens/icones/pencil.png"alt="Editar"/>
                                         </a>
                                         <a href="acao.php?a=3&id=<?php echo $categoria['id']; ?>" 

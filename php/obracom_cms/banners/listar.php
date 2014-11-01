@@ -1,8 +1,7 @@
 <?php  
+include("../includes/functions.php");
 include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
-// include("../includes/database_connection.php");
-include("../includes/functions.php");
 include("../includes/logs.php");
 
 include("../includes/models/banners_model.php");
