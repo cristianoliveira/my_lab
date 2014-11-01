@@ -2,7 +2,7 @@ My Lab
 ==========
 Some EXPERIMENTALS projects.
 
-Please ignore errors and aberrations or dont fork it! 
+Please ignore errors and aberrations or keep away from this code! 
 
 If any code in this repository is useful for you, I will be glad if you use.
 When I think someone of this projects deserv have they own repository. I will create and move all files.
