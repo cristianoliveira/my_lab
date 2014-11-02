@@ -6,7 +6,7 @@ include("../includes/database_connection.php");
 include("../includes/helpers/variaveis_helper.php");
 
   //Menu Sidebar
-  $clientes_tab = $clientes_adicionar = "current";
+  $enquetes_tab = $enquetes_adicionar = "current";
   
 ?>
 
@@ -23,7 +23,7 @@ include("../includes/helpers/variaveis_helper.php");
         <div class="content-box"><!-- Start Content Box -->
 
             <div class="content-box-header">
-                <h3>Dados da Enquete.</h3>
+                <h3>Dados da Enquete</h3>
                 <div class="clear"></div>
             </div> <!-- End .content-box-header -->
             

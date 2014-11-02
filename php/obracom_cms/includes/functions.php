@@ -561,7 +561,7 @@ function show_session_message()
 
 function site_url($url=''){
     
-    $url_site = $_SERVER[SERVER_NAME];
+    $url_site = $_SERVER['SERVER_NAME'];
 
     if(empty($url))
     {

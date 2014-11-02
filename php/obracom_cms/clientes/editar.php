@@ -16,6 +16,8 @@ $cliente   = $clientes->getById($idcliente);
 
 if(empty($cliente))
    header('Location:listar.php');
+
+$cliente['nascimento'] =  date("d/m/Y", strtotime($cliente['nascimento']));
         
 $clientes_tab = $clientes_gerenciar = "current";
 

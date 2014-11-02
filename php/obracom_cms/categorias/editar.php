@@ -8,7 +8,7 @@ include_once("../includes/helpers/variaveis_helper.php");
 include_once("../includes/models/categorias_model.php");
 
 $categorias  = new CategoriasModel();
-$id          = par_get("id");
+$id          = Parameter::GET("id",0);
 $categoria   = $categorias->getById($id);
 
 if(empty($categoria))

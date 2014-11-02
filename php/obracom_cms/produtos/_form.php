@@ -123,9 +123,7 @@
                       id="descricao" 
                       name="descricao" 
                       cols="79" 
-                      rows="15">
-                <?= if_exist($produto['descricao']) ?>
-            </textarea>
+                      rows="15"><?= if_exist($produto['descricao']) ?></textarea>
         </div>
         
         <div>
@@ -178,10 +176,10 @@
 				   />
         </div>
         
-        
-    <p>
-        <input class="button"type="submit"value="<?= $acao ?>"/>
-    </p>
+        <div class="continuar">
+            <button type="submit"  class="button" id="btn_send" >Salvar</button>
+        </div>
+
 </fieldset>
 <div class="clear"></div>
 <!-- End .clear -->
@@ -290,7 +288,10 @@ jQuery.validator.addMethod("validaUnico", function(value, element)
    return retorno;  
 }, "Valor já foi utilizado."); 
 
-$.validator.messages.required = 'Campo deve ser informado.';
+$(function(){
+    $.validator.messages.required = 'Campo deve ser informado.';
+});
+
 $("#form-produto").validate({
       rules:
       {

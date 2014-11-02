@@ -21,7 +21,7 @@ include("../includes/models/categorias_model.php");
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
-            <h2>Adição de um Produto</h2>
+            <h2>Adição de Produto</h2>
             <p id="page-intro">Utilize o formulário abaixo para incluir um produto no sistema.</p>
 
 
@@ -29,7 +29,7 @@ include("../includes/models/categorias_model.php");
 
                 <div class="content-box-header">
 
-                    <h3>Dados do Produto.</h3>
+                    <h3>Dados do Produto</h3>
 
                     <div class="clear"></div>
 

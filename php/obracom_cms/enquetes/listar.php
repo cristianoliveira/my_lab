@@ -8,13 +8,17 @@ include("../includes/logs.php");
 include("../includes/models/enquetes_model.php");
 include("../includes/helpers/variaveis_helper.php");
 
-    $enquetes = new EnquetesModel();
-
-    $numreg     = 10; 
-    $_GET['pg'] = $inicial  = isset($_GET['pg']) ? ($_GET['pg'] * $numreg) : 0;
-        
+    $enquetes      = new EnquetesModel();
+    
+    //Sem tempo para arrumar GO HORSE
+    $numreg         = 10;  
+    $_GET['pg']   = Parameter::GET('pg', 0);
+    $inicial      = $_GET['pg'] * 10;
+    $_GET['p']    = Parameter::GET('p', 0);
+    $_GET['g']    = Parameter::GET('g', 0);
+    
+    $listEnquetes = $enquetes->getLimit($inicial, $numreg, Parameter::GET('ordem'));
     $quantreg     = $enquetes->getCount();
-    $listEnquetes = $enquetes->getLimit($inicial, $numreg);
 
     $enquetes_tab = $enquetes_gerenciar = "current";
 ?>
@@ -32,15 +36,15 @@ confirmaExclusaoenquete = function()
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
-            <h2>Lista de enquetes cadastrados</h2>
+            <h2>Lista de Enquetes</h2>
             <p id="page-intro">Abaixo estão todos os enquetes cadastrados no site. </p>
                
                <?php showSessionMessage(); ?>
             
             <div class="content-box"><!-- Start Content Box -->
                 <div class="content-box-header">
-                    <h3>Categorias</h3>
-                    <input type="button" value="Cadastrar novo enquete" 
+                    <h3>Enquetes</h3>
+                    <input type="button" value="Cadastrar nova enquete" 
                             class="produto button botao-cadastrar" 
                             onClick="javascript: location.href='cadastro.php';">
 
@@ -52,13 +56,13 @@ confirmaExclusaoenquete = function()
                         <thead>
                             <tr>
                                 <th class="current">
-                                    <a href="/enquetes/listar.php?ordem=nome&desc=1" class="down">Pergunta</a>
+                                    <a href="/enquetes/listar.php?ordem=pergunta&desc=1" class="down">Pergunta</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/enquetes/listar.php?ordem=email&desc=1" class="down">Pergunta Seo</a>
+                                    <a href="/enquetes/listar.php?ordem=pergunta_seo&desc=1" class="down">Pergunta Seo</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/enquetes/listar.php?ordem=telefone&desc=1" class="down">Ativa</a>
+                                    <a href="/enquetes/listar.php?ordem=ativa&desc=1" class="down">Ativa</a>
                                 </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>

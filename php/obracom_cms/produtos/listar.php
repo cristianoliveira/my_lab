@@ -1,7 +1,6 @@
 <?php  
 include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
-include("../includes/database_connection.php");
 include("../includes/functions.php");
 include("../includes/logs.php");
 
@@ -12,10 +11,15 @@ include("../includes/helpers/variaveis_helper.php");
     $produtos   = new ProdutosModel();
     $categorias = new CategoriasModel();
 
-    $numreg   = 10; 
-    $_GET['pg'] = $inicial  = isset($_GET['pg']) ? ($_GET['pg'] * $numreg) : 0;
+    //Sem tempo para arrumar GO HORSE
+    $numreg         = 10;  
+    $_GET['pg']   = Parameter::GET('pg', 0);
+    $inicial      = $_GET['pg'] * 10;
+    $_GET['p']    = Parameter::GET('p', 0);
+    $_GET['g']    = Parameter::GET('g', 0);
+    
             
-    $listProdutos = $produtos->getLimit($inicial, $numreg);
+    $listProdutos = $produtos->getLimit($inicial, $numreg, Parameter::GET('ordem'));
     $quantreg     = $produtos->getCount(); // Quantidade de registros pra paginação
 
     $produtos_tab  = $produtos_tab_gerenciar = "current";
@@ -29,7 +33,7 @@ include("../includes/helpers/variaveis_helper.php");
     <div id="main-content"> <!-- Main Content Section with everything -->
 
         <!-- Page Head -->
-        <h2>Lista de Produtos cadastrados</h2>
+        <h2>Lista de Produtos</h2>
         <p id="page-intro">Abaixo estão todos os produtos cadastrados no site, bem como em qual categoria. </p>
         <?php  showSessionMessage(); ?>
         <div class="content-box"><!-- Start Content Box -->
@@ -50,8 +54,9 @@ include("../includes/helpers/variaveis_helper.php");
 
                     <thead>
                         <tr>
-                            <th class="current"><a href="/produtos/ordenar-por/nome/ordem/desc" class="down">Nome</a></th>
-                            <th class="current"><a href="/produtos/ordenar-por/nome/ordem/desc" class="down">Categoria</a></th>
+                            <th class="current"><a href="/produtos/listar.php?ordem=nome&desc=1" class="down">Nome</a></th>
+                            <th class="current"><a href="/produtos/listar.php?ordem=categoria_id&desc=1" class="down">Categoria</a></th>
+                            <th class="current mascara-valor"><a href="/produtos/listar.php?ordem=valor_original&desc=1" class="down">Valor</a></th>
                             <th class="current">Ações</th>
                         </tr>
                     </thead>
@@ -63,15 +68,15 @@ include("../includes/helpers/variaveis_helper.php");
                     
                         <tr>
                             <td class="current">
-                                <a href="/produto/editar/3" title="Editar produto &quot;Cadeira&quot;">
                                     <?php echo $produto['nome']; ?>
-                                </a>
                             </td>
                             <td class="current">
-                                <a href="/produto/editar/3" title="Editar produto &quot;Cadeira&quot;">
                                     <?php echo $categoria['nome']; ?>
-                                </a>
                             </td>
+                            <td class="current mascara-valor" >
+                                    <?php echo $produto['valor_original']; ?>
+                            </td>
+
                             <td nowrap><!-- Icons -->
                                 <a href="editar.php?id=<?= $produto['id']; ?>"title="Editar o produto"> 
                                     <img src="../imagens/icones/pencil.png"alt="Editar" border="0" align="left" style="padding-left:10px;" /> 

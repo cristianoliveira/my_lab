@@ -1,5 +1,6 @@
 <?php
- include_once $_SERVER['DOCUMENT_ROOT']."/includes/logs.php";
+ require_once($_SERVER['DOCUMENT_ROOT']."/includes/logs.php");
+ 
  class SQLBuilder
  {
     
@@ -39,10 +40,16 @@
             {
                 $sets .= sprintf("%s = '%s',", $col, $val);
             }
-            else
-            {
-                $sets .= sprintf("%s = %s ,", $col, $val);
-          }
+            else 
+                if (is_bool($val))
+                {
+                    $val   = $val?1:0;
+                    $sets .= sprintf("%s = '%s',", $col, $val);
+                }
+                else
+                {
+                    $sets .= sprintf("%s = %s ,", $col, $val);
+                }
         }
 
         $this->update = sprintf($this->_UPDATE, $table, substr($sets, 0,strlen($sets)-1));
@@ -202,7 +209,7 @@
 
         $this->clean();
 
-        log_file('###SQL '.$return);
+        log_file('SQL - '.$return);
 
 
         return $return.';';

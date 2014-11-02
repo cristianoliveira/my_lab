@@ -7,12 +7,16 @@ include("../includes/logs.php");
 
 include("../includes/models/enquetes_model.php");
 include("../includes/helpers/variaveis_helper.php");
+include("../includes/models/opcoes_enquete_model.php");
 
 //Pega Dados e Mostra-os.
 $enquetes  = new EnquetesModel();
+$opcoesEnquete  = new OpcoesEnqueteModel();
 
-$idenquete = Parameter::GET('id');
-$enquete   = $enquetes->getById($idenquete);
+
+$idenquete   = Parameter::GET('id');
+$enquete     = $enquetes->getById($idenquete);
+$listOpcoes  = $opcoesEnquete->getByEnqueteId($idenquete);
 
 if(empty($enquete))
    header('Location:listar.php');

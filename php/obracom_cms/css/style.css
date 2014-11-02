@@ -560,9 +560,13 @@ form select.input-notification-error{border-color:#c00!important}
                 }
 
 .error {
-                /*background: #ffcece url('../imagens/icones/cross_circle.png');*/
-                border-color: #df8f8f;
-                color: red;
+                background-image: url('../imagens/icones/cross_circle.png');
+                color: #665252;
+                background-position: left 2px;
+                background-repeat: no-repeat;
+                padding: 2px 0 2px 22px;
+                background-color: transparent;
+                margin: 0 0 0 5px;
                 }
 
 .notification div {
@@ -912,22 +916,26 @@ input[readonly] {color:#999!important}
     width: 20px;
 }
 
-.produto-galeria{
-    width: 500px;
+.galeria-upload-form{
     margin: 0 auto;
+    float: left;
 }
 
-.produto-tumb-galeria{
+.galeria-thumbs{
+    width: 100%;
+}
+
+.galeria-thumb{
     width: 11em;
     margin: 5px;
     float: left;
 }
 
-.produto-tumb-galeria img{
+.galeria-thumb img{
     width: 10em;
 }
 
-.produto-tumb-galeria a{
+.tumb-galeria a{
     display: block;
 }
 
@@ -936,6 +944,23 @@ input[readonly] {color:#999!important}
 	margin: 0.6em 0;
 }
 
+.opcao-adicionada {
+    margin: 5px 0;
+}
+
 .mascara-valor {
     text-align: right;
+}
+
+.pagseguro-dados {
+    margin: 10px 0;
+}
+
+.pagseguro-dados h5{
+    width: 100px;
+    font-size: 4;
+}
+
+.pagseguro-dados td{
+    width: 30%;
 }

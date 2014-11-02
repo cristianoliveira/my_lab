@@ -18,13 +18,13 @@ include("../includes/helpers/variaveis_helper.php");
     <div id="main-content"> <!-- Main Content Section with everything -->
 
         <!-- Page Head -->
-            <h2>Adição de destaque</h2>
+            <h2>Adição de Destaque</h2>
             <p id="page-intro">Utilize o formulário abaixo para incluir um destaque no sistema.</p>
         
         <div class="content-box"><!-- Start Content Box -->
 
             <div class="content-box-header">
-                <h3>Dados do destaque.</h3>
+                <h3>Dados do Destaque</h3>
                 <div class="clear"></div>
             </div> <!-- End .content-box-header -->
             

@@ -109,7 +109,7 @@ switch ($lista2) {
 			</li>
 			
 			<li>
-				<a href="#" class="nav-top-item <?= $_COOKIE['banners']; ?>">
+				<a href="#" class="nav-top-item <?= if_exist($enquetes_tab, 'default') ?>">
 				Enquetes
 				</a>
 				<ul style="display:none;">
@@ -119,27 +119,39 @@ switch ($lista2) {
 						   class="<?= if_exist($enquetes_gerenciar,'default') ?>"> Gerenciar </a></li>
 				</ul>
 			</li>
-            
+
+			<li>
+				<a href="#" class="nav-top-item <?= if_exist($pagseguro_tab, 'default') ?>">
+				PagSeguro
+				</a>
+				<ul style="display:none;">
+					<li><a href="<?php echo $ROOT_URL; ?>/pagseguro/listar.php" 
+						   class="<?= if_exist($pagseguro_gerenciar,'default') ?>"> Transações </a></li>
+					<li><a href="<?php echo $ROOT_URL; ?>/pagseguro/consulta.php" 
+						   class="<?= if_exist($pagseguro_procurar,'default') ?>"> Procurar por Código</a></li>
+				</ul>
+			</li>
+            <!--
              <li>
-				<a href="#" class="nav-top-item <?= $_COOKIE['empresa']; ?>">
+				<a href="#" class="nav-top-item <?= if_exist($empresa_tab, 'default'); ?>">
 				Sobre Nós
 				</a>
 
 				<ul style="display:none;">
-					<!-- li><a href="< ?php echo $ROOT_URL; ?>/empresa/cadastro.php?p=4&g=1" < ?php  if($lista==4 and $lista2==1){ echo $seleciona2; } ?>> Adicionar</a> </li -->
-					<li><a href="<?php echo $ROOT_URL; ?>/empresa/listar.php" class="<?= $_COOKIE["empresa2"]; ?>"> Gerenciar </a> </li>
+					<li><a href="<?php echo $ROOT_URL; ?>/empresa/listar.php" 
+						   class="<?= if_exist($empresa_gerenciar, 'default'); ?>"> Gerenciar </a> </li>
 				</ul>
 			</li>
         
-            <li>
-				<a href="#" class="nav-top-item <?= if_exist($enquetes_tab, 'default'); ?>">
+             <li>
+				<a href="#" class="nav-top-item <?= if_exist($ferramentas_tab, 'default'); ?>">
 				Ferramentas
 				</a>
 
 				<ul style="display:none;">
-					<li><a href="<?php echo $ROOT_URL; ?>/crop/index.php" class="<?= $_COOKIE["crop1"]; ?>"> Editar Imagem </a> </li>
+					<li><a href="<?php echo $ROOT_URL; ?>/crop/index.php" class="<?= if_exist($_COOKIE["crop1"],'default'); ?>"> Editar Imagem </a> </li>
 				</ul>
-			</li>
+			</li> -->
             
             
         <li>

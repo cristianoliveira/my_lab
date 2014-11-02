@@ -1,17 +1,22 @@
 <?php  
-include("../includes/functions.php");
-include("../includes/cabecalho.php"); 
-include('../includes/check_authentication.php');
-include("../includes/logs.php");
+include($_SERVER['DOCUMENT_ROOT']."/includes/functions.php");
+include($_SERVER['DOCUMENT_ROOT']."/includes/cabecalho.php"); 
+include($_SERVER['DOCUMENT_ROOT'].'/includes/check_authentication.php');
+include($_SERVER['DOCUMENT_ROOT']."/includes/logs.php");
 
-include("../includes/models/clientes_model.php");
-include("../includes/helpers/variaveis_helper.php");
+include($_SERVER['DOCUMENT_ROOT']."/includes/models/clientes_model.php");
+include($_SERVER['DOCUMENT_ROOT']."/includes/helpers/variaveis_helper.php");
 
     $clientes = new ClientesModel();
 
     $numreg       = 10; 
     
-    $_GET['pg']   =  $inicial = Parameter::GET('pg', 0);
+    //Sem tempo para arrumar GO HORSE
+    $_GET['pg']   = Parameter::GET('pg', 0);
+    $inicial      = $_GET['pg'] * 10;
+    $_GET['p']    = Parameter::GET('p', 0);
+    $_GET['g']    = Parameter::GET('g', 0);
+    
     $orderBy      = Parameter::GET('ordem','');
     $quantreg     = $clientes->getCount();
     $listClientes = $clientes->getLimit($inicial, $numreg, $orderBy);
@@ -21,25 +26,25 @@ include("../includes/helpers/variaveis_helper.php");
 <script> 
 confirmaExclusaoCliente = function()
 {
-    return confirm('Você tem certeza que deseja excluir este Cliente?');
+    return confirm('Você tem certeza que deseja excluir este cliente?');
 }
 </script>
 
 <body>
 
     <div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
-    <div id="sidebar"><?php  include("../includes/sidebar.php"); ?></div> <!-- End #sidebar -->        
+    <div id="sidebar"><?php  include($_SERVER['DOCUMENT_ROOT']."/includes/sidebar.php"); ?></div> <!-- End #sidebar -->        
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
-            <h2>Lista de Clientes cadastrados</h2>
+            <h2>Lista de Clientes</h2>
             <p id="page-intro">Abaixo estão todos os clientes cadastrados no site. </p>
                
                <?php showSessionMessage(); ?>
             
             <div class="content-box"><!-- Start Content Box -->
                 <div class="content-box-header">
-                    <h3>Categorias</h3>
+                    <h3>Clientes</h3>
                     <input type="button" value="Cadastrar novo cliente" 
                             class="produto button botao-cadastrar" 
                             onClick="javascript: location.href='cadastro.php';">
@@ -100,7 +105,7 @@ confirmaExclusaoCliente = function()
                             <tr>
                                 <td colspan="7">
 
-                                    <?php  include("../includes/_paginate.php"); ?>
+                                    <?php  include($_SERVER['DOCUMENT_ROOT']."/includes/_paginate.php"); ?>
                                     
                                     <div class="clear"></div>
                                 </td>

@@ -7,7 +7,7 @@
                    id="nome" 
                    name="nome" 
                    maxlength="150" 
-                   value="<?= if_exist($usuario['nome']) ?>"/>
+                   value="<?= if_exist($categoria['nome']) ?>"/>
         </div>
 
         <div>
@@ -16,12 +16,11 @@
                    type="text" 
                    id="nome_seo" 
                    name="nome_seo" 
-                   value="<?= if_exist($usuario['nome_seo']) ?>"/>
+                   value="<?= if_exist($categoria['nome_seo']) ?>"/>
         </div>
-        
 
-        <div>
-            <input type="submit" class="button" id="btn_send" value="<?= $acao ?>" />
+        <div class="continuar">
+            <button type="submit"  class="button" id="btn_send" >Salvar</button>
         </div>
 
     </fieldset>

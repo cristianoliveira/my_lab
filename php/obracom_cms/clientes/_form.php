@@ -172,7 +172,7 @@
             <div>
                 <label>Como gostaria de ser chamado? &#42;</label>
                 <input type="text" 
-                        class="text-input required padrao" 
+                        class="text-input medium-input required padrao" 
                         id="form_apedivdo" 
                         name="apelido" 
                         maxlength="100" 
@@ -184,7 +184,7 @@
             <div>
                 <label>E-mail &#42;</label>
                 <input type="text" 
-                        class="text-input required" 
+                        class="text-input medium-input required" 
                         id="form_email" 
                         name="email" 
                         maxlength="255" 
@@ -196,10 +196,9 @@
                 <input type="password" 
                         class="text-input required padrao" 
                         name="senha" 
-                        id="form_senha" 
+                        id="senha" 
                 />
                 <br />
-                <p><span>Sua senha deve ter no mínimo de 6 caracteres</span></p>
             </div>
             <div>
                 <label>Confirme a senha &#42;</label>
@@ -210,7 +209,7 @@
                 />
             </div>
             <div class="continuar">
-                <button type="submit">Enviar</button>
+                <button type="submit"  class="button" id="btn_send" >Salvar</button>
             </div>
         </div>            
             
@@ -240,6 +239,13 @@
             $('.pessoa_juridica').show();
           }
     };
+
+    jQuery.validator.addMethod("confirmacaoSenha", function(value, element)
+    { 
+      var senha       = $('#senha').val();
+      var confirmacao = $('#confirmacao_senha').val();
+      return confirmacao == value;  
+    }, "Senha não confere."); 
 
     $(function(){
         validaTipoPessoa();

@@ -1,6 +1,5 @@
 <?php 
 
-include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 include("../includes/functions.php");
@@ -28,6 +27,7 @@ include("../includes/helpers/url_helper.php");
   $dados['oferta_imperdivel_home']   = Parameter::POST('oferta_imperdivel_home',0); 
   $dados['disponivel']               = Parameter::POST('disponivel',0); 
   $dados['ativo']                    = Parameter::POST('ativo',0); 
+  $dados['descricao']                = trim(Parameter::POST('descricao','')); 
   
   $dados['valor_original']    = trata_valores($dados['valor_original']);
   $dados['valor_promocional'] = trata_valores($dados['valor_promocional']);
@@ -146,5 +146,4 @@ include("../includes/helpers/url_helper.php");
         }
     
         header('Location:listar.php'); 
-
 ?>

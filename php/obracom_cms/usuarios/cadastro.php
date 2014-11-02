@@ -14,14 +14,14 @@ include('../includes/check_authentication.php');
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
-            <h2>Cadastro de um Usuário</h2>
+            <h2>Cadastro de Usuário</h2>
 
             <p id="page-intro">Utilize o formulário abaixo para incluir um usuário.</p>
 
             <div class="content-box"><!-- Start Content Box -->
 
                 <div class="content-box-header">
-                    <h3>Dados do Usuário.</h3>
+                    <h3>Dados do Usuário</h3>
                     <div class="clear"></div>
                 </div> <!-- End .content-box-header -->
 

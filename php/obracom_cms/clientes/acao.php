@@ -10,11 +10,14 @@ include("../includes/helpers/variaveis_helper.php");
 
     $clientes     = new ClientesModel();
     $dadosCliente = $clientes->postParameters(Parameter::POST());
-	
+    
     $acao         = Parameter::GET('a', 0); //isset($_GET["a"])? $_GET["a"] : -1; 
     $idcliente    = $clientes->getParameterID();
-	
-	log_file(" cliente ID = $idcliente");
+
+    echo $dadosCliente['nascimento'];
+    
+    if(isset($dadosCliente['nascimento']))
+        $dadosCliente['nascimento'] = date("Y-m-d", strtotime(str_replace('/', '-', $dadosCliente['nascimento'])));
             
     switch ($acao) {
         case 1: // INSERT

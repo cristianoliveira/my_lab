@@ -1,12 +1,24 @@
 <?php
-include("../includes/database_connection.php");
-include_once('SQLBuilder.php');
+require_once(dirname(__FILE__).'/sqlbuilder.php');
+
 
 class Model{
     
-    public $sqlBuilder;
-	public $table;
-	public $col_id = 'id';
+    public  $sqlBuilder;
+	public  $table;
+	public  $col_id = 'id';
+    private $conexao  = null;
+    private $database = null;
+    
+    private function getConexao()
+    {
+        require($_SERVER['DOCUMENT_ROOT']."/includes/database_config.php");
+        if($this->conexao == null || !mysqli_ping($this->conexao))
+        {
+            $this->conexao   = mysqli_connect($db_host, $db_user, $db_pass, $db_database_name);
+        }
+        return $this->conexao;
+    }
 
     public function buildSql()
     {
@@ -17,9 +29,9 @@ class Model{
     public function get_rows()
     {
         $return = array();
-        $sql = mysql_query($this->sqlBuilder) or die("Erro ao afetuar tentar acessar o banco de dados");
+        $sql = mysqli_query($this->getConexao(), $this->sqlBuilder) or die("Erro ao afetuar tentar acessar o banco de dados");
 
-        while($row = mysql_fetch_array($sql))
+        while($row = mysqli_fetch_array($sql))
               $return[] = $row;
 
         return $return;
@@ -27,30 +39,30 @@ class Model{
 
     public function get_first()
     {
-        $sql    = mysql_query($this->sqlBuilder) or die("Erro ao afetuar tentar acessar o banco de dados");
-        return mysql_fetch_array($sql);
+        $sql    = mysqli_query($this->getConexao(), $this->sqlBuilder) or die("Erro ao afetuar tentar acessar o banco de dados");
+        return mysqli_fetch_array($sql);
     }
 
     public function get_rows_by_query($query)
     {
         $return = array();
-        $sql = mysql_query($query) or die("Erro ao afetuar tentar acessar o banco de dados");
+        $sql = mysqli_query(getConexao(), $query) or die("Erro ao afetuar tentar acessar o banco de dados");
 
-        while($row = mysql_fetch_array($sql))
+        while($row = mysqli_fetch_array($sql))
               $return[] = $row;
 
-         error_log(mysql_error($conexao));
+         error_log(mysqli_error($this->getConexao()));
 
         return $return;
     }
     
     public function execute_insert()
     {
-        $result = mysql_query($this->sqlBuilder);
+        $result = mysqli_query($this->getConexao(),$this->sqlBuilder);
 
         if ($result) {
             //Não sei se é utilizado em outro lugar
-			$id_grupo = mysql_insert_id();
+			$id_grupo = mysqli_insert_id($this->getConexao());
             $_SESSION['uidc'] = $id_grupo;
 			
 			$this->setLastId();
@@ -63,49 +75,49 @@ class Model{
 
     public function execute_update()
     {
-        $result = mysql_query($this->sqlBuilder);
+        $result = mysqli_query($this->sqlBuilder);
 
         if ($result) {
 		    //Não sei se é utilizado em outro lugar
-            $id_grupo = mysql_insert_id();
+            $id_grupo = mysqli_insert_id($this->getConexao());
             $_SESSION['uidc'] = $id_grupo;
 			
 			$this->setLastId();
 			
             return true;
         } else {
-            error_log(mysql_error($conexao));
+            error_log(mysqli_error($this->getConexao()));
             return false;
         }
     }
 
     public function execute()
     {
-        $result = mysql_query($this->sqlBuilder);
+        $result = mysqli_query($this->getConexao(),$this->sqlBuilder);
         if ($result) {
             $this->setLastId();
 			return true;
         } else {
-            error_log(mysql_error($conexao));
+            error_log(mysqli_error($this->getConexao()));
             return false;
         }
     }
 
     public function execute_sql($sql)
     {
-        $result = mysql_query($sql);
+        $result = mysqli_query($this->getConexao(), $sql);
         if ($result) {
             return true;
         } else {
-            error_log(mysql_error($conexao));
+            error_log(mysqli_error($this->getConexao()));
             return false;
         }
     }
 
     public function get_count()
     {
-        $sql_conta = mysql_query($this->sqlBuilder);        
-        $quantreg  = mysql_num_rows($sql_conta);
+        $sql_conta = mysqli_query($this->getConexao(), $this->sqlBuilder);        
+        $quantreg  = mysqli_num_rows($sql_conta);
         return  $quantreg;
     }
 
@@ -158,8 +170,8 @@ class Model{
 		$sql = $this->buildSql()->select('1')
 		                        ->from($this->table);
 		
-		$sql_conta = mysql_query($sql);        
-        $quantreg  = mysql_num_rows($sql_conta);
+		$sql_conta = mysqli_query($this->getConexao(), $sql);        
+        $quantreg  = mysqli_num_rows($sql_conta);
 		return $quantreg;
 	}
 	
@@ -182,8 +194,6 @@ class Model{
 	
 	public function updateById($id, $dados = array())
     {
-		if(!isset($id))
-		    return false;
 			
         if(isset($dados[$this->col_id])){
 		   unset($dados[$this->col_id]);
@@ -195,7 +205,7 @@ class Model{
         return $this->execute_insert();
     }
 	
-	public function delete($where)
+	public function delete($where='')
 	{
 		$this->buildSql()->delete($this->table, $where);
         return $this->execute();
@@ -203,17 +213,14 @@ class Model{
 	
 	public function deleteById($id){
 		
-		if(!isset($id))
-		    return false;
-	
-		$this->buildSql()->delete($this->table, $this->col_id." = $id");
+        $this->buildSql()->delete($this->table, $this->col_id." = $id");
         return $this->execute();
 	}
 
 	public function setLastId()
 	{
 		try{
-			$last_id = mysql_insert_id();
+			$last_id = mysqli_insert_id($this->getConexao());
 			$_SESSION['last_id'] = $last_id;
 		}catch(Exception $ex)
 		{
@@ -223,7 +230,7 @@ class Model{
 	
 	public function getLastId()
 	{
-		return mysql_insert_id();
+		return mysqli_insert_id($this->getConexao());
 	}
 	
 }

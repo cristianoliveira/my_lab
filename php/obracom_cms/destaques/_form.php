@@ -44,8 +44,8 @@
                   Visualizar 
                 </a>
             <?php } ?>
-            <div>
-                <input type="submit" class="button" id="btn_send" name="btn_send" value="Cadastrar" />
+            <div class="continuar">
+                <button type="submit"  class="button" id="btn_send" >Salvar</button>
             </div>
         </div>            
             

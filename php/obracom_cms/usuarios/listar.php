@@ -27,7 +27,7 @@ include("../includes/models/usuarios_model.php");
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
-            <h2>Lista de Usuários cadastrados</h2>
+            <h2>Lista de Usuários</h2>
             <p id="page-intro">Abaixo estão listados todos os usuários.</p>
             
 			<?php  showSessionMessage(); ?>
@@ -36,8 +36,11 @@ include("../includes/models/usuarios_model.php");
 
                         <div class="content-box-header">
 
-                            <h3>Destaques</h3>
-                          <input class="destaques button botao-cadastrar" type="button" value="Cadastrar um usuário"  onclick="javascript: location.href='cadastro.php?p=8&g=1';"  />
+                          <h3>Usuários</h3>
+                          <input class="destaques button botao-cadastrar" 
+                                 type="button" 
+                                 value="Cadastrar novo usuário"  
+                                 onclick="javascript: location.href='cadastro.php?p=8&g=1';"  />
                           <div class="clear"></div>
 
                         </div> <!-- End .content-box-header -->

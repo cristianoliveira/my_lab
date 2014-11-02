@@ -7,7 +7,7 @@
             Finalizar
         </a>
         
-        <div class="produto-galeria">
+        <div class="galeria-upload-form">
             <label>Upload de imagem </label>
                 <input id="imagem" class="text-input" name="imagem_produto" type="hidden" />
             
@@ -20,13 +20,13 @@
                 <input style="margin:10px 0;" class="button" type="submit" value="Enviar"/>
             </div>
         </div>
-
-        <div class="produto-galeria" style="float: left;">
+    </fieldset>
+    <div class="galeria-thumbs" >
         <?php 
             if(isset($listImagens)) { 
                foreach ($listImagens as $imagem) { 
         ?>
-            <div class="produto-tumb-galeria">
+            <div class="galeria-thumb">
                 <h5><?= $imagem['titulo'] ?></h5>
                 <img src="<?= "http://$_SERVER[SERVER_NAME]" ?>/uploads/produtos/<?= $imagem['imagem'] ?>" />
                 <div>
@@ -44,10 +44,8 @@
             }
         ?>
         </div>
-        
-        
-    </fieldset>
 <div class="clear"></div>
+
 <!-- End .clear -->
 </form>
 <script type="text/javascript">

@@ -9,11 +9,15 @@ include("../includes/helpers/variaveis_helper.php");
 
     $banners = new BannersModel();
 
-    $numreg     = 10; 
-    $_GET['pg'] = $inicial  = isset($_GET['pg']) ? ($_GET['pg'] * $numreg) : 0;
-        
+    //Sem tempo para arrumar GO HORSE
+    $numreg         = 10;  
+    $_GET['pg']   = Parameter::GET('pg', 0);
+    $inicial      = $_GET['pg'] * 10;
+    $_GET['p']    = Parameter::GET('p', 0);
+    $_GET['g']    = Parameter::GET('g', 0);
+    
     $quantreg     = $banners->getCount();
-    $listbanners = $banners->getLimit($inicial, $numreg);
+    $listbanners  = $banners->getLimit($inicial, $numreg, Parameter::GET('ordem'));
 
     $banners_tab = $banners_gerenciar = "current";
 ?>
@@ -31,14 +35,14 @@ confirmaExclusaobanner = function()
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
-            <h2>Lista de banners cadastrados</h2>
+            <h2>Lista de Banners</h2>
             <p id="page-intro">Abaixo estão todos os banners cadastrados no site. </p>
                
                <?php showSessionMessage(); ?>
             
             <div class="content-box"><!-- Start Content Box -->
                 <div class="content-box-header">
-                    <h3>Categorias</h3>
+                    <h3>Banners</h3>
                     <input type="button" value="Cadastrar novo banner" 
                             class="produto button botao-cadastrar" 
                             onClick="javascript: location.href='cadastro.php';">
@@ -51,13 +55,13 @@ confirmaExclusaobanner = function()
                         <thead>
                             <tr>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=nome&desc=1" class="down">Titulo</a>
+                                    <a href="/banners/listar.php?ordem=&desc=1" class="down">Titulo</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=email&desc=1" class="down">Link</a>
+                                    <a href="/banners/listar.php?ordem=link&desc=1" class="down">Link</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=telefone&desc=1" class="down">Imagem</a>
+                                    <a href="/banners/listar.php?ordem=imagem&desc=1" class="down">Imagem</a>
                                 </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>
@@ -69,11 +73,11 @@ confirmaExclusaobanner = function()
                                 <tr>
                                     <td>
                                         <a href="editar.php?id=<?= $banner['id'] ?>" title="Editar banner">
-                                             <?php echo if_null($banner['titulo'], $banner['razao_social']); ?>
+                                             <?= $banner['titulo']; ?>
                                         </a>
                                     </td>
                                     <td>
-                                        <?php echo $banner['link']; ?>
+                                        <?= $banner['link']; ?>
                                     </td>
                                     <td>
                                         <img style="width:100px;" src="<?php echo site_url('uploads/banners/'.$banner['imagem']) ?>" />

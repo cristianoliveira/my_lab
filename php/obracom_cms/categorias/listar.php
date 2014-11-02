@@ -9,11 +9,17 @@ include("../includes/models/categorias_model.php");
 
     $categorias = new CategoriasModel();
 
-    $numreg  = 10;  
-    $inicial = paginacao($numreg);
-        
-    $listcategorias = $categorias->getLimit($inicial, $numreg);
+    //Sem tempo para arrumar GO HORSE
+    $numreg         = 10;  
+    $_GET['pg']   = Parameter::GET('pg', 0);
+    $inicial      = $_GET['pg'] * 10;
+    $_GET['p']    = Parameter::GET('p', 0);
+    $_GET['g']    = Parameter::GET('g', 0);
+    
+    $orderBy        = Parameter::GET('ordem','');    
+    $listcategorias = $categorias->getLimit($inicial, $numreg, $orderBy);
     $quantreg       = $categorias->getCount();
+
 
     $categorias_tab = $categorias_gerenciar = "current";
 ?>
@@ -34,8 +40,11 @@ include("../includes/models/categorias_model.php");
 
                         <div class="content-box-header">
 
-                            <h3>Destaques</h3>
-                          <input class="destaques button botao-cadastrar" type="button" value="Cadastrar um "  onclick="javascript: location.href='cadastro.php?p=8&g=1';"  />
+                            <h3>Categorias</h3>
+                          <input class="destaques button botao-cadastrar" 
+                                 type="button" 
+                                 value="Cadastrar nova categoria"  
+                                 onclick="javascript: location.href='cadastro.php?p=8&g=1';"  />
                           <div class="clear"></div>
 
                         </div> <!-- End .content-box-header -->
@@ -46,7 +55,10 @@ include("../includes/models/categorias_model.php");
 
                             <thead>
                                 <tr>
-                                    <th class="current"><a href="<?= site_url('categorias/listar.php?ordem=nome&desc=1') ?>"class="down">Título</a></th>                            <th class="">&nbsp;</th>                            <th>Ações</th>
+                                    <th class="current"><a href="<?= site_url('categorias/listar.php?ordem=nome&desc=1') ?>"
+                                        class="down">Título</a></th>                            
+                                    <th class="">&nbsp;</th>                            
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
 
@@ -64,19 +76,21 @@ include("../includes/models/categorias_model.php");
                             <?php  foreach($listcategorias as $categoria) { ?>
                                 <tr>
                                     <td class="current">
-                                        <a href="editar.php?id=<?= $categoria['id'] ?>" title=""> <?php echo $categoria['nome'] ; ?> </a>
+                                        <a href="editar.php?id=<?= $categoria['id'] ?>" title=""> 
+                                            <?php echo $categoria['nome'] ; ?> 
+                                        </a>
                                     </td>
                                     <td class="">
                                         &nbsp;
                                     </td>
                                     <td>
                                         <!-- Icons -->
-                                        <a href="editar.php&id=<?php echo $categoria['id']; ?>"title="Editar o categoria.">
+                                        <a href="editar.php?id=<?php echo $categoria['id']; ?>"title="Editar o categoria.">
                                             <img src="../imagens/icones/pencil.png"alt="Editar"/>
                                         </a>
                                         <a href="acao.php?a=3&id=<?php echo $categoria['id']; ?>" 
                                            title="Excluir a categoria" class="item-confirmar"  
-                                           onclick="if(!confirm('Você tem certeza que deseja excluir essa categoria?')) return false;" >
+                                           onclick="if(!confirm('Você tem certeza que deseja excluir?')) return false;" >
                                             <img src="../imagens/icones/cross.png"alt="Excluir"/>
                                         </a>
                                     </td>

@@ -39,8 +39,8 @@
                    type="password"/>
         </div>
 
-        <div>
-            <input type="submit" class="button" id="btn_send" value="<?= $acao ?>" />
+        <div class="continuar">
+            <button type="submit"  class="button" id="btn_send" >Salvar</button>
         </div>
 
     </fieldset>
