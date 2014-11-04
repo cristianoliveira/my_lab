@@ -11,7 +11,7 @@ include("../includes/helpers/variaveis_helper.php");
     $produtos   = new ProdutosModel();
     $categorias = new CategoriasModel();
 
-    //Sem tempo para arrumar GO HORSE
+    //TODO melhorar isto...
     $numreg         = 10;  
     $_GET['pg']   = Parameter::GET('pg', 0);
     $inicial      = $_GET['pg'] * 10;

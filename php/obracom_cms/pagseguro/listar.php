@@ -11,8 +11,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/includes/models/pagseguro_model.php');
     
     $pagseguro      = new PagSeguroModel();
 
-     //    $listTransacoes = $pagseguro->getTransacoesDesde($data);
-
+    //TODO melhorar isto...
     $numreg        = 10; 
     $_GET['pg']    =  $inicial = Parameter::GET('pg', 0);
     $orderBy       = Parameter::GET('ordem','');

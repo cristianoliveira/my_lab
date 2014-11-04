@@ -42,7 +42,7 @@ switch ($lista2) {
 		<div id="profile-links">
 			Olá, <a href="usuarios/listar.php"title="Editar meus dados"><?php  echo utf8_encode(@$_SESSION['nome_usuario']); ?>.</a><br>
 			<br>
-			<a href="http://www.crialeimportadora.com.br/"title="Voltar para o site">Acessar o site</a> | <a href="<?php echo $ROOT_URL; ?>/action_logout.php"title="Realizar logout">Logout</a>
+			<a href="<?= $ROOT_URL; ?>"title="Voltar para o site">Acessar o site</a> | <a href="<?php echo $ROOT_URL; ?>/action_logout.php"title="Realizar logout">Logout</a>
 		</div>
 
 		<ul id="main-nav">  <!-- Accordion Menu -->

@@ -9,9 +9,9 @@ include($_SERVER['DOCUMENT_ROOT']."/includes/helpers/variaveis_helper.php");
 
     $clientes = new ClientesModel();
 
-    $numreg       = 10; 
     
-    //Sem tempo para arrumar GO HORSE
+    //TODO melhorar isto...
+    $numreg       = 10; 
     $_GET['pg']   = Parameter::GET('pg', 0);
     $inicial      = $_GET['pg'] * 10;
     $_GET['p']    = Parameter::GET('p', 0);

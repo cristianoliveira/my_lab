@@ -10,15 +10,15 @@ include("../includes/helpers/mensagem_helper.php");
 
     $destaques = new DestaquesModel();
 
-    //Sem tempo para arrumar GO HORSE
-    $numreg         = 10;  
+    //TODO melhorar isto...
+    $numreg       = 10;  
     $_GET['pg']   = Parameter::GET('pg', 0);
     $inicial      = $_GET['pg'] * 10;
     $_GET['p']    = Parameter::GET('p', 0);
     $_GET['g']    = Parameter::GET('g', 0);
     
         
-    $quantreg     = $destaques->getCount();
+    $quantreg      = $destaques->getCount();
     $listdestaques = $destaques->getLimit($inicial, $numreg);
 
     $destaques_tab = $destaques_gerenciar = "current";
