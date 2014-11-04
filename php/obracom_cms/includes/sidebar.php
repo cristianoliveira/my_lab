@@ -2,7 +2,7 @@
 //$ROOT_URL="http://localhost/girardi/cms/"; 
 //$ROOT_URL="/cms/"; 
 
-$ROOT_URL = "http://$_SERVER[SERVER_NAME]/previa/admin/";
+$ROOT_URL = "http://$_SERVER[SERVER_NAME]/previa/admin";
 @$lista = $_GET["p"];
 @$lista2 = $_GET["g"];
 

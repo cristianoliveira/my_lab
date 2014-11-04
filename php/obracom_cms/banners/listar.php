@@ -55,13 +55,13 @@ confirmaExclusaobanner = function()
                         <thead>
                             <tr>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=&desc=1" class="down">Titulo</a>
+                                    <a href="<?= site_url('banners/listar.php?ordem=&desc=1') ?>" class="down">Titulo</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=link&desc=1" class="down">Link</a>
+                                    <a href="<?= site_url('banners/listar.php?ordem=link&desc=1') ?>" class="down">Link</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/banners/listar.php?ordem=imagem&desc=1" class="down">Imagem</a>
+                                    <a href="<?= site_url('banners/listar.php?ordem=imagem&desc=1') ?>" class="down">Imagem</a>
                                 </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>

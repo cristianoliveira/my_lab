@@ -57,13 +57,13 @@ confirmaExclusaoCliente = function()
                         <thead>
                             <tr>
                                 <th class="current">
-                                    <a href="/clientes/listar.php?ordem=nome&desc=1" class="down">Nome</a>
+                                    <a href="<?= site_url('clientes/listar.php?ordem=nome&desc=1') ?>" class="down">Nome</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/clientes/listar.php?ordem=email&desc=1" class="down">Email</a>
+                                    <a href="<?= site_url('clientes/listar.php?ordem=email&desc=1') ?> " class="down">Email</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/clientes/listar.php?ordem=telefone_principal&desc=1" class="down">Telefone Principal</a>
+                                    <a href="<?= site_url('clientes/listar.php?ordem=telefone_principal&desc=1') ?>" class="down">Telefone Principal</a>
                                 </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>

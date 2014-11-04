@@ -24,7 +24,10 @@
                 <div style="width: 500px;">
                   <div id="preview-crop" class="cropme" style="width: 500px; height: 350px; margin auto"></div>
                   <small>Edite a imagem na Ferramenta Crop, clique aqui para editar a imagem.</small>
-                  <input type="hidden" name="imagem" id="imagem" value=""/><br />
+                  <input type="hidden" 
+                         name="imagem" 
+                         id="imagem" 
+                         value="<?= if_exist($banner['imagem'],'') ?>"/><br />
                 </div>
             </div>
             <div>

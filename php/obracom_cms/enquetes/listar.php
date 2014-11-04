@@ -56,13 +56,13 @@ confirmaExclusaoenquete = function()
                         <thead>
                             <tr>
                                 <th class="current">
-                                    <a href="/enquetes/listar.php?ordem=pergunta&desc=1" class="down">Pergunta</a>
+                                    <a href="<?= site_url('/enquetes/listar.php?ordem=pergunta&desc=1') ?>" class="down">Pergunta</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/enquetes/listar.php?ordem=pergunta_seo&desc=1" class="down">Pergunta Seo</a>
+                                    <a href="<?= site_url('/enquetes/listar.php?ordem=pergunta_seo&desc=1') ?>" class="down">Pergunta Seo</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/enquetes/listar.php?ordem=ativa&desc=1" class="down">Ativa</a>
+                                    <a href="<?= site_url('/enquetes/listar.php?ordem=ativa&desc=1'); ?>" class="down">Ativa</a>
                                 </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>
@@ -73,7 +73,7 @@ confirmaExclusaoenquete = function()
                             <?php foreach ($listEnquetes as $enquete) {  ?>
                                 <tr>
                                     <td>
-                                        <a href="editar.php?id=<?= $enquete['id'] ?>" title="Editar enquete">
+                                        <a href="<?= site_url('/enquetes/editar.php?id='.$enquete['id']) ?>" title="Editar enquete">
                                              <?= $enquete['pergunta'] ?>
                                         </a>
                                     </td>
@@ -85,7 +85,7 @@ confirmaExclusaoenquete = function()
                                     </td>
                                     <td>&nbsp;</td>
                                     <td nowrap><!-- Icons -->
-                                        <a href="editar.php?id=<?= $enquete['id']; ?>" 
+                                        <a href="<?= site_url('/enquetes/editar.php?id='.$enquete['id']) ?>" 
                                             title="Editar a enquete"> 
                                                 <img src="../imagens/icones/pencil.png"alt="Editar" border="0" align="left"/> 
                                         </a> 

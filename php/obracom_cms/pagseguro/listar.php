@@ -21,10 +21,10 @@ include("../includes/models/pagseguro_model.php");
 
 <script type="text/javascript">
 
-var pagina = 0;
-
 $(function(){
-    var pagina = 0;
+    
+    var pagina = 1;
+
     $.get("ajax.php?acao=consulta_pagseguro",function(data){
         $('#lista-transacoes tbody').html(data);
     });

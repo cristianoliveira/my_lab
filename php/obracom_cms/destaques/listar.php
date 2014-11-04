@@ -57,13 +57,13 @@ confirmaExclusaodestaque = function()
                         <thead>
                             <tr>
                                 <th class="current">
-                                    <a href="/destaques/listar.php?ordem=titulo&desc=1" class="down">Titulo</a>
+                                    <a href="<?= site_url('/destaques/listar.php?ordem=titulo&desc=1') ?>" class="down">Titulo</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/destaques/listar.php?ordem=link&desc=1" class="down">Link</a>
+                                    <a href="<?= site_url('/destaques/listar.php?ordem=link&desc=1') ?>" class="down">Link</a>
                                 </th>
                                 <th class="current">
-                                    <a href="/destaques/listar.php?ordem=imagem&desc=1" class="down">Imagem</a>
+                                    <a href="<?= site_url('/destaques/listar.php?ordem=imagem&desc=1') ?>" class="down">Imagem</a>
                                 </th>
                                 <th class="current">&nbsp;</th>
                                 <th class="current">Ações</th>
@@ -86,9 +86,9 @@ confirmaExclusaodestaque = function()
                                     </td>
                                     <td>&nbsp;</td>
                                     <td nowrap><!-- Icons -->
-                                        <a href="editar.php?id=<?= $destaque['id']; ?>" 
+                                        <a href="<?= site_url('clientes/editar.php?id='.$destaque['id']); ?>" 
                                             title="Editar a destaque"> 
-                                                <img src="../imagens/icones/pencil.png"alt="Editar" border="0" align="left"/> 
+                                                <img src="<?= site_url('/imagens/icones/pencil.png'); ?>"alt="Editar" border="0" align="left"/> 
                                         </a> 
                                         <a href="acao.php?a=3&id=<?= $destaque['id']; ?>" 
                                             title="Excluir a destaque" 

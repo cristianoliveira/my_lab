@@ -54,9 +54,9 @@ include("../includes/helpers/variaveis_helper.php");
 
                     <thead>
                         <tr>
-                            <th class="current"><a href="/produtos/listar.php?ordem=nome&desc=1" class="down">Nome</a></th>
-                            <th class="current"><a href="/produtos/listar.php?ordem=categoria_id&desc=1" class="down">Categoria</a></th>
-                            <th class="current mascara-valor"><a href="/produtos/listar.php?ordem=valor_original&desc=1" class="down">Valor</a></th>
+                            <th class="current"><a href="listar.php?ordem=nome&desc=1" class="down">Nome</a></th>
+                            <th class="current"><a href="listar.php?ordem=categoria_id&desc=1" class="down">Categoria</a></th>
+                            <th class="current mascara-valor"><a href="listar.php?ordem=valor_original&desc=1" class="down">Valor</a></th>
                             <th class="current">Ações</th>
                         </tr>
                     </thead>
