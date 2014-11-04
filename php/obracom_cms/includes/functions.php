@@ -561,7 +561,7 @@ function show_session_message()
 
 function site_url($url=''){
     
-    $url_site = $_SERVER['SERVER_NAME'];
+    $url_site = $_SERVER['SERVER_NAME']."/previa/admin/";
 
     if(empty($url))
     {
@@ -570,6 +570,20 @@ function site_url($url=''){
     else
     {
         return "http://$url_site/$url";
+    }
+}
+
+function site_path($url=''){
+    
+    $url_site = $_SERVER[DOCUMENT_ROOT]."/previa/admin";
+
+    if(empty($url))
+    {
+        return "$url_site";
+    }
+    else
+    {
+        return "$url_site/$url";
     }
 }
 

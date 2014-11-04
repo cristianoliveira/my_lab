@@ -1,11 +1,11 @@
 <?php  
-include($_SERVER['DOCUMENT_ROOT']."/includes/functions.php");
-include($_SERVER['DOCUMENT_ROOT']."/includes/cabecalho.php"); 
-include($_SERVER['DOCUMENT_ROOT'].'/includes/check_authentication.php');
-include($_SERVER['DOCUMENT_ROOT']."/includes/logs.php");
+include("../includes/functions.php");
+include("../includes/cabecalho.php"); 
+include('../includes/check_authentication.php');
+include("../includes/logs.php");
 
-include($_SERVER['DOCUMENT_ROOT']."/includes/models/clientes_model.php");
-include($_SERVER['DOCUMENT_ROOT']."/includes/helpers/variaveis_helper.php");
+include("../includes/models/clientes_model.php");
+include("../includes/helpers/variaveis_helper.php");
 
     $clientes = new ClientesModel();
 
@@ -33,7 +33,7 @@ confirmaExclusaoCliente = function()
 <body>
 
     <div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
-    <div id="sidebar"><?php  include($_SERVER['DOCUMENT_ROOT']."/includes/sidebar.php"); ?></div> <!-- End #sidebar -->        
+    <div id="sidebar"><?php  include("../includes/sidebar.php"); ?></div> <!-- End #sidebar -->        
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->
@@ -105,7 +105,7 @@ confirmaExclusaoCliente = function()
                             <tr>
                                 <td colspan="7">
 
-                                    <?php  include($_SERVER['DOCUMENT_ROOT']."/includes/_paginate.php"); ?>
+                                    <?php  include("../includes/_paginate.php"); ?>
                                     
                                     <div class="clear"></div>
                                 </td>

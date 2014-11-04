@@ -1,11 +1,11 @@
 <?php  
-include($_SERVER['DOCUMENT_ROOT'].'/includes/cabecalho.php');
-include($_SERVER['DOCUMENT_ROOT'].'/includes/check_authentication.php');
-include($_SERVER['DOCUMENT_ROOT']."/includes/functions.php");
-include($_SERVER['DOCUMENT_ROOT']."/includes/logs.php");
-include($_SERVER['DOCUMENT_ROOT'].'/includes/helpers/variaveis_helper.php');
-include($_SERVER['DOCUMENT_ROOT'].'/includes/helpers/mensagem_helper.php');
-include($_SERVER['DOCUMENT_ROOT'].'/includes/models/pagseguro_model.php');
+include("../includes/cabecalho.php");
+include("../includes/check_authentication.php");
+include("../includes/functions.php");
+include("../includes/logs.php");
+include("../includes/helpers/variaveis_helper.php");
+include("../includes/helpers/mensagem_helper.php");
+include("../includes/models/pagseguro_model.php");
 
 $pagseguro   = new PagSeguroModel();
 $codigo      = Parameter::GET('codigo', 0);

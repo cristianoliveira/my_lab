@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__FILE__).'/sqlbuilder.php');
 
+define('SITE_PATH', $_SERVER['DOCUMENT_ROOT']."previa/admin/");
 
 class Model{
     
@@ -12,7 +13,7 @@ class Model{
     
     private function getConexao()
     {
-        require($_SERVER['DOCUMENT_ROOT']."/includes/database_config.php");
+        require(SITE_PATH."/includes/database_config.php");
         if($this->conexao == null || !mysqli_ping($this->conexao))
         {
             $this->conexao   = mysqli_connect($db_host, $db_user, $db_pass, $db_database_name);

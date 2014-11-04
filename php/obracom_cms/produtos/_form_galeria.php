@@ -28,7 +28,7 @@
         ?>
             <div class="galeria-thumb">
                 <h5><?= $imagem['titulo'] ?></h5>
-                <img src="<?= "http://$_SERVER[SERVER_NAME]" ?>/uploads/produtos/<?= $imagem['imagem'] ?>" />
+                <img src="<?= "http://$_SERVER[SERVER_NAME]/previa/admin" ?>/uploads/produtos/<?= $imagem['imagem'] ?>" />
                 <div>
                     <a class="button" style="width:80%; margin:5px 0" href="<?= "http://$_SERVER[SERVER_NAME]" ?>/uploads/produtos/<?= $imagem['imagem'] ?>" target="_blank">
                       Visualizar

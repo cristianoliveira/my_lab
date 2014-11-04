@@ -1,5 +1,4 @@
 <?php
- require_once($_SERVER['DOCUMENT_ROOT']."/includes/logs.php");
  
  class SQLBuilder
  {
@@ -209,7 +208,7 @@
 
         $this->clean();
 
-        log_file('SQL - '.$return);
+        // log_file('SQL - '.$return);
 
 
         return $return.';';

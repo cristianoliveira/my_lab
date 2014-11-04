@@ -23,7 +23,7 @@ include("../includes/helpers/file_helper.php");
                log_file('Fazendo upload...'.$imagem);
                 
                 if(FileHelper::base64ToJpg( $imagem
-                                          , $_SERVER[DOCUMENT_ROOT].'/uploads/banners/'.$nomeArquivoServidor.".jpg"))
+                                          , site_path('uploads/banners/'.$nomeArquivoServidor.".jpg")))
                 {
                     log_file('Upload feito.');
                     
@@ -54,7 +54,8 @@ include("../includes/helpers/file_helper.php");
                log_file('Fazendo upload...'.$imagem);
                 
                 if(FileHelper::base64ToJpg( $imagem
-                                          , $_SERVER[DOCUMENT_ROOT].'/uploads/banners/'.$nomeArquivoServidor.".jpg"))
+                                          , site_path('uploads/banners/'.$nomeArquivoServidor.".jpg")
+                                          ))
                 {
                     log_file('Upload feito.');
                     

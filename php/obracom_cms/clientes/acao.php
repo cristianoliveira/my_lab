@@ -13,8 +13,6 @@ include("../includes/helpers/variaveis_helper.php");
     
     $acao         = Parameter::GET('a', 0); //isset($_GET["a"])? $_GET["a"] : -1; 
     $idcliente    = $clientes->getParameterID();
-
-    echo $dadosCliente['nascimento'];
     
     if(isset($dadosCliente['nascimento']))
         $dadosCliente['nascimento'] = date("Y-m-d", strtotime(str_replace('/', '-', $dadosCliente['nascimento'])));

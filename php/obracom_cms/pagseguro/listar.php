@@ -1,12 +1,12 @@
 <?php  
-include($_SERVER['DOCUMENT_ROOT']."/includes/functions.php");
-include($_SERVER['DOCUMENT_ROOT']."/includes/cabecalho.php"); 
-include($_SERVER['DOCUMENT_ROOT'].'/includes/check_authentication.php');
-include($_SERVER['DOCUMENT_ROOT']."/includes/logs.php");
+include("../includes/functions.php");
+include("../includes/cabecalho.php"); 
+include("../includes/check_authentication.php");
+include("../includes/logs.php");
 
-include($_SERVER['DOCUMENT_ROOT']."/includes/helpers/variaveis_helper.php");
+include("../includes/helpers/variaveis_helper.php");
 
-include($_SERVER['DOCUMENT_ROOT'].'/includes/models/pagseguro_model.php');
+include("../includes/models/pagseguro_model.php");
 
     
     $pagseguro      = new PagSeguroModel();
@@ -55,7 +55,7 @@ $(function(){
 <body>
 
     <div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
-    <div id="sidebar"><?php  include($_SERVER['DOCUMENT_ROOT']."/includes/sidebar.php"); ?></div> <!-- End #sidebar -->        
+    <div id="sidebar"><?php  include("../includes/sidebar.php"); ?></div> <!-- End #sidebar -->        
         <div id="main-content"> <!-- Main Content Section with everything -->
 
             <!-- Page Head -->

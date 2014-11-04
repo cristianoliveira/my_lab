@@ -105,7 +105,7 @@ include("../includes/helpers/url_helper.php");
                log_file('Fazendo upload...'.$dados['imagem_produto']);
                 
                 if(FileHelper::base64ToJpg( $dados['imagem_produto']
-                                          , $_SERVER[DOCUMENT_ROOT].'/uploads/produtos/'.$nomeArquivoServidor.".jpg"))
+                                          , site_path('uploads/produtos/'.$nomeArquivoServidor.".jpg")))
                 {
                     log_file('Upload feito.');
                     
@@ -134,7 +134,7 @@ include("../includes/helpers/url_helper.php");
             $produtoId  = Parameter::GET('produto',0);
             $imagem     = $imagensProdutos->getById($imagemId);
             if ($imagensProdutos->deleteById($imagemId)) {
-                unlink($_SERVER[DOCUMENT_ROOT].'/uploads/produtos/'.$imagem['imagem']);
+                unlink(site_path('uploads/produtos/'.$imagem['imagem']));
                 MensagemHelper::deleteSucesso();
             }else
                 MensagemHelper::erro("Erro ao deletar imagem.");
