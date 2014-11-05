@@ -133,7 +133,7 @@
                    id="valor_original"
                    name="valor_original"
                    maxlength="255"
-                   value="<?= if_exist($produto['valor_original']) ?>"/>
+                   value="<?= str_replace('.',',',if_exist($produto['valor_original'])) ?>"/>
         </div>
         
         <div>
@@ -143,7 +143,7 @@
                    id="valor_promocional"
                    name="valor_promocional"
                    maxlength="255"
-                   value="<?= if_exist($produto['valor_promocional']) ?>"/>
+                   value="<?= str_replace('.',',',if_exist($produto['valor_promocional'])) ?>"/>
         </div>
         
         <div>

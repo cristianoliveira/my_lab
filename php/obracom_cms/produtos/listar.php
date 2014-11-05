@@ -74,7 +74,7 @@ include("../includes/helpers/variaveis_helper.php");
                                     <?php echo $categoria['nome']; ?>
                             </td>
                             <td class="current mascara-valor" >
-                                    <?php echo $produto['valor_original']; ?>
+                                    <?php echo str_replace('.',',',$produto['valor_original']); ?>
                             </td>
 
                             <td nowrap><!-- Icons -->

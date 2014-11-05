@@ -28,7 +28,7 @@ function par_post($var){
 
 function trata_valores($valor)
 {
-	return (empty($valor)) ? "0.00": str_replace(",", ".", $valor['valor_original']);
+	return (empty($valor)) ? "0.00": str_replace(",", ".", $valor);
 }
 
 class Parameter{
