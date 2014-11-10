@@ -1,0 +1,21 @@
+{
+  "name": "primous_com_br",
+  "version": "0.0.0",
+  "homepage": "www.primous.com.br",
+  "authors": [
+    "Cristian Oliveira <contato@cristianoliveira.com.br>"
+  ],
+  "description": "Site institucional empresa primous soluções inteligentes",
+  "main": "index.php",
+  "keywords": [
+    "primous"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,45 @@
+#slides{
+    width: 80%;
+    height: 600px;
+    margin: 10px auto;
+}
+
+.slide {
+    float: right;
+    height: 400px;
+    width: 80%;
+}
+
+.slide h2{
+    margin: 10% 5%;
+    color: #000;
+}
+
+.slide p{
+    color: #000;
+}
+
+.slide img{
+    margin: 20px auto;
+}
+
+.slide-center-slice{
+    float: left;
+    margin: auto;
+}
+
+.slide-left-slice{
+    width: 25%;
+    float: left;
+    margin: auto;
+}
+
+.slide-left-slice img{
+    width: 90%;
+}
+
+.slide-right-slice{
+    width: 30%;
+    float: left;
+}
+

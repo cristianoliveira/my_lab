@@ -17,7 +17,7 @@ class inicio extends CI_Controller {
 
 	public function index()
 	{   
-			$this->load->view('inicioView',$this->paramVIEW);
-            $this->load->view('rodapeView');
-    }
+		$this->load->view('inicioView',$this->paramVIEW);
+                $this->load->view('rodapeView');
+        }
 }
