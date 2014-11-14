@@ -701,7 +701,7 @@ h2 {
 	vertical-align:top;
 }
 *+html .produtos .box li, *+html .produtos .relacionados li {display:inline} /*IE7*/
-.produtos .imagem-produto {	height:150px; display:block; }
+.produtos .imagem-produto {	height:150px; display:block; margin: 10px; }
 .produtos .imagem-produto.grande {	height:195px; }
 .produtos .box .content-foto{ display: table-cell; text-align: center; vertical-align: middle; height:150px; width:150px; max-width:150px;}
 .produtos .box .imagem-produto.grande .content-foto{height:195px;}

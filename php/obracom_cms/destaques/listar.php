@@ -86,7 +86,7 @@ confirmaExclusaodestaque = function()
                                     </td>
                                     <td>&nbsp;</td>
                                     <td nowrap><!-- Icons -->
-                                        <a href="<?= site_url('clientes/editar.php?id='.$destaque['id']); ?>" 
+                                        <a href="<?= site_url('destaques/editar.php?id='.$destaque['id']); ?>" 
                                             title="Editar a destaque"> 
                                                 <img src="<?= site_url('/imagens/icones/pencil.png'); ?>"alt="Editar" border="0" align="left"/> 
                                         </a> 

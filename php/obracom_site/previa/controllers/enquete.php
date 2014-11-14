@@ -109,7 +109,7 @@ class Controller_Enquete extends Controller_Padrao
 			if ( ! isset($_COOKIE['enquete_'.$parametros->id]))
 			{
 				$opcao = new Model_EnqueteOpcao;
-				$opcao = $opcao->select('SELECT id, votos FROM {tabela_nome} WHERE id = "'.Funcoes::mysqli_escape($parametros->opcao).'" AND enquete_id = "'.Funcoes::mysqli_escape($parametros->id).'"');
+				$opcao = $opcao->select('SELECT * FROM {tabela_nome} WHERE id = "'.Funcoes::mysqli_escape($parametros->opcao).'" AND enquete_id = "'.Funcoes::mysqli_escape($parametros->id).'"');
 				if ($opcao AND $opcao->get_id())
 				{
 					$opcao->set_votos($opcao->get_votos() + 1);

@@ -68,6 +68,7 @@
                     <li>
                         <a class="page-scroll" href="#empresa">Empresa</a>
                     </li>
+                    
                     <li>
                         <a class="page-scroll" href="#contato">Contato</a>
                     </li>
@@ -258,8 +259,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">A Empresa</h2>
-                    <h3 class="section-subheading text-muted">Conheça nossa história.</h3>
+                    <h2 class="section-heading">Clientes</h2>
+                    <h3 class="section-subheading text-muted">O que falam por ai...</h3>
                 </div>
             </div>
             <div class="row">
@@ -267,43 +268,49 @@
                     <ul class="timeline">
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="assets/img/about/1.jpg" alt="">
+                                <a href="http://www.linkedin.com/in/thejasonthibeault/pt">
+                                    <img class="img-circle img-responsive" src="imagens/clientes/limelight.jpg" alt="">
+                                </a>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>2009-2011</h4>
-                                    <h4 class="subheading">Nossa jornada inicia.</h4>
+                                    <h4>Jason Thibeault</h4>
+                                    <h4 class="subheading">Limelight Networks - Tempe, AZ</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">!</p>
+                                    <p class="text-muted">Great freelancer. He is quick and delivered exactly as I wanted. Got the project completed a week earlier than the date I was given. (freelancer.com)</p>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="assets/img/about/2.jpg" alt="">
+                                <a href="http://br.linkedin.com/pub/andr%C3%A9-da-silva-severino/30/3a9/7bb">
+                                    <img class="img-circle img-responsive" src="imagens/clientes/tideal.jpg" alt="">
+                                </a>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>March 2011</h4>
-                                    <h4 class="subheading">An Agency is Born</h4>
+                                    <h4>André Severino</h4>
+                                    <h4 class="subheading">TI Ideal - São Paulo</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Trabalho foi desenvolvido conforme especificamos e dentro do prazo. O aplicativo Print IDocumentos ainda ficou com uma cara moderna. Recomendo!</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="assets/img/about/3.jpg" alt="">
+                               <a href="https://www.facebook.com/carina.ramos.50702?fref=ts">
+                                    <img class="img-circle img-responsive" src="imagens/clientes/produlab.jpg" alt="">
+                               </a>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>December 2012</h4>
-                                    <h4 class="subheading">Transition to Full Service</h4>
+                                    <h4>Carina Ramos</h4>
+                                    <h4 class="subheading">Produlab Moveis - Caxias do Sul</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Gostei bastante do trabalho de vocês. Atendimento rápido e solicito.</p>
                                 </div>
                             </div>
                         </li>
@@ -313,19 +320,19 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>July 2014</h4>
-                                    <h4 class="subheading">Phase Two Expansion</h4>
+                                    <h4>Elias Rodrigues</h4>
+                                    <h4 class="subheading">De Saron - Caxias do Sul</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Foi um prazer fazer negócios com vocês. Gostei muito do resultado do site!</p>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
+                                <h4>Você pode 
+                                    <br>ser o 
+                                    <br>próximo!</h4>
                             </div>
                         </li>
                     </ul>

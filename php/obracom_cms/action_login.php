@@ -1,6 +1,6 @@
 <?php 
-include('includes/database_connection.php');
-include('includes/functions.php');
+include("includes/database_connection.php");
+include("includes/functions.php");
 include("includes/logs.php");
 include("includes/models/usuarios_model.php");
 
@@ -25,7 +25,7 @@ $password = trim($_POST['pwd']);
 		{
 			$_SESSION['flash_error'] = 'Usuário e/ou senha inválido(s)!';
 			$mensagem = "[TENTATIVA DE LOGIN] - Com os dados: Usuário: " . $username. " / Senha: " . $password. " -> USUARIO OU SENHA INVALIDOS <-";
-			salvaLog($mensagem);
+			//salvaLog($mensagem);
 			header('Location:login.php'); 
 		}
 	} 

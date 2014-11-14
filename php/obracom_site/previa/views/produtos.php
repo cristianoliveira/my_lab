@@ -136,7 +136,9 @@
                     $produto = $produtos[$i];
 
                     echo '<li>';
-                    echo '<a href="'.SITE_URL.'/produto/'.$produto->get_nome_seo().'" class="imagem-produto '.($tamanho_imagem=='grande'?'grande':'media').'"><img src="'.SITE_BASE.'/admin/uploads/produtos/'.$produto->get_imagem().'" alt="'.$produto->get_nome().'" /></a>';
+                    echo '<a href="'.SITE_URL.'/produto/'.$produto->get_nome_seo().'" class="content-foto" >'
+                            .'<img class="imagem-produto '.($tamanho_imagem=='grande'?'grande':'media').'" src="'.SITE_BASE.'/admin/uploads/produtos/'.$produto->get_imagem().'" alt="'.$produto->get_nome().'" />'
+                        .'</a>';
                     echo '<a href="'.SITE_URL.'/produto/'.$produto->get_nome_seo().'"><img src="'.SITE_BASE.'/views/imagens/produtos-comprar.gif" alt="Comprar Produto" /></a>';
                     echo '<p class="descricao">'.( ! is_null($produto->get_resumo()) ? $produto->get_resumo() : $produto->get_nome()).'</p>';
 

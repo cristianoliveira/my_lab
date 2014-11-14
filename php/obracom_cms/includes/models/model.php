@@ -1,4 +1,4 @@
-<?php
+        qw<?php
 require_once(dirname(__FILE__).'/sqlbuilder.php');
 
 define('SITE_PATH', $_SERVER['DOCUMENT_ROOT']."previa/admin/");
@@ -47,7 +47,7 @@ class Model{
     public function get_rows_by_query($query)
     {
         $return = array();
-        $sql = mysqli_query(getConexao(), $query) or die("Erro ao afetuar tentar acessar o banco de dados");
+        $sql = mysqli_query($this->getConexao(), $query) or die("Erro ao afetuar tentar acessar o banco de dados");
 
         while($row = mysqli_fetch_array($sql))
               $return[] = $row;
@@ -62,7 +62,7 @@ class Model{
         $result = mysqli_query($this->getConexao(),$this->sqlBuilder);
 
         if ($result) {
-            //Não sei se é utilizado em outro lugar
+            //NÃ£o sei se Ã© utilizado em outro lugar
 			$id_grupo = mysqli_insert_id($this->getConexao());
             $_SESSION['uidc'] = $id_grupo;
 			
@@ -79,7 +79,7 @@ class Model{
         $result = mysqli_query($this->sqlBuilder);
 
         if ($result) {
-		    //Não sei se é utilizado em outro lugar
+		    //NÃ£o sei se Ã© utilizado em outro lugar
             $id_grupo = mysqli_insert_id($this->getConexao());
             $_SESSION['uidc'] = $id_grupo;
 			
