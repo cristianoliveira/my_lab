@@ -56,4 +56,18 @@ class Parameter{
 		else
 			return isset($_FILES[$var])? $_FILES[$var] : $returnIfNull;
 	}
+
+	public static function REQUEST($var=null, $returnIfNull=null)
+	{
+		if(empty($var))
+			return isset($_REQUEST)? $_REQUEST : $returnIfNull;
+		else
+			return isset($_REQUEST[$var])? $_REQUEST[$var] : $returnIfNull;
+	}
+}
+
+class Acao{
+    const INSERT = 1; 
+    const UPDATE = 2; 
+    const DELETE = 3; 
 }

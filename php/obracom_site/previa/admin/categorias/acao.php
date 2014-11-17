@@ -13,7 +13,7 @@ include("../includes/helpers/variaveis_helper.php");
     $id             = $categorias->getParameterID();
     
     switch ($acao) {
-        case 1: // INSERT
+        case Acao::INSERT: // INSERT
             
             if($categorias->insert($dados))
             {
@@ -24,7 +24,7 @@ include("../includes/helpers/variaveis_helper.php");
             
             break;
 
-        case 2: // UPDATE
+        case Acao::UPDATE: // UPDATE
             
 
             if($categorias->updateById($id, $dados))
@@ -36,7 +36,7 @@ include("../includes/helpers/variaveis_helper.php");
 
             break;
 
-        case 3: // DELETE
+        case Acao::DELETE: // DELETE
             
             if($categorias->deleteById($id))
             {

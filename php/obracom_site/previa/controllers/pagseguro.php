@@ -164,6 +164,7 @@ class Controller_Pagseguro extends Controller_Padrao
 					require_once 'biblioteca/PagSeguroLibrary/PagSeguroLibrary.php';
 
 					// Carregamos as credenciais de acesso ao PagSeguro
+
 					$pg_credenciais = new AccountCredentials($pagseguro_config[SITE_LOCAL]['email'], $pagseguro_config[SITE_LOCAL]['token']);
 
 					// Criamos o objeto que fará a requisição de pagamento ao PagSeguro
@@ -249,27 +250,33 @@ class Controller_Pagseguro extends Controller_Padrao
 
 
                     //-----
+                    try {
+						// Nosso código de referência é o ID do cliente mais o ID da compra
+						$pg_pagamento_requisicao->setReference($this->get_cliente()->get_id().'-'.$compra->get_id());
 
-					// Nosso código de referência é o ID do cliente mais o ID da compra
-					$pg_pagamento_requisicao->setReference($this->get_cliente()->get_id().'-'.$compra->get_id());
+						// Para onde o cliente deve ser redirecionado após o pagamento
+						$pg_pagamento_requisicao->setRedirectURL(SITE_URL.'/pagseguro/retorno');
 
-					// Para onde o cliente deve ser redirecionado após o pagamento
-					$pg_pagamento_requisicao->setRedirectURL(SITE_URL.'/pagseguro/retorno');
+						// Moeda utilizada na transação
+						$pg_pagamento_requisicao->setCurrency("BRL");
 
-					// Moeda utilizada na transação
-					$pg_pagamento_requisicao->setCurrency("BRL");
+						// Tipo de envio da compra
+						$pg_pagamento_requisicao->setShippingType(3); // 1 = PAC, 2 = SEDEX, 3 = Não especificado
 
-					// Tipo de envio da compra
-					$pg_pagamento_requisicao->setShippingType(3); // 1 = PAC, 2 = SEDEX, 3 = Não especificado
+						// A URL do PagSeguro só pode ser usada uma vez
+						$pg_pagamento_requisicao->setMaxUses(1);
 
-					// A URL do PagSeguro só pode ser usada uma vez
-					$pg_pagamento_requisicao->setMaxUses(1);
-
-					// Envia a requisição para o PagSeguro
-					$pg_url = $pg_pagamento_requisicao->register($pg_credenciais);
-					// Envia o cliente para o PagSeguro
-					header('Location: '.$pg_url);
-					exit;
+						// Envia a requisição para o PagSeguro
+						$pg_url = $pg_pagamento_requisicao->register($pg_credenciais);
+						// Envia o cliente para o PagSeguro
+						header('Location: '.$pg_url);
+						exit;
+                    	
+                    } catch (Exception $e) {
+                    	$n = new Notificacao('Por favor, verifique seus dados cadastrais e tente novamente mais tarde.', 'erro', TRUE);
+						header('Location: '.SITE_URL.'/carrinho');
+						exit;
+                    }
 				}
 				else
 				{

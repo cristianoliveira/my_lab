@@ -723,6 +723,7 @@ h2 {
 	font-size:16px;
 }
 .produtos .relacionados { width:900px; margin:0 auto; }
+.relacionado {  width:150px; margin: 10px 0 !important; }
 
 /* PÁGINA DO PRODUTO (DETALHES) */
 .produto .detalhes { margin:25px auto 35px; width:900px; }
@@ -1250,7 +1251,7 @@ h2 {
 	margin:-25px 0 25px;
 	width:100%;
 	text-align:center;
-	position:relative;
+	/*position:relative;*/
 }
 .paginacao span { 
 	color: #999;

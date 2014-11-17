@@ -1,5 +1,7 @@
 <?php include 'includes/cabecalho-interna.php'; ?>
 
+
+
 <div class="conteudo interna">
 	<div class="container">
     	
@@ -7,15 +9,12 @@
         
         <div class="voltar"><a href="<?php echo $anterior ?>">&#171; VOLTAR</a></div>
         
-        <p class="titulo-interna">Mais do que uma empresa, o melhor da indústria moveleira nacional agora no varejo on-line.</p>
-        
-        <p>Uma empresa que pensa no seu cotidiano, uma empresa que quer estar junto tanto nos momentos no escritório quanto em sua casa, trazendo o suporte necessário para seu conforto e bem-estar na forma de móveis.</p>
-
-		<p>Preocupações com a ergonomia e a alta qualidade dos produtos que entrega são duas das palavras da base que compõem o grande vocabulário de oportunidades que vimos para trazer a você.</p>
-
-		<p>Estamos situados no Rio Grande do Sul, podendo distribuir para todo o estado por um valor competitivo e com um prazo de entrega que sempre coloca à prova o que está pré-definido por logística.</p>
-
-		<p>Seja bem vindo (a), boas compras!</p>
+        <p class="titulo-interna">
+            <?php echo utf8_decode($slogan) ?>
+        <!-- Mais do que uma empresa, o melhor da indústria moveleira nacional agora no varejo on-line. --></p>
+        <p>
+            <?php echo utf8_decode($descricao) ?>
+        </p>
 
 		<h2>LANÇAMENTOS IMPERDÍVEIS</h2>
         

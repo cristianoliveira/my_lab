@@ -29,31 +29,28 @@ include("../includes/helpers/url_helper.php");
   $dados['ativo']                    = Parameter::POST('ativo',0); 
   $dados['descricao']                = trim(Parameter::POST('descricao','')); 
   
-  $dados['valor_original']    = trata_valores($dados['valor_original']);
-  $dados['valor_promocional'] = trata_valores($dados['valor_promocional']);
-  $dados['altura']            = trata_valores($dados['altura']);
-  $dados['largura']           = trata_valores($dados['largura']);
-  $dados['peso']              = trata_valores($dados['peso']);
-  $dados['comprimento']       = trata_valores($dados['comprimento']);
+  $dados['valor_original']           = trata_valores($dados['valor_original']);
+  $dados['valor_promocional']        = trata_valores($dados['valor_promocional']);
+  $dados['altura']                   = trata_valores($dados['altura']);
+  $dados['largura']                  = trata_valores($dados['largura']);
+  $dados['peso']                     = trata_valores($dados['peso']);
+  $dados['comprimento']              = trata_valores($dados['comprimento']);
 
 
   unset($dados['cor']);
   unset($dados['editar_galeria']);  
   
+  $nomeArquivoServidor = uniqid("produto");
+  if(FileHelper::upload('imagem_produto', $nomeArquivoServidor, site_path('uploads/produtos/')))
+  {
+      $extensao = explode('.',$_FILES['imagem_produto']['name']);
+      $dados['imagem'] = $nomeArquivoServidor.'.'.$extensao[1];
+  }
+
     switch ($acao) {
         case 1: // INSERT
-                $imagensProdutos = new ProdutosImagensModel();
-                $nomeArquivoServidor = uniqid("produto-");
-
-                log_file('Fazendo upload...'.$_FILES['imagem_produto']["name"]);
-                
-                if(FileHelper::upload('imagem_produto', $nomeArquivoServidor, site_path('uploads/produtos/')))
-                {
-                    log_file('Upload feito.');
-                }
-
-            $dados['imagem'] = $nomeArquivoServidor.".jpg";
-
+            $imagensProdutos = new ProdutosImagensModel();
+            
             if($produtos->insert($dados))
             {   
                 $newprodutoId = $produtos->getLastId();
@@ -115,7 +112,7 @@ include("../includes/helpers/url_helper.php");
             else
             {
                
-               $nomeArquivoServidor = uniqid("produto-$produtoId-");
+               $nomeArquivoServidor = uniqid('produto'.$produtoId);
 
                log_file('Fazendo upload...'.$dados['imagem_produto']);
                 

@@ -1,18 +1,23 @@
 <form id="form-cliente" class="form-default" method="post" action="<?= $form_action ?>"  >
         
     <?php if(isset($cliente['id'])) { ?>
-    <input type="hidden"  
-            name="id" 
-            value="<?= $cliente['id'] ?>"
-    />
+        <input type="hidden"  
+                name="id" 
+                value="<?= $cliente['id'] ?>"
+        />
+
+        <a class="endereco button botao-cadastrar" href="editar.php?id=<?= $cliente['id'] ?>&endereco=1">
+            Editar endereço
+        </a>
     <?php } ?>
         
         <div>
-            <div class="radio-input">            
+            <div>            
                 <input type="radio" 
                        id="pessoa_tipo_fisica"  
                        name="pessoa_tipo" 
                        value="fisica" 
+                       class="radio-input"
                        <?= (if_exist($cliente['cpf'])!="")? 'checked="checked"' : '' ?>
                 >
                      Pessoa Física
@@ -21,6 +26,7 @@
                        id="pessoa_tipo_juridica" 
                        name="pessoa_tipo" 
                        value="juridica"
+                       class="radio-input"
                        <?= (if_exist($cliente['cnpj'])!="")? 'checked="checked"' : '' ?>
                 >
                      Pessoa Jurídica
@@ -208,8 +214,17 @@
                         name="confirmacao_senha" 
                 />
             </div>
+            <div>
+                <label for="ativo">Ativo?</label>
+                <input type="checkbox"
+                       id="ativo"
+                       name="ativo"
+                       value="1"
+               <?php if(if_exist($cliente['ativo'],0)==1) echo "checked" ;   ?> />
+            </div>
+
             <div class="continuar">
-                <button type="submit"  class="button" id="btn_send" >Salvar</button>
+                <button type="submit"  class="button" id="btn_send" >Próximo</button>
             </div>
         </div>            
             
@@ -254,7 +269,7 @@
         $.validator.messages.email    = 'Email incorreto.'
     });
 
-    $('input').click(function(){
+    $('input.radio-input').change(function(){
         validaTipoPessoa();
 
         $("#form-cliente").validate({

@@ -1,5 +1,7 @@
 <?php
  
+// include "../previa/includes/log.php";
+
  class SQLBuilder
  {
     

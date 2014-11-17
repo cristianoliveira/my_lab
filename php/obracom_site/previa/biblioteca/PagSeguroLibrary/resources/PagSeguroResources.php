@@ -4,6 +4,12 @@
 $PagSeguroResources['environment'] = Array();
 $PagSeguroResources['environment']['production']['webserviceUrl'] = "https://ws.pagseguro.uol.com.br";
 
+// WebService URLs
+$PagSeguroResources['webserviceUrl'] = array();
+$PagSeguroResources['webserviceUrl']['production'] = "https://ws.pagseguro.uol.com.br";
+$PagSeguroResources['webserviceUrl']['sandbox']    = "https://ws.sandbox.pagseguro.uol.com.br";
+$PagSeguroResources['webserviceUrl']['p'] = "https://ws.pagseguro.uol.com.br";
+
 // Payment service
 $PagSeguroResources['paymentService'] = Array();
 $PagSeguroResources['paymentService']['servicePath'] = "/v2/checkout";

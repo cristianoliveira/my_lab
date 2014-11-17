@@ -4,24 +4,28 @@ include('../includes/check_authentication.php');
 include("../includes/logs.php");
 
 include("../includes/models/clientes_model.php");
+include("../includes/models/clientes_enderecos_model.php");
 include("../includes/helpers/mensagem_helper.php");
 include("../includes/helpers/variaveis_helper.php");
 
 
-    $clientes     = new ClientesModel();
-    $dadosCliente = $clientes->postParameters(Parameter::POST());
+    $clientes          = new ClientesModel();
+    $dadosCliente      = $clientes->postParameters(Parameter::POST());
     
-    $acao         = Parameter::GET('a', 0); //isset($_GET["a"])? $_GET["a"] : -1; 
-    $idcliente    = $clientes->getParameterID();
+    $redirectToEndereco = Parameter::GET('endereco', false) == 1; 
+    $acao               = Parameter::GET('a', 0); //isset($_GET["a"])? $_GET["a"] : -1; 
+    
+    $idcliente          = $clientes->getParameterID();
     
     if(isset($dadosCliente['nascimento']))
         $dadosCliente['nascimento'] = date("Y-m-d", strtotime(str_replace('/', '-', $dadosCliente['nascimento'])));
             
     switch ($acao) {
-        case 1: // INSERT
+        case Acao::INSERT: // INSERT
             
             if($clientes->insert($dadosCliente))
             {
+                $idcliente = $clientes->getLastId();
                 MensagemHelper::insertSucesso();
             }
             else
@@ -29,7 +33,7 @@ include("../includes/helpers/variaveis_helper.php");
             
             break;
 
-        case 2: // UPDATE
+        case Acao::UPDATE: // UPDATE
             
             if($clientes->update($dadosCliente, "id = $idcliente"))
             {
@@ -40,7 +44,7 @@ include("../includes/helpers/variaveis_helper.php");
 
             break;
 
-        case 3: // DELETE
+        case Acao::DELETE: // DELETE
             
             if($clientes->delete("id = $idcliente"))
             {
@@ -50,8 +54,29 @@ include("../includes/helpers/variaveis_helper.php");
                 MensagemHelper::erro();
                             
             break;
-    }
 
-    header('Location:listar.php'); 
+        case 4: // EDIT ENDERECO
+            
+            $enderecoCliente  = new ClientesEnderecosModel();
+            $dadosEndereco    = Parameter::POST();
+
+            if($enderecoCliente->save($dadosEndereco))
+            {
+                MensagemHelper::updateSucesso();
+            }
+            else
+                MensagemHelper::erro();
+                            
+            break;
+    }
+    
+    if($redirectToEndereco || $acao == 1)
+    {
+        header("Location:editar.php?id=$idcliente&endereco=1");
+    }
+    else
+    {
+        header('Location:listar.php'); 
+    }
 
 ?>

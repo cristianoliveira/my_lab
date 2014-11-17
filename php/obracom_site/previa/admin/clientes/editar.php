@@ -5,19 +5,24 @@ include('../includes/check_authentication.php');
 include("../includes/logs.php");
 
 include("../includes/models/clientes_model.php");
+include("../includes/models/clientes_enderecos_model.php");
 include("../includes/helpers/variaveis_helper.php");
 include("../includes/helpers/mensagem_helper.php");
 
 //Pega Dados e Mostra-os.
-$clientes  = new ClientesModel();
+$clientes   = new ClientesModel();
+$enderecos  = new ClientesEnderecosModel();
 
-$idcliente = $clientes->getParameterId();
+$idcliente    = Parameter::REQUEST('id'  ,0);
+$endereco     = Parameter::GET('endereco', false);
+
 $cliente   = $clientes->getById($idcliente);
 
 if(empty($cliente))
    header('Location:listar.php');
 
 $cliente['nascimento'] =  date("d/m/Y", strtotime($cliente['nascimento']));
+
         
 $clientes_tab = $clientes_gerenciar = "current";
 
@@ -38,18 +43,28 @@ $clientes_tab = $clientes_gerenciar = "current";
         <div class="content-box"><!-- Start Content Box -->
 
         <div class="content-box-header">
+        <?php if(!$endereco){ ?>
             <h3>Dados Cliente</h3>
-                
+        <?php }else{ ?>
+            <h3>Endereço do Cliente</h3>
+        <?php } ?>
                 <div class="clear"></div>
-
-            </div> <!-- End .content-box-header -->
+        </div> <!-- End .content-box-header -->
 
             <div class="content-box-content">
                 
                 <?php 
-                    $acao        = "Atualizar";
-                    $form_action = "acao.php?a=2";
-                    include "_form.php";
+                    if(!$endereco)
+                    {
+                        $form_action = "acao.php?a=2&endereco=1";
+                        include "_form.php";
+                    }else
+                    {
+                        $endereco_cliente = $enderecos->getEnderecoByClienteId($idcliente);
+                        $endereco_cliente['cliente_id'] = $idcliente;
+                        $form_action = "acao.php?a=4";
+                        include "_form_endereco.php";
+                    }
                 ?>
 
             </div> <!-- End .content-box-content -->

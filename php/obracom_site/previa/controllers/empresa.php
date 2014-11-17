@@ -23,7 +23,10 @@ class Controller_Empresa extends Controller_Padrao
 	 */
 	public function index($parametros)
 	{
-        		
+		$empresas = new Model_Empresa;
+        
+        $empresa  = $empresas->select('SELECT * FROM {tabela_nome} LIMIT 1');
+
         $view = new View('empresa.php');
 		$this->view_variaveis_obrigatorias($view);
 
@@ -43,7 +46,9 @@ class Controller_Empresa extends Controller_Padrao
 		$view->set_variavel('body_class', 'empresa');
 		$view->set_variavel('notificacao', new Notificacao);
 
-        $view->set_variavel('pagina_title', 'A Empresa');
+        $view->set_variavel('slogan'   , $empresa->get_slogan());
+        $view->set_variavel('descricao', $empresa->get_descricao());
+
         $view->set_variavel('pagina_description', '');
         $view->set_variavel('pagina_keywords', '');
 

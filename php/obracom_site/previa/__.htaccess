@@ -1,4 +1,4 @@
-# Otimizações
+# OtimizaÃ§Ãµes
 
 <FilesMatch "\.(htm|html|css|js)$">
 	AddDefaultCharset UTF-8
@@ -9,25 +9,25 @@ order allow,deny
 deny from all
 </Files>
 
-Options All + FollowSymLinks -Indexes
+Options All +FollowSymLinks -Indexes
 
 
-# Caso queira evitar duplicação de conteúdo, redirecionar o domínio NU (naked domain) sem pro WWW. Ou o inverso.
+# Caso queira evitar duplicaÃ§Ã£o de conteÃºdo, redirecionar o domÃ­nio NU (naked domain) sem pro WWW. Ou o inverso.
 #RewriteCond %{HTTP_HOST} ^faccentro.com.br
 #RewriteRule ^(.*)$ http://www.faccentro.com.br/$1 [R=301,L]
 
 #----------------------------
 
-# Redireciona o acesso ao diretório /fatorcms para o controller index 'dentro' do diretório /fatorcms/controller/index
+# Redireciona o acesso ao diretÃ³rio /fatorcms para o controller index 'dentro' do diretÃ³rio /fatorcms/controller/index
 RedirectMatch 301 ^/previa/fatorcms/$ /previa/fatorcms/index
 
-# Redirecionamento 404 (manda para o controller Erro com o parâmetro 404
+# Redirecionamento 404 (manda para o controller Erro com o parÃ¢metro 404
 ErrorDocument 404 /erro/404
 
 
 RewriteEngine On
 RewriteBase /previa/
-RewriteRule ^index.php$ - [L]
+RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /previa/index.php [L]

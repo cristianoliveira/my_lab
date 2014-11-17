@@ -7,12 +7,10 @@ include("../includes/models/empresas_model.php");
 include("../includes/helpers/mensagem_helper.php");
 include("../includes/helpers/variaveis_helper.php");
 
-    echo "aa";
     $acao         = Parameter::GET('a', 0); //isset($_GET["a"])? $_GET["a"] : -1; 
     
     $empresas     = new EmpresasModel();
     $dadosempresa = Parameter::POST();
-    $idempresa    = Parameter::POST('id');
     
     switch ($acao) {
         // case 1: // INSERT
@@ -26,9 +24,9 @@ include("../includes/helpers/variaveis_helper.php");
             
         //     break;
 
-        case 2: // UPDATE
+        case Acao::UPDATE: // UPDATE
             
-            if($empresas->updateById($idempresa, $dadosempresa))
+            if($empresas->updateById($dadosempresa['id'], $dadosempresa))
             {
                 MensagemHelper::updateSucesso();
             }

@@ -12,7 +12,7 @@ $PagSeguroConfig['environment'] = "production"; // production, sandbox
 
 $PagSeguroConfig['credentials'] = array();
 $PagSeguroConfig['credentials']['email'] = "cia@ciadoescritorio.com.br";
-$PagSeguroConfig['credentials']['token']['production'] = "46C41E27DACA4522AA8182FB798182F2";
+$PagSeguroConfig['credentials']['token']['production'] = "B5CF32EB6D8B469894AB942574ECC447";
 $PagSeguroConfig['credentials']['token']['sandbox'] = "27E422A70393487895BA9AB8D2AD2441";
 
 $PagSeguroConfig['application'] = array();

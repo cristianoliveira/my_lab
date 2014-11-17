@@ -78,13 +78,13 @@ $email_config = array(
 $pagseguro_config = array(
 
 'fdserver' => array(
-	'email' => 'fatordigital@fatordigital.com.br',
-	'token' => 'B032F04641B04BA884B5D42C4C8ADC07'
+	'email' => 'cia@ciadoescritorio.com.br',
+	'token' => 'B5CF32EB6D8B469894AB942574ECC447'
 	),
 
 'cliente' => array(
-	'email' => 'viniciusbudde@gmail.com',
-	'token' => '5BD4C4542A274C2BA1613D36CCEC2084'
+	'email' => 'cia@ciadoescritorio.com.br',
+	'token' => 'B5CF32EB6D8B469894AB942574ECC447'
 	)
 );
 
