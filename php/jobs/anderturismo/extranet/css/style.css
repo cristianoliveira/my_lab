@@ -1,0 +1,40 @@
+/******** CSS RESET *********/
+*{margin: 0; padding: 0; border:0px;}
+div:after, ol:after, form:after, ul:after, dl:after {clear:both; content:"."; display:block; visibility: hidden; height:0; overflow:hidden;}
+
+/******** DEFINIÇÕES BASE *********/
+body{font-family:'Trebuchet MS', Tahoma, Arial, sans-serif;}
+.content{width:980px; margin:40px auto 0;}
+.esq{float:left;}
+.clear{clear:both; float:none;}
+.center{text-align:center; font-size:11px;}
+header h1{color:#868686; font-size:22px; font-weight:normal;}
+header .bdam{border-bottom:2px solid #D8B243;}
+header .menu a{color:#192066; text-decoration:none; font-size:20px; padding:5px;}
+header .menu a:hover{background-color:#FFD950; color:#D23800; font-weight:bold;}
+header #downloads{float:right; width:250px; background-color:#FFEEAE; padding-top:20px;}
+header #downloads h1{padding:0 25px;}
+header #downloads ul{list-style:none;}
+header #downloads a{color:#1B464F; text-decoration:none;}
+header #downloads li{font-size:12px; padding:10px 75px 10px 25px;}
+header #downloads li:hover{background-color:#FFF7D3;}
+h2{border-top:3px solid #000; width:100%; padding-top:10px; font-family:Arial, sans-serif;}
+
+/******** FORMULÁRIOS *********/
+.tabela{border-collapse: collapse; width:100%; font-size:13px;}
+.tabela tr td{border:1px solid #000; padding:3px; overflow:auto;}
+.tabela .titulo{background-color:#1F487C; color:#fff; width:100%; font-weight:bold; font-size:16px; padding:4px; margin-top:15px;
+	border:1px solid #1F487C;}
+.tabela .sb{border:0px;}
+.tabela .sbb{border-bottom:0px;}
+.tabela .sbe{border-left:0px;}
+.tabela .des{border:0px; padding:0px;}
+.tabela input{width:100%;}
+.tabela.bloco1 input{width:330px !important;}
+.tabela.bloco2 input{width:810px !important;}
+.tabela.bloco3 input{width:720px !important;}
+.tabela.bloco4 input{width:760px !important;}
+.tabela .tammenor{width:30px;}
+.titcont{text-align:center; font-weight:bold;}
+.pontilhado{margin-left:132px;}
+input[type="submit"]{background-color:#1F487C; color:#fff; border:0px; float:right; padding:5px 10px; cursor:pointer;}
