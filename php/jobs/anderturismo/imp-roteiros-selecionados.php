@@ -28,9 +28,9 @@ $destaques = mysqli_query( $conexao, $roteiros_meio2); // Executa a consulta
 
 /*  === CONSULTA 3: Roteiros Selecionados ==== */
 $roteiros_meio = "SELECT * FROM `roteiros`, roteiros_selecionados WHERE id_roteiro=idroteiros AND status_roteiro=1 AND sessao='$sessao' AND data_inicio >= $data_atual ORDER BY data_fim";
-$selecionados = mysqli_query( $conexao, $roteiros_meio); // Executa a consulta
+$selecionados = mysqli_query( $conexao, $roteiros_meio ); // Executa a consulta
 
-echo "$roteiros_meio";
+$quantidadePaginas = mysql_num_rows($selecionados);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,90 +41,90 @@ echo "$roteiros_meio";
 <script src="js/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/redmond/jquery-ui.css">
 
-<script>
-  $(function() {
+ <script>
+//   $(function() {
 
-$( "#dialog" ).dialog();
+// $( "#dialog" ).dialog();
 
-$('.btn_mais_filtros').click( //botão roteiros topo
-    function() {
-	$( ".aparece_filtros" ).slideToggle( "slow" );
-   });
+// $('.btn_mais_filtros').click( //botão roteiros topo
+//     function() {
+// 	$( ".aparece_filtros" ).slideToggle( "slow" );
+//    });
 
-$('.glyphicon-globe').click( //botão roteiros topo
-    function() {
-	$( ".layer_flutuante" ).slideToggle( "fast" );
-   });
+// $('.glyphicon-globe').click( //botão roteiros topo
+//     function() {
+// 	$( ".layer_flutuante" ).slideToggle( "fast" );
+//    });
    
-   				var Page = (function() {
+//    				var Page = (function() {
 					
-					var $navArrows = $( '#nav-arrows' ),
-						$nav = $( '#nav-dots > span' ),
-						slitslider = $( '#slider' ).slitslider( {
-							onBeforeChange : function( slide, pos ) {
+// 					var $navArrows = $( '#nav-arrows' ),
+// 						$nav = $( '#nav-dots > span' ),
+// 						slitslider = $( '#slider' ).slitslider( {
+// 							onBeforeChange : function( slide, pos ) {
 
-								$nav.removeClass( 'nav-dot-current' );
-								$nav.eq( pos ).addClass( 'nav-dot-current' );
+// 								$nav.removeClass( 'nav-dot-current' );
+// 								$nav.eq( pos ).addClass( 'nav-dot-current' );
 
-							}
-						} ),
+// 							}
+// 						} ),
 						
 						
 						
 
-						init = function() {
+// 						init = function() {
 
-							initEvents();
+// 							initEvents();
 							
-						},
-						initEvents = function() {
+// 						},
+// 						initEvents = function() {
 							
-														// add navigation events
-							$navArrows.children( ':last' ).on( 'click', function() {
+// 														// add navigation events
+// 							$navArrows.children( ':last' ).on( 'click', function() {
 
-								slitslider.next();
-								return false;
+// 								slitslider.next();
+// 								return false;
 
-							} );
+// 							} );
 
-							$navArrows.children( ':first' ).on( 'click', function() {
+// 							$navArrows.children( ':first' ).on( 'click', function() {
 								
-								slitslider.previous();
-								return false;
+// 								slitslider.previous();
+// 								return false;
 
-							} );
+// 							} );
 
-							$nav.each( function( i ) {
+// 							$nav.each( function( i ) {
 							
-								$( this ).on( 'click', function( event ) {
+// 								$( this ).on( 'click', function( event ) {
 									
-									var $dot = $( this );
+// 									var $dot = $( this );
 									
-									if( !slitslider.isActive() ) {
+// 									if( !slitslider.isActive() ) {
 
-										$nav.removeClass( 'nav-dot-current' );
-										$dot.addClass( 'nav-dot-current' );
+// 										$nav.removeClass( 'nav-dot-current' );
+// 										$dot.addClass( 'nav-dot-current' );
 									
-									}
+// 									}
 									
-									slitslider.jump( i + 1 );
-									return false;
+// 									slitslider.jump( i + 1 );
+// 									return false;
 								
-								} );
+// 								} );
 								
-							} );
+// 							} );
 
-						};
+// 						};
 
-						return { init : init };
+// 						return { init : init };
 
-				})();
+// 				})();
 
-				Page.init();
+// 				Page.init();
 
 
-  });
-  </script>
+//   });
+//   </script>
 
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 
@@ -142,15 +142,18 @@ $('.glyphicon-globe').click( //botão roteiros topo
 
 <style type="text/css">
 body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
+  width: 2480px;
 }
 @font-face {
     font-family: "Humanst531 BT";
     src: url(fonts/Hum521l.ttf) format("truetype");
 }
+
+.pagina-A4 {
+  width:  2480px;
+  height: 3508px;
+}
+
 .fundo_amarelo_topo{width:100%; height:40px; background: linear-gradient(#ebbb01, #ffe592); }
 .alinha_login_extranet{width:1035px; height:20px; margin:0 auto;}
 .fundo_login_extranet{
@@ -249,7 +252,19 @@ footer {
 
 .descricao_hotel{float:left; width:220px}
 .checkin_checkout1{float:left; margin-left:20px; width:450px}
-.checkin_checkout2{float:left; margin-left:20px; width:320px}
+.checkin_checkout2{f
+<style type="text/css">
+body {
+  width: 2480px;
+}
+@font-face {
+    font-family: "Humanst531 BT";
+    src: url(fonts/Hum521l.ttf) format("truetype");
+}
+
+.pagina-A4 {
+  width:  2480px;
+  height: 3508px;loat:left; margin-left:20px; width:320px}
 
 .alinha_conteudo_hotel{width:1035px; height:auto; min-height:450px;  margin:0 auto; position:relative; clear:both  }
 .alinha_formulario{position:relative; width:1035px; margin:0 auto; height:550px; clear:both}
@@ -268,132 +283,92 @@ legend{background-color:#ffe488; text-align:center; color:#d92029; font-weight:7
 </head>
 
 <body>
-<header>
-<!-- INÍCIO CABEÇALHO -->
-<div class="fundo_amarelo_topo"> </div>
+<div class="pagina-A4">
+    <header id="header">
+      <!-- INÍCIO CABEÇALHO -->
+      <div class="fundo_amarelo_topo"> </div>
 
-<!-- ESPAÇO PARA AGÊNCIAS DE VIAGENS -->
-<a href="#">
-<div class="alinha_login_extranet"> 
-	<div class="fundo_login_extranet">
-		<div class="login_extranet"><img src="imagens/login_extranet.png" width="143" height="34" /> </div>
+        <!-- MENU -->
+        <div class="alinha_topo_menu">
+        	<div class="logotipo"><a href="index.php"><img src="imagens/logo_andes.jpg" width="232" height="115" border="0"/></a> </div>
+            <div class="alinha_menu">
+        </div>
+    </header>
+    <!-- FIM CABEÇALHO -->
+
+    <!-- meio -->
+    <div>
     </div>
-</div>
-</a>
-<!-- FIM EPAV -->
 
-<!-- MENU -->
-<div class="alinha_topo_menu">
-	<div class="logotipo"><a href="index.php"><img src="imagens/logo_andes.jpg" width="232" height="115" border="0"/></a> </div>
-    <div class="alinha_menu">
-		<div class="menu">
-          <ul class="menu-list">
-            <li><a href="index.php">Home <br /> Início </a></li>
-            <li><a href="nossa-empresa.php">Nossa <br /> Empresa </a></li>
-            <li><a href="viagens-programadas.php">Viagens <br /> Programadas </a></li>
-            <li><a href="viagens-em-grupo.php">Viagens <br /> em grupo </a></li>
-            <li><a href="viagens-individuais.php">Viagens <br /> Individuais </a></li>
-            <li><a href="fale-conosco.php">Fale <br /> Conosco </a></li>
-            <li><a href="nossas-noticias.php">Nossas <br /> Notícias </a></li>
-            <li><a href="baixe-revistas-e-roteiros.php">Baixe Revistas <br /> e Roteiros </a></li>
-          </ul>
-        </div>   
-    </div>
-	
-</div>
-<!-- FIM MENU -->
+    <div class="organiza_meio">
+     <div class="alinha_meio">
+        <div class="page-header">
+          <h1> Roteiros Selecionados </h1>
+        </div>
+       <?php 
+        if(mysqli_num_rows($destaques)>0){
+       while ($pegaDestaques = mysqli_fetch_assoc($destaques)) { ?> 
+        <!-- REPETE -->
+        <div class="roteiro_destaque">
+        <div class="titulo_destaque"> <?php echo  $pegaDestaques['nome_roteiro']; ?> </div>
+        <ul id="imagepreview2">
+         <li>
+                <a href="imagem.php?arquivo=cms/uploads/roteiros/<?php echo  $pegaDestaques['imagem_roteiro']; ?>&largura=640&altura=480" class="preview2" title="">
+                   <img src="imagem.php?arquivo=cms/uploads/roteiros/<?php echo  $pegaDestaques['imagem_roteiro']; ?>&largura=250&altura=207" />
+                </a>  
+            </li> 
+         </ul>
+        <legend class="formata_legend"> <?php echo  $pegaDestaques['datas_completas']; ?> </legend>
+        <div class="descricao_roteiro"> 
+           <?php
+    $paises = "SELECT * FROM `paises`,`roteiros`,`relacoes_paises_roteiros` WHERE idroteiros=id_roteiro AND idpaises=id_pais AND id_roteiro=".$pegaDestaques['idroteiros'];         
 
-<div class="barra_azul">
-	   
-   
-</div><!-- FIM BARRAZUL -->
-</header>
-<!-- FIM CABEÇALHO -->
+                    $pega_paises = mysqli_query($conexao,$paises); // Executa a consulta
+                    $cont        = mysqli_num_rows($pega_paises); // Conta número de linhas da consulta
+                    $i = 0;
 
-<!-- meio -->
-
-
-<div class="caminhos">
-<div class="alinha_caminhos">
-    <ol class="breadcrumb">
-      <li><a href="#">Página Inicial</a></li>
-      <li class="active"> 
-      Roteiros selecionados
-      </li>    
-      
-      </ol>
-</div>
-
-</div>
-
-<div class="organiza_meio">
- <div class="alinha_meio">
-    <div class="page-header">
-      <h1> Roteiros Selecionados </h1>
-    </div>
-   <?php 
-    if(mysqli_num_rows($destaques)>0){
-   while ($pegaDestaques = mysqli_fetch_assoc($destaques)) { ?> 
-    <!-- REPETE -->
-    <div class="roteiro_destaque">
-    <div class="titulo_destaque"> <?php echo  $pegaDestaques['nome_roteiro']; ?> </div>
-    <ul id="imagepreview2">
-     <li>
-            <a href="imagem.php?arquivo=cms/uploads/roteiros/<?php echo  $pegaDestaques['imagem_roteiro']; ?>&largura=640&altura=480" class="preview2" title="">
-               <img src="imagem.php?arquivo=cms/uploads/roteiros/<?php echo  $pegaDestaques['imagem_roteiro']; ?>&largura=250&altura=207" />
-            </a>  
-        </li> 
-     </ul>
-    <legend class="formata_legend"> <?php echo  $pegaDestaques['datas_completas']; ?> </legend>
-    <div class="descricao_roteiro"> 
-       <?php
-$paises = "SELECT * FROM `paises`,`roteiros`,`relacoes_paises_roteiros` WHERE idroteiros=id_roteiro AND idpaises=id_pais AND id_roteiro=".$pegaDestaques['idroteiros'];         
-
-                $pega_paises = mysqli_query($conexao,$paises); // Executa a consulta
-                $cont = mysqli_num_rows($pega_paises); // Conta número de linhas da consulta
-                $i = 0;
-
-                        
-                        while ($paisok = mysqli_fetch_array($conexao,$pega_paises))
-                            {
-                                $i++;
-                                if($i == $cont){
-                                    echo  $paisok['nome_pais']  .  "."; //pega nome do pais e concatena com ponto por ser o último
-                                }else{
-                                    echo  $paisok['nome_pais']  .  ", "; //pega nome do pais e concatena com vírgula
+                            
+                            while ($paisok = mysqli_fetch_array($conexao,$pega_paises))
+                                {
+                                    $i++;
+                                    if($i == $cont){
+                                        echo  $paisok['nome_pais']  .  "."; //pega nome do pais e concatena com ponto por ser o último
+                                    }else{
+                                        echo  $paisok['nome_pais']  .  ", "; //pega nome do pais e concatena com vírgula
+                                    }
                                 }
-                            }
-   ?>
+       ?>
+        </div>
+
+    	<div align="center">
+        <form action="pagina-roteiro.php" method="post" name="frmVerRoteiros">
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-zoom-in" >
+             <span style="text-align:left; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;">Veja mais</span>
+        </button>
+         <input type="hidden" name="codigo_roteiro" value="<?php echo  $pegaDestaques['idroteiros']; ?>" />
+        </form>
+        </div>
+
+     
+        </div>    
+        <!-- FIM REPETE -->
+        <?php } 
+    	} else{ echo "Não há roteiros selecionados no momento."; } ?> 
+
+     
+      </div>
     </div>
-
-	<div align="center">
-    <form action="pagina-roteiro.php" method="post" name="frmVerRoteiros">
-    <button type="submit" class="btn btn-primary glyphicon glyphicon-zoom-in" >
-         <span style="text-align:left; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;">Veja mais</span>
-    </button>
-     <input type="hidden" name="codigo_roteiro" value="<?php echo  $pegaDestaques['idroteiros']; ?>" />
-    </form>
-    </div>
-
- 
-    </div>    
-    <!-- FIM REPETE -->
-    <?php } 
-	} else{ echo "Não há roteiros selecionados no momento."; } ?> 
-
- 
-  </div>
-</div>
-<!-- fim meio -->
+    <!-- fim meio -->
 
 
-<footer>
-<h4> Andes Turismo - Grupo Andes Travel Brasil </h4><br />
-<p> Av. Assis Brasil, 1652 / 401. Passo D'Areia - Porto Alegre - RS </p>
-<p> CEP 91010-001 - Telefone: 51 3342.0123 </p>
-<p> E-mail: <a href="mailto:contato@andesturismo.com.br?subject=Contato">contato@andesturismo.com.br</a></p><br />
-<p><img src="imagens/formas_pagamento.png" width="318" height="61" /></p>
-<div class="assinatura"><a href="http://obracom.com.br/" target="_blank"><img src="imagens/assinatura_obracom.png" width="75" height="15" border="0" /></a></div>
-</footer>
+    <footer>
+    <h4> Andes Turismo - Grupo Andes Travel Brasil </h4><br />
+    <p> Av. Assis Brasil, 1652 / 401. Passo D'Areia - Porto Alegre - RS </p>
+    <p> CEP 91010-001 - Telefone: 51 3342.0123 </p>
+    <p> E-mail: <a href="mailto:contato@andesturismo.com.br?subject=Contato">contato@andesturismo.com.br</a></p><br />
+    <p><img src="imagens/formas_pagamento.png" width="318" height="61" /></p>
+    <div class="assinatura"><a href="http://obracom.com.br/" target="_blank"><img src="imagens/assinatura_obracom.png" width="75" height="15" border="0" /></a></div>
+    </footer>
+   </div>
 </body>
 </html>

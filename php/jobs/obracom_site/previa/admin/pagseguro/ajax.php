@@ -68,7 +68,8 @@ include("../includes/models/pagseguro_model.php");
                 </tr>
             <?php  } ?>
         <?php
- 			break;
+ 			
+            break;
  		case 'consulta_pagseguro_por_codigo':
             $codigo = Parameter::GET('codigo', false);
 

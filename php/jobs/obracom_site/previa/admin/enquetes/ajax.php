@@ -16,7 +16,8 @@ include("../includes/models/opcoes_enquete_model.php");
    	case 'delete_opcao':
    		 
    		 $opcaoId     = Parameter::GET('idopcao',0);
-   		 if($opcaoId != 0)
+   		   
+         if($opcaoId != 0)
          {
             if($opcoesEnquete->deleteById($opcaoId))
             {

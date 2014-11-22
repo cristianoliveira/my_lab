@@ -1,10 +1,11 @@
 <?php  
 include("../includes/functions.php");
-include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
 include("../includes/logs.php");
 
 include("../includes/helpers/variaveis_helper.php"); 
+
+include("../includes/cabecalho.php"); 
 
   $categorias_tab = $categorias_adicionar = "current";
 ?>

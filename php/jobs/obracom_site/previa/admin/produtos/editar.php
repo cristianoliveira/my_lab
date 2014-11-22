@@ -1,5 +1,4 @@
 <?php  
-include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 include("../includes/logs.php");
@@ -11,6 +10,7 @@ include("../includes/models/produtos_imagens_model.php");
 include("../includes/helpers/mensagem_helper.php");
 include("../includes/helpers/variaveis_helper.php");
 
+include("../includes/cabecalho.php"); 
 
     $produtos       = new ProdutosModel();
     $categorias     = new CategoriasModel();

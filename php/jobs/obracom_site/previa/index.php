@@ -30,6 +30,8 @@ else
 }
 define ('SITE_LOCAL', $site_local);
 
+file_put_contents('indexlog.txt','INICIO'."\n");
+file_put_contents('indexlog.txt',print_r($diretorios,true)."\n");
 
 
 // Carrega a função de Autoload para que seja possível instanciar uma classe sem fazer o include na mão

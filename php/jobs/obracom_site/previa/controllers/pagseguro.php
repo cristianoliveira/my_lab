@@ -308,6 +308,7 @@ class Controller_Pagseguro extends Controller_Padrao
 	 */
 	public function retorno($parametros)
 	{
+		file_put_contents('log.txt','INICIO'."\n");
 		// Para que as credenciais fiquem disponíveis
 		global $pagseguro_config;
 		
@@ -321,6 +322,9 @@ class Controller_Pagseguro extends Controller_Padrao
 
 		$pagseguro = new Model_Pagseguro;
 
+		file_put_contents('log.txt', 'POST '.print_r($_REQUEST, true)."\n", FILE_APPEND);
+        file_put_contents('log.txt', print_r($parametros, true)."\n", FILE_APPEND);
+
 		//-----
 
 		$enviar_email = new Controller_Email;
@@ -333,18 +337,23 @@ class Controller_Pagseguro extends Controller_Padrao
 
 		// Tipo de notificação recebida
 		//$pg_notificacao_tipo = $parametros->transaction_id;
-		$pg_notificacao_tipo = $parametros->notificationType;
+		$pg_notificacao_tipo = $_POST['notificationType'];//$parametros->notificationType;
 		// Código da notificação recebida
-		$pg_notificacao_codigo = $parametros->notificationCode;
-
+		$pg_notificacao_codigo = $_POST['notificationCode'];//$parametros->notificationCode;
+        
+        file_put_contents('log.txt', "pg_notificacao_tipo = $pg_notificacao_tipo pg_notificacao_codigo = $pg_notificacao_codigo",FILE_APPEND);
+		
+		break;
 		// Verificando tipo de notificação recebida
 		if ($pg_notificacao_tipo == 'transaction')
 		{
 			// Obtendo o objeto Transaction a partir do código de notificação
-			$pg_transacao = NotificationService::checkTransaction($pg_credenciais, $pg_notificacao_codigo);
+			$pg_transacao = NotificationService::checkTransaction($pg_credenciais, $parametros['id']);
 
 			if ($pg_transacao)
 			{
+				file_put_contents('log.txt', "$pg_transacao",FILE_APPEND);
+
 				list($cliente_id, $compra_id) = explode('-', $pg_transacao->getReference());
 
 				$pagseguro->set_compra_id($compra_id);

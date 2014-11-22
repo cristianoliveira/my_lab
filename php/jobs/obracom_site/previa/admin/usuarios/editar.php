@@ -1,11 +1,12 @@
 <?php  
-include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
 include("../includes/functions.php");
 include("../includes/logs.php");
 
 include_once("../includes/helpers/variaveis_helper.php");
 include_once("../includes/models/usuarios_model.php");
+
+include("../includes/cabecalho.php"); 
 
     $usuarios  = new UsuariosModel();
     $idusuario = par_get("id");

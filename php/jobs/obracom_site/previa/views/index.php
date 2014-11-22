@@ -42,7 +42,14 @@
                     </li>
                 </ul>
                 <div class="banner">
-                	<img src="<?php echo SITE_BASE ?>/views/imagens/banner-produtos.jpg" alt="Conheça a linha Forma, da Artesano, na Cia do Escritório" />
+                     <?php
+                        foreach ($banners as $banner)
+                        {
+                            echo '<a href="'.$banner->get_link().'">';
+                                echo '<img src="'.SITE_BASE.'/admin/uploads/banners/'.$banner->get_imagem().'" alt="'.$banner->get_titulo().'" style="width:729px; height:153px;" />';
+                            echo '</a>';
+                        }?>
+                        <!-- <img src="<?php echo SITE_BASE ?>/views/imagens/banner-produtos.jpg" alt="Conheça a linha Forma, da Artesano, na Cia do Escritório" /> -->
                 </div>
         	</div>
         </div>

@@ -1,5 +1,4 @@
 <?php  
-include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 include("../includes/functions.php");
@@ -7,6 +6,8 @@ include("../includes/logs.php");
 
 include("../includes/helpers/variaveis_helper.php");
 include("../includes/models/usuarios_model.php");
+
+include("../includes/cabecalho.php"); 
 
     $usuarios = new UsuariosModel();
     

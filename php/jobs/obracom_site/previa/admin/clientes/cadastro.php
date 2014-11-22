@@ -1,11 +1,11 @@
 <?php  
 include("../includes/functions.php");
-include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
 include("../includes/logs.php");
 
 include("../includes/helpers/variaveis_helper.php");
 
+include("../includes/cabecalho.php"); 
   //Menu Sidebar
   $clientes_tab = $clientes_adicionar = "current";
   

@@ -136,7 +136,11 @@ window.onload=function(){
             <form method="post" action="<?php echo SITE_URL ?>/produtos" id="form-buscar" >
 				<label>BUSCAR</label>
                 <div class="produto">
-					<input type="text" name="texto" id="buscar_produto" maxlength="255" value="<?php echo isset($busca_texto) ? utf8_encode($busca_texto) : '' ?>" />
+					<input type="text" 
+					       name="texto" 
+					       id="buscar_produto" 
+					       maxlength="255" 
+					       value="<?php echo isset($busca_texto) ? ($busca_texto) : '' ?>" />
                 </div>
                 <label>EM</label>
                 <div class="categoria">

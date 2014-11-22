@@ -1,11 +1,12 @@
 <?php  
-include("../includes/cabecalho.php");
 include("../includes/check_authentication.php");
 include("../includes/functions.php");
 include("../includes/logs.php");
 include("../includes/helpers/variaveis_helper.php");
 include("../includes/helpers/mensagem_helper.php");
 include("../includes/models/pagseguro_model.php");
+
+include("../includes/cabecalho.php");
 
 $pagseguro   = new PagSeguroModel();
 $codigo      = Parameter::GET('codigo', 0);

@@ -1,11 +1,12 @@
 <?php  
-include("../includes/cabecalho.php");
 include('../includes/check_authentication.php');
 include("../includes/database_connection.php");
 
 include("../includes/helpers/variaveis_helper.php");
 include("../includes/models/categorias_model.php");
     
+include("../includes/cabecalho.php");
+
     $categorias        = new CategoriasModel();
     $listCategorias    = $categorias->getAll(); 
     $galeria           = Parameter::GET('galeria', 0) == 1; 

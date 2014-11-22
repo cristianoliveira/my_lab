@@ -1,6 +1,5 @@
 <?php  
 include("../includes/functions.php");
-include("../includes/cabecalho.php"); 
 include('../includes/check_authentication.php');
 include("../includes/logs.php");
 
@@ -8,6 +7,8 @@ include("../includes/models/clientes_model.php");
 include("../includes/models/clientes_enderecos_model.php");
 include("../includes/helpers/variaveis_helper.php");
 include("../includes/helpers/mensagem_helper.php");
+
+include("../includes/cabecalho.php"); 
 
 //Pega Dados e Mostra-os.
 $clientes   = new ClientesModel();
