@@ -6,7 +6,7 @@ class FileHelper{
 
         if(isset($_FILES[$nome]))
         {
-            log_file("FILE existe");
+            log_file("FILE existe $nome");
                 
             $extensao = explode('.',$_FILES[$nome]['name']);
             

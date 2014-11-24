@@ -89,10 +89,10 @@ include("../includes/cabecalho.php");
                                         <a href="editar.php?id=<?php echo $categoria['id']; ?>"title="Editar o categoria.">
                                             <img src="../imagens/icones/pencil.png"alt="Editar"/>
                                         </a>
-                                        <a href="acao.php?a=3&id=<?php echo $categoria['id']; ?>" 
+                                        <!-- <a href="acao.php?a=3&id=<?php echo $categoria['id']; ?>" 
                                            title="Excluir a categoria" class="item-confirmar"  
                                            onclick="if(!confirm('Você tem certeza que deseja excluir?')) return false;" >
-                                            <img src="../imagens/icones/cross.png"alt="Excluir"/>
+                                            <img src="../imagens/icones/cross.png"alt="Excluir"/> -->
                                         </a>
                                     </td>
                                 </tr>

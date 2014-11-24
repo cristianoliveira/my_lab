@@ -9,14 +9,14 @@
         </a>
         
         <div class="galeria-upload-form">
-            <label>Upload da Cor </label>
-                <input id="imagem" class="text-input" name="imagem_produto" type="hidden" />
+            <label>Upload de cor</label>
+                <input id="imagem" class="text-input" name="imagem" type="hidden" />
             
             <div>
-                <div id="preview-crop" class="cropme" style="width: 700px; height: 600px;"></div>
+                <div id="preview-crop" class="cropme" style="width: 100px; height: 100px;"></div>
             </div>
             <div style="float: left;">
-                <label for="nome">Nome</label>
+                <label for="nome">Nome da Cor</label>
                 <input id="nome" class="text-input large-input" name="nome" type="text" />
                 <input style="margin:10px 0;" class="button" type="submit" value="Enviar"/>
             </div>
@@ -53,7 +53,7 @@
 <!-- End .clear -->
 </form>
 <script type="text/javascript">
-    $('#preview-crop').simpleCropper(50,50);
+    $('#preview-crop').simpleCropper(700,600);
     $('#form-produto').submit(function(){
         img     = $('#preview-crop').find('img');
         source  = img.attr('src');

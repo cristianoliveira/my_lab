@@ -8,15 +8,21 @@
         <div class="detalhes">
             
             <div class="imagem">
-                <a class="colorbox-produto" title="<?php echo $produto->get_codigo().' '.$produto->get_nome() ?>" href="<?php echo SITE_BASE.'/admin/uploads/produtos/'.$produto->get_imagem() ?>"><img src="<?php echo SITE_BASE.'/admin/uploads/produtos/'.$produto->get_imagem() ?>" alt="<?php echo $produto->get_codigo().' '.$produto->get_nome() ?>" class="img_produto_principal" /> </a> 
+                <a class="colorbox-produto" title=" <?php echo $produto->get_codigo().' '.$produto->get_nome() ?>" href="<?php echo SITE_BASE.'/admin/uploads/produtos/'.$produto->get_imagem() ?>">
+                   <img src="<?php echo SITE_BASE.'/admin/uploads/produtos/'.$produto->get_imagem() ?>" alt="<?php echo $produto->get_codigo().' '.$produto->get_nome() ?>" class="img_produto_principal" /> 
+                </a> 
                 <div id="duvidas" align="center"> Dúvidas? <a href="<?php echo SITE_URL ?>/contato?pid=<?php echo $produto->get_codigo() ?>&pname=<?php echo $produto->get_nome() ?>" class="linkDuvidas">Clique aqui. </a></div>                   
 	            <?php
 	            if ($produto_imagens AND count($produto_imagens) > 0){ ?>
                     <p>Mais fotos deste produto</p>
                     <ul id="maisfotos">
+                <?php foreach ($produto_imagens as $imagem){ ?>
+    			        <li>
+                            <a class="colorbox-produto" title="<?= $imagem->get_titulo() ?>" href="<?= SITE_BASE.'/admin/uploads/produtos/'.$imagem->get_imagem() ?>">
+                               <img src="<?= SITE_BASE.'/admin/uploads/produtos/'.$imagem->get_imagem() ?>" alt="<?= $imagem->get_titulo() ?>" />
+                            </a>
+                        </li>';
                 <?php
-		            foreach ($produto_imagens as $imagem){
-    			        echo '<li><a class="colorbox-produto" title="'.$imagem->get_titulo().'" href="'.SITE_BASE.'/admin/uploads/produtos/'.$imagem->get_imagem().'"><img src="'.SITE_BASE.'/admin/uploads/produtos/'.$imagem->get_imagem().'" alt="'.$imagem->get_titulo().'" /></a></li>';
                     }
 	            }
 				?>
@@ -46,7 +52,24 @@
                 <h1><?php echo $produto->get_codigo().' '.$produto->get_nome() ?></h1>
         
                 <p><?php echo $produto->get_descricao() ?></p>
-	            
+	            <table class="produto-detalhes">
+                    <thead>
+                        <td colspan="4">Detalhes</td>
+                    </thead>
+                    <thead>
+                        <td>Altura (m)</td>
+                        <td>Comprimento (m)</td>
+                        <td>Largura (m)</td>
+                        <td>Peso (kg)</td>
+                    </thead>
+                    <tr>
+                        <td><?= $produto->get_altura(); ?></td>
+                        <td><?= $produto->get_comprimento(); ?></td>
+                        <td><?= $produto->get_largura(); ?></td>
+                        <td><?= $produto->get_peso(); ?></td>
+                    </tr>
+                </table>
+
 	            <?php if ($produto->get_disponivel()) { ?>
                 
 	                <p class="valor">R$ <span><?php echo number_format(is_null($produto->get_valor_promocional()) ? $produto->get_valor_original() : $produto->get_valor_promocional(), 2, ',', '.') ?></span></p>

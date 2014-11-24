@@ -12,7 +12,13 @@ include("../includes/helpers/variaveis_helper.php");
 include("../includes/helpers/mensagem_helper.php");
 include("../includes/helpers/file_helper.php");
 include("../includes/helpers/url_helper.php");
-
+  
+  define('ACAO_GALERIA_INSERT', 4); 
+  define('ACAO_GALERIA_DELETE', 5); 
+  define('ACAO_COR_INSERT'    , 6); 
+ 
+  log_file('#### produtos ');
+  
   $produtos      = new ProdutosModel();
   $coresProdutos = new ProdutosCoresModel();
 
@@ -22,8 +28,8 @@ include("../includes/helpers/url_helper.php");
                   || $acao == 4;
                   
   $dados         = Parameter::POST();
-  $cores         = $dados['cor'];
-  
+  $cores         = Parameter::FILE('cor', false);
+
   $dados['oferta_imperdivel_home']   = Parameter::POST('oferta_imperdivel_home',0); 
   $dados['disponivel']               = Parameter::POST('disponivel',0); 
   $dados['ativo']                    = Parameter::POST('ativo',0); 
@@ -36,9 +42,12 @@ include("../includes/helpers/url_helper.php");
   $dados['peso']                     = trata_valores($dados['peso']);
   $dados['comprimento']              = trata_valores($dados['comprimento']);
 
+  log_file(print_r($cores,true));
 
   unset($dados['cor']);
   unset($dados['editar_galeria']);  
+  
+  break;
   
   $nomeArquivoServidor = uniqid("produto");
   if(FileHelper::upload('imagem_produto', $nomeArquivoServidor, site_path('uploads/produtos/')))
@@ -46,34 +55,36 @@ include("../includes/helpers/url_helper.php");
       $extensao = explode('.',$_FILES['imagem_produto']['name']);
       $dados['imagem'] = $nomeArquivoServidor.'.'.$extensao[1];
   }
+  
 
     switch ($acao) {
-        case 1: // INSERT
+        case Acao::INSERT: // INSERT
             $imagensProdutos = new ProdutosImagensModel();
             
             if($produtos->insert($dados))
             {   
                 $newprodutoId = $produtos->getLastId();
                 log_file("newprodutoId = $newprodutoId");
-                
-                if($coresProdutos->insertInProduto($newprodutoId, $cores))
-                {
-                   MensagemHelper::insertSucesso();
-                   if($editar_galeria)
-                   {
-                      header('Location:editar.php?galeria=1&id='.$newprodutoId );
-                      return;
-                   }
-                } 
-                else
-                   MensagemHelper::erro('Erro ao inserir cores no produto.');
+                MensagemHelper::insertSucesso();
+
+                // if($coresProdutos->insertInProduto($newprodutoId, $cores))
+                // {
+                //    MensagemHelper::insertSucesso();
+                //    if($editar_galeria)
+                //    {
+                //       header('Location:editar.php?galeria=1&id='.$newprodutoId );
+                //       return;
+                //    }
+                // } 
+                // else
+                //    MensagemHelper::erro('Erro ao inserir cores no produto.');
             }
             else
                 MensagemHelper::erro();
             
             break;
 
-        case 2: // UPDATE
+        case Acao::UPDATE: // UPDATE
             if($produtos->updateById($dados['id'], $dados))
             {
                 if($coresProdutos->updateCoresDoProduto($dados['id'], $cores))
@@ -86,7 +97,7 @@ include("../includes/helpers/url_helper.php");
 
             break;
 
-        case 3: // DELETE
+        case Acao::DELETE: // DELETE
             
             $id = Parameter::GET('id');
             
@@ -99,7 +110,7 @@ include("../includes/helpers/url_helper.php");
                             
             break;
     
-        case 4: // UPLOAD GALERIA
+        case ACAO_GALERIA_INSERT: // UPLOAD GALERIA
             
             $imagensProdutos = new ProdutosImagensModel();
             $produtoId       = Parameter::POST('produto', false);
@@ -139,7 +150,7 @@ include("../includes/helpers/url_helper.php");
 
             break;
         
-        case 5: // DELETE GALERIA
+        case ACAO_GALERIA_DELETE: // DELETE GALERIA
 
             $imagensProdutos = new ProdutosImagensModel();
             $imagemId   = Parameter::GET('id',0);

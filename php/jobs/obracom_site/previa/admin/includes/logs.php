@@ -26,17 +26,17 @@ return false;
 
 function log_file($text){
     
-    // $data = date('Ymd'); // Salva a data e hora atual (formato MySQL)
-    // $hora = date('Y-m-d H:i:s'); // Salva a data e hora atual (formato MySQL)
-    // $myfile = "../$data.log";
+    $data = date('Ymd'); // Salva a data e hora atual (formato MySQL)
+    $hora = date('Y-m-d H:i:s'); // Salva a data e hora atual (formato MySQL)
+    $myfile = "../$data.log";
     
-    // $buffer = '';
+    $buffer = '';
     
-    // if (file_exists($myfile)) {
-    //     $buffer = file_get_contents($myfile) . "\n" . "$hora - $text";
-    // }
+    if (file_exists($myfile)) {
+        $buffer = file_get_contents($myfile) . "\n" . "$hora - $text";
+    }
 
-    // $success = file_put_contents($myfile, $buffer );
+    $success = file_put_contents($myfile, $buffer );
 }
 
 ?>

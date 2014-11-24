@@ -236,6 +236,18 @@ h2 {
 }
 .nome-produto{min-height:37px;}
 
+.produto-detalhes {
+	border: none !important;
+	top: 5px !important;
+	border-collapse: separate !important;
+}
+
+.produto-detalhes td{ 
+	width: 100px;
+	height: 15px;
+	border: none;
+}
+
 /* PÁGINA CADASTRO */
 .cadastro .navegue-forms { 
 	border-bottom:2px solid #BC2A27;

@@ -43,12 +43,11 @@
                 <label>Cores</label>
                 <div>
                 Clique para selecionar
-                    <input id="cor"
-                           class="cor-seletor color"
-                           type="text"
-                           maxlength="10"
-                           readonly
-                           />
+                    <input id="cor-seletor"
+                           class="cor-seletor"
+                           type="file"
+                           hidden/>
+                    <img id="cor-seletor-preview" src="" />
                     <input id="adiciona-cor" 
                            type="button" 
                            value="+" 
@@ -238,117 +237,4 @@
     </span>Deseja editar a galeria de imagens do produto?</p>
 </div>
 
-<script type="text/javascript">
-    
-    $('#form-produto').submit(function(){
-        
-        if(!$(this).valid())
-          return false;
-
-        doSubmit = $('#editar_galeria').val() != "false";
-        if(!doSubmit){
-            $( "#dialog-confirm" ).dialog({
-                  resizable: false,
-                  height:140,
-                  modal: true,
-                  buttons: {
-                    "Sim": function() {
-                      $('#editar_galeria').val("1");
-                    
-                      $('#form-produto').submit();
-                      $( this ).dialog( "close" );
-                    },
-                    "Finalizar Cadastro": function() {
-                      $('#editar_galeria').val("0");
-                      
-                      $('#form-produto').submit();
-                      $( this ).dialog( "close" );
-                    }
-                  }
-            });
-        }
-        
-        return doSubmit;
-
-    });    
-    
-    $("#adiciona-cor").click(function(){
-        quantidade = $('.cor-adicionada').length
-        document.getElementById('cor').color.hidePicker()
-        
-        novaCor = $('#cor').clone()
-        novaCor.attr("id"    ,"cor-"+quantidade)
-        novaCor.attr("name"  ,"cor["+quantidade+"]")
-        novaCor.attr("class" ,"cor-adicionada cor-adicionada-"+quantidade)
-        
-        /*
-        botaoRemove = $("#cor-button-modelo").clone(true,true);
-        botaoRemove.attr("id"        ,"remove-"+quantidade)
-        botaoRemove.attr("visibility","visible");
-        botaoRemove.attr("class"     ,"cor-adicionada-"+quantidade)
-        
-        botaoRemove.appendTo('#cor-painel')*/
-        novaCor.appendTo('#cor-painel')
-    });
-
-    $(".botao-remove").click(function(){
-        ultimaCor = $('.cor-adicionada:last-child').attr("id");
-        $('#'+ultimaCor).remove();
-    });    
-
-/* MASCARAS */
-$(".mascara-data").mask("99/99/9999",{ placeholder: "dd/mm/yyyy"});
-$(".mascara-valor").focusout(function(){
-      valor = $(this).val();
-      
-      if(valor.indexOf(',')<0)
-         valor = valor+",00";
-
-      valor = valor.replace(/[^0-9]/gi,'');
-      valor = valor.substring(0, valor.length-2)+","+valor.substring(valor.length-2);
-      
-      if(valor.length>3)
-        $(this).val(valor);
-      else
-        $(this).val("");
-        
-});
-$(".mascara-telefone").mask("(999)9999-9999");
-
-jQuery.validator.addMethod("validaUnico", function(value, element)
-{ 
-    retorno = true;
-    campo = element.id;
-    valor = value;
-    id    = $("#id").val();
-
-    if(valor!="" && id==undefined){
-      $.ajaxSetup({async: false});
-      $.get( "validacao.php?campo="+campo+"&valor="+valor, function( data ) {
-        if (data == "1")
-        {
-            retorno = false;
-        }else{
-            retorno = true; 
-        }
-      });
-    }
-   return retorno;  
-}, "Valor já foi utilizado."); 
-
-$(function(){
-    $.validator.messages.required = 'Campo deve ser informado.';
-});
-
-$("#form-produto").validate({
-      rules:
-      {
-          nome: { required: true },
-          nome_seo: { required: true , validaUnico:true},
-          codigo: { required: true , validaUnico:true},
-          valor_original:           { required: true },         
-          valor_promocional:        { required: true },
-      },
-});
-
-</script>
+<script type="text/javascript" src="produto.js"></script>

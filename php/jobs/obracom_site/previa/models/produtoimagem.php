@@ -28,7 +28,7 @@ class Model_ProdutoImagem extends Model_Padrao
 	public function get_imagem() {return $this->imagem;}
 	public function set_imagem($string) {$this->imagem = ! is_null($string) ? mb_substr(trim($string), 0, 36) : NULL;}
 	
-	public function get_titulo() {return $this->titulo;}
+	public function get_titulo() {return utf8_decode($this->titulo);}
 	public function set_titulo($string) {$this->titulo = ! is_null($string) ? mb_substr(trim($string), 0, 100) : NULL;}
 
 

@@ -64,8 +64,8 @@ switch ($lista2) {
                 Categorias
                 </a>
                 <ul style="display:none;">
-                    <li><a href="<?php echo $ROOT_URL; ?>/categorias/cadastro.php" 
-                           class="<?= if_exist($categorias_adicionar,'default') ?>"> Adicionar </a></li>
+                    <!-- <li><a href="<?php echo $ROOT_URL; ?>/categorias/cadastro.php" 
+                           class="<?= if_exist($categorias_adicionar,'default') ?>"> Adicionar </a></li> -->
                     <li><a href="<?php echo $ROOT_URL; ?>/categorias/listar.php" 
                            class="<?= if_exist($categorias_gerenciar,'default') ?>"> Gerenciar </a></li>
                 </ul>

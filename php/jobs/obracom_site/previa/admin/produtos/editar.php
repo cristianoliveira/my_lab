@@ -16,8 +16,9 @@ include("../includes/cabecalho.php");
     $categorias     = new CategoriasModel();
     $coresProduto   = new ProdutosCoresModel();
     
-    $produto   = $produtos->getById($_GET['id']);
-
+    $idProduto      = Parameter::GET('id'); 
+    $produto        = $produtos->getById($idProduto);
+    
     if(empty($produto))
         header('Location:listar.php');
 
@@ -25,12 +26,18 @@ include("../includes/cabecalho.php");
     $listCores         = $coresProduto->getCoresByProdutoId($produto['id']); 
     
     $galeria           = Parameter::GET('galeria', 0) == 1; 
+    $cores             = Parameter::GET('cores'  , 0) == 1; 
     
     if($galeria)
     {
-        $idProduto      = Parameter::GET('id'); 
         $imagensProduto = new ProdutosImagensModel();
         $listImagens    = $imagensProduto->getImagensFromProduto($idProduto);
+    }
+
+    if($cores)
+    {
+        $coresProduto   = new ProdutosCoresModel();
+        $listCores      = $coresProduto->getCoresByProdutoId($idProduto);
     }
 
     $produtos_tab      = $produtos_tab_gerenciar = "current";
@@ -69,16 +76,22 @@ include("../includes/cabecalho.php");
 
                 <?php 
                      
-                     if(!$galeria)
+                     if($cores)
                      {
-                         $action_form = "acao.php?a=2&id=".$_GET['id'];
-                         $acao        = "Atualizar";
-                         include('_form.php'); 
+                          $action_form = "acao.php?a=6&id=".$_GET['id'];
+                          $acao        = "Atualizar";
+                          include('_form_cores.php'); 
+                     }
+                     elseif($galeria)
+                     {
+                          $action_form = "acao.php?a=4";
+                          include('_form_galeria.php'); 
                      }
                      else
                      {
-                        $action_form = "acao.php?a=4";
-                        include('_form_galeria.php'); 
+                          $action_form = "acao.php?a=2&id=".$_GET['id'];
+                          $acao        = "Atualizar";
+                          include('_form.php'); 
                      }
 
                 ?>

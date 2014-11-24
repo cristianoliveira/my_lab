@@ -13,16 +13,16 @@ include("../includes/helpers/variaveis_helper.php");
     $id             = $categorias->getParameterID();
     
     switch ($acao) {
-        case Acao::INSERT: // INSERT
+        // case Acao::INSERT: // INSERT
             
-            if($categorias->insert($dados))
-            {
-                MensagemHelper::insertSucesso();
-            }
-            else
-                MensagemHelper::erro();
+        //     if($categorias->insert($dados))
+        //     {
+        //         MensagemHelper::insertSucesso();
+        //     }
+        //     else
+        //         MensagemHelper::erro();
             
-            break;
+        //     break;
 
         case Acao::UPDATE: // UPDATE
             
@@ -36,16 +36,16 @@ include("../includes/helpers/variaveis_helper.php");
 
             break;
 
-        case Acao::DELETE: // DELETE
+        // case Acao::DELETE: // DELETE
             
-            if($categorias->deleteById($id))
-            {
-                MensagemHelper::deleteSucesso();
-            }
-            else
-                MensagemHelper::erro();
+        //     if($categorias->deleteById($id))
+        //     {
+        //         MensagemHelper::deleteSucesso();
+        //     }
+        //     else
+        //         MensagemHelper::erro();
 
-            break;
+        //     break;
     }
 
     header('Location:listar.php'); 

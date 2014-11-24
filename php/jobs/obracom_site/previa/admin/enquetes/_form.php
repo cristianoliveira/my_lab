@@ -38,7 +38,7 @@
             </div>
 			
 			<div>
-			    <h3>Adicionar Opições</h3>
+			    <h3>Adicionar Opções</h3>
                 <label>Texto</label>
                 <input type="text" 
                        class="opcao text-input large-input required" 

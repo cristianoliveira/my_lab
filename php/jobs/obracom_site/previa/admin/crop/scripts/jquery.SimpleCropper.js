@@ -6,7 +6,7 @@
 
 (function($) {
 
-  $.fn.simpleCropper = function() {
+  $.fn.simpleCropper = function(pWidth, pHeight) {
 
     var image_dimension_x = 600;
     var image_dimension_y = 600;
@@ -24,6 +24,7 @@
     var jcrop_api;
     var bottom_html = "<input type='file' id='fileInput' name='files[]'/><canvas id='myCanvas' style='display:none;'></canvas><div id='modal'></div><div id='preview'><div class='buttons'><div class='cancel'></div><div class='ok'></div></div></div>";
     $('body').append(bottom_html);
+
 
     //add click to element
     this.click(function() {
@@ -73,6 +74,9 @@
     }
 
     function imageUpload(dropbox) {
+
+      
+      
       var file = $("#fileInput").get(0).files[0];
       //var file = document.getElementById('fileInput').files[0];
       var imageType = /image.*/;
@@ -151,7 +155,7 @@
               jcrop_api = this;
             });
           }
-
+          
           // Add image to dropbox element
           dropbox.appendChild(current_image);
         }
