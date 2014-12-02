@@ -83,7 +83,7 @@ include("../includes/cabecalho.php");
                                     <img src="../imagens/icones/pencil.png"alt="Editar" border="0" align="left" style="padding-left:10px;" /> 
                                 </a>
                                 <a href="editar.php?galeria=1&id=<?= $produto['id']; ?>" title="Editar as imagens do produto.">
-                                    <img src="../imagens/pdf.png" width="20" height="20" alt="Galeria" align="left" style="padding-left:10px;" />
+                                    <img src="../imagens/icones/galeria.png" width="20" height="20" alt="Galeria" align="left" style="padding-left:10px;" />
                                 </a>
                                 <a href="acao.php?a=3&id=<?= $produto['id']; ?>" title="Excluir o produto" class="item-confirmar"  onclick="if(!confirm('Você tem certeza que deseja excluir esse item?')) return false;">
                                     <img src="../imagens/icones/cross.png"alt="Excluir" hspace="5" border="0" align="left" style="padding-left:10px;" /> 

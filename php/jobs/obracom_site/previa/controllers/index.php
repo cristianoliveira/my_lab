@@ -30,10 +30,10 @@ class Controller_Index extends Controller_Padrao
 
 		// Banners/destaque
 		$destaque = new Model_Destaque;
-		$destaques = $destaque->select('SELECT * FROM {tabela_nome} ORDER BY RAND()', TRUE);
+		$destaques = $destaque->select('SELECT * FROM {tabela_nome} ORDER BY RAND() LIMIT 1', TRUE);
 		$view->set_variavel('destaques', $destaques);
 
-		$banners = $destaque->select('SELECT * FROM fd_banners ORDER BY RAND() LIMIT 1', TRUE);
+		$banners = $destaque->select('SELECT * FROM fd_banners ORDER BY RAND()', TRUE);
 		$view->set_variavel('banners', $banners);
 
 		//-----

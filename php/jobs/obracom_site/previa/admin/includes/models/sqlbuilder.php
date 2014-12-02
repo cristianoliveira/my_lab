@@ -1,6 +1,6 @@
 <?php
  
-// include "../previa/includes/log.php";
+//include "../previa/admin/includes/log.php";
 
  class SQLBuilder
  {
@@ -210,7 +210,7 @@
 
         $this->clean();
 
-        // log_file('SQL - '.$return);
+        //log_file('SQL - '.$return);
 
 
         return $return.';';

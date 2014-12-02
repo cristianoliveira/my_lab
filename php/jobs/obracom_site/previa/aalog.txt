@@ -1,0 +1,14 @@
+INICIO
+POST Array
+(
+    [id] => 357C55AE-B2B3-4620-9DEB-68FC2C74119A
+    [PHPSESSID] => 7d61964f298d0c5b0d95408dfeafa5ad
+)
+
+stdClass Object
+(
+    [id] => 357C55AE-B2B3-4620-9DEB-68FC2C74119A
+)
+
+pg_notificacao_tipo =  
+ pg_notificacao_codigo = 

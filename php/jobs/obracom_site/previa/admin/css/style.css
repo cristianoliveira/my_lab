@@ -916,6 +916,16 @@ input[readonly] {color:#999!important}
 #cor-painel{
 }
 
+.cor-input-nome {
+    position: static;
+    width: 90px;
+}
+
+.cores{
+    width: 100px;
+}
+
+
 .radio-input input{
     margin: 5px;
 }
@@ -971,4 +981,8 @@ input[readonly] {color:#999!important}
 
 .pagseguro-dados td{
     width: 30%;
+}
+
+.hidden {
+    visibility: hidden;
 }

@@ -15,7 +15,7 @@
 		<nav class="menu">
 			<a href="contrato.php">Contrato de Prestação de Serviços de Turismo</a><br/>
 			<a href="ficha.php">Ficha de Reserva e Inscrição</a><br/>
-			<a href="#">Formulário de Autorização de Débito</a>
+			<a href="autorizacao-debito.php">Formulário de Autorização de Débito</a>
 		</nav>
 	</div>
 
@@ -24,7 +24,7 @@
 		<ul>
 			<a href="download.php?arquivo=contrato"><li>Contrato de Prestação de Serviços de Turismo</li></a>
 			<a href="download.php?arquivo=ficha"><li>Ficha de Reserva e Inscrição</li></a>
-			<a href="#"><li>Formulário de Autorização de Débito</li></a>
+			<a href="autorizacao-debito.php"><li>Formulário de Autorização de Débito</li></a>
 		</ul>
 	</div>
 	<div class="clear"></div>

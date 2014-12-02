@@ -16,6 +16,7 @@ include("../includes/helpers/url_helper.php");
   define('ACAO_GALERIA_INSERT', 4); 
   define('ACAO_GALERIA_DELETE', 5); 
   define('ACAO_COR_INSERT'    , 6); 
+  define('ACAO_COR_DELETE'    , 7); 
  
   log_file('#### produtos ');
   
@@ -42,30 +43,28 @@ include("../includes/helpers/url_helper.php");
   $dados['peso']                     = trata_valores($dados['peso']);
   $dados['comprimento']              = trata_valores($dados['comprimento']);
 
-  log_file(print_r($cores,true));
-
   unset($dados['cor']);
   unset($dados['editar_galeria']);  
   
-  break;
-  
-  $nomeArquivoServidor = uniqid("produto");
-  if(FileHelper::upload('imagem_produto', $nomeArquivoServidor, site_path('uploads/produtos/')))
-  {
-      $extensao = explode('.',$_FILES['imagem_produto']['name']);
-      $dados['imagem'] = $nomeArquivoServidor.'.'.$extensao[1];
-  }
-  
-
     switch ($acao) {
         case Acao::INSERT: // INSERT
-            $imagensProdutos = new ProdutosImagensModel();
             
+            $nomeArquivoServidor = uniqid("produto");
+            if(FileHelper::upload('imagem_produto', $nomeArquivoServidor, site_path('uploads/produtos/')))
+            {
+                $extensao = explode('.',$_FILES['imagem_produto']['name']);
+                $dados['imagem'] = $nomeArquivoServidor.'.'.$extensao[1];
+            }
+
             if($produtos->insert($dados))
             {   
                 $newprodutoId = $produtos->getLastId();
                 log_file("newprodutoId = $newprodutoId");
                 MensagemHelper::insertSucesso();
+
+                header('Location:editar.php?cores=1&id='.$newprodutoId);
+                return;
+
 
                 // if($coresProdutos->insertInProduto($newprodutoId, $cores))
                 // {
@@ -85,13 +84,16 @@ include("../includes/helpers/url_helper.php");
             break;
 
         case Acao::UPDATE: // UPDATE
-            if($produtos->updateById($dados['id'], $dados))
+            
+            $nomeArquivoServidor = uniqid("produto");
+            if(FileHelper::upload('imagem_produto', $nomeArquivoServidor, site_path('uploads/produtos/')))
             {
-                if($coresProdutos->updateCoresDoProduto($dados['id'], $cores))
-                    MensagemHelper::updateSucesso();
-                else
-                    MensagemHelper::erro('Erro ao atualizar cores.');
+                $extensao = explode('.',$_FILES['imagem_produto']['name']);
+                $dados['imagem'] = $nomeArquivoServidor.'.'.$extensao[1];
             }
+
+            if($produtos->updateById($dados['id'], $dados))
+                MensagemHelper::updateSucesso();
             else
                 MensagemHelper::erro();
 
@@ -114,7 +116,7 @@ include("../includes/helpers/url_helper.php");
             
             $imagensProdutos = new ProdutosImagensModel();
             $produtoId       = Parameter::POST('produto', false);
-            $titulo          = Parameter::POST('titulo');
+            $titulo          = Parameter::POST('nome');
 
             if(!$produtoId)
             {
@@ -165,7 +167,66 @@ include("../includes/helpers/url_helper.php");
             header('Location:editar.php?galeria=1&id='.$produtoId);
             return;
             
-            break;           
+            break;
+        
+        case ACAO_COR_INSERT:
+
+             log_file('COR INSERT');
+               
+             
+            $coresProduto    = new ProdutosCoresModel();
+            $produtoId       = Parameter::POST('produto', false);
+            $nome          = Parameter::POST('nome');
+
+            if(!$produtoId)
+            {
+                MensagemHelper::erro("Selecione um produto.");
+            }
+            else
+            {
+               
+               $nomeArquivoServidor = uniqid('cor-produto-'.$produtoId);
+
+               log_file('URL:'.site_path('uploads/produtos/'.$nomeArquivoServidor.".jpg"));
+               log_file('Fazendo upload...'.$dados['imagem']);
+                
+
+                if(FileHelper::base64ToJpg( $dados['imagem']
+                                          , site_path('uploads/produtos/'.$nomeArquivoServidor.".jpg")))
+                {
+                   log_file('Upload feito.');
+                    
+                    if($coresProduto->insert(array( 'produto_id'=> $produtoId
+                                                  , 'imagem'    => $nomeArquivoServidor.".jpg"
+                                                  , 'nome'      => $nome))){
+
+                        MensagemHelper::sucesso("Upload realizado com sucesso.");
+                    }else
+                        MensagemHelper::erro("Erro ao salvar imagem no banco.");
+                        
+                }   
+                
+            }
+
+            header('Location:editar.php?cores=1&id='.$produtoId);
+            return;
+          case ACAO_COR_DELETE:
+                $coresProduto = new ProdutosCoresModel();
+                $corId        = Parameter::GET('id',0);
+                $produtoId    = Parameter::GET('produto',0);
+                $cor          = $coresProduto->getById($corId);
+                
+                if($cor)
+                if ($coresProduto->deleteById($cor['id'])) {
+                    unlink(site_path('uploads/produtos/'.$cor['imagem']));
+                    MensagemHelper::deleteSucesso();
+                }else
+                    MensagemHelper::erro("Erro ao deletar imagem.");
+                
+                header('Location:editar.php?cores=1&id='.$produtoId);
+                return;
+            
+          break;
         }
     
         header('Location:listar.php'); 

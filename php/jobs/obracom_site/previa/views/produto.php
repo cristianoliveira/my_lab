@@ -36,7 +36,7 @@
                     foreach ($produto_cores as $produto_cor)
                     {
                         if($produto_cor->get_imagem() != ''){
-                            echo '<li><a class="cor-produto" title="'.$produto_cor->get_nome().'" href="#" id="cor-'.$produto_cor->get_id().'"><img src="'.SITE_BASE.'/arquivos/produtos/cores/thumb/'.$produto_cor->get_imagem().'" alt="'.$produto_cor->get_nome().'" /></a></li>';
+                            echo '<li><a class="cor-produto" title="'.$produto_cor->get_nome().'" href="#" id="cor-'.$produto_cor->get_id().'"><img style="height:30px; width:30px; border:1px solid #777" src="'.SITE_BASE.'/admin/uploads/produtos/'.$produto_cor->get_imagem().'" alt="'.$produto_cor->get_nome().'" /></a></li>';
                         }else{
                             echo '<li><a class="cor-produto" title="'.$produto_cor->get_nome().'" href="#" id="cor-'.$produto_cor->get_id().'"><div style="height:25px; width:25px; border:1px solid #777; background-color:#'.$produto_cor->get_cor().'""></div></a></li>';
                         }

@@ -20,6 +20,15 @@ header #downloads li{font-size:12px; padding:10px 75px 10px 25px;}
 header #downloads li:hover{background-color:#FFF7D3;}
 h2{border-top:3px solid #000; width:100%; padding-top:10px; font-family:Arial, sans-serif;}
 
+.radio-buttons label{
+	width: 100px !important;
+	margin: 0 10px;
+}
+
+.radio-buttons input{
+	width: 20px !important;
+}
+
 /******** FORMULÁRIOS *********/
 .tabela{border-collapse: collapse; width:100%; font-size:13px;}
 .tabela tr td{border:1px solid #000; padding:3px; overflow:auto;}
@@ -34,7 +43,17 @@ h2{border-top:3px solid #000; width:100%; padding-top:10px; font-family:Arial, s
 .tabela.bloco2 input{width:810px !important;}
 .tabela.bloco3 input{width:720px !important;}
 .tabela.bloco4 input{width:760px !important;}
+.tabela.bloco5 td{border:0px solid #000; padding:3px; overflow:auto;}
 .tabela .tammenor{width:30px;}
 .titcont{text-align:center; font-weight:bold;}
 .pontilhado{margin-left:132px;}
 input[type="submit"]{background-color:#1F487C; color:#fff; border:0px; float:right; padding:5px 10px; cursor:pointer;}
+
+.radio-buttons {
+	width: 160px;
+	float: left;
+}
+
+@media print{
+	.non-printable { display: none; }
+}

@@ -7,9 +7,12 @@
         <a class="produto button botao-cadastrar" href="listar.php">
             Finalizar
         </a>
+        <a class="produto button botao-cadastrar" href="editar.php?id=<?= $idProduto ?>">
+            Editar Produto
+        </a>
         
         <div class="galeria-upload-form">
-            <label>Upload de cor</label>
+            <label>Upload de cor do produto.</label>
                 <input id="imagem" class="text-input" name="imagem" type="hidden" />
             
             <div>
@@ -24,20 +27,20 @@
     </fieldset>
     <div class="galeria-thumbs" >
         <?php 
-            if(isset($listImagens)) { 
-               foreach ($listImagens as $imagem) { 
+            if(isset($listCores)) { 
+               foreach ($listCores as $cor) { 
         ?>
             <div class="galeria-thumb">
-                <h5><?= $imagem['titulo'] ?></h5>
-                <img src="<?= site_url('uploads/produtos/'.$imagem['imagem']); ?>" />
+                <h5><?= $cor['titulo'] ?></h5>
+                <img src="<?= site_url('uploads/produtos/'.$cor['imagem']); ?>" />
                 <div>
                     <a class="button" 
                        style="width:80%; margin:5px 0" 
-                       href="<?= site_url('uploads/produtos/'.$imagem['imagem']); ?>" 
+                       href="<?= site_url('uploads/produtos/'.$cor['imagem']); ?>" 
                        target="_blank">
                       Visualizar
                     </a>
-                    <a class="button" style="width:80%; margin:5px 0" <?= 'href="acao.php?a=5&produto='.$produto['id'].'&id='.$imagem['id'].'"' ?> >
+                    <a class="button" style="width:80%; margin:5px 0" <?= 'href="acao.php?a=7&produto='.$produto['id'].'&id='.$cor['id'].'"' ?> >
                       Remover
                     </a>
                 </div>

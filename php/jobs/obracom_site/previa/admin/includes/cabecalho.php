@@ -15,8 +15,10 @@
     <!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
     <link rel="stylesheet" href="../css/invalid.css" type="text/css" media="screen"/>
 
-    <link rel="stylesheet" href="../css/cupertino/jquery-ui-1.8.14.custom.css" type="text/css" media="screen"/>
-
+    <!-- <link rel="stylesheet" href="../css/cupertino/jquery-ui-1.8.14.custom.css" type="text/css" media="screen"/> -->
+    <link rel="stylesheet" href="../css/jquery_ui_theme/jquery-ui.min.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="../css/jquery_ui_theme/jquery-ui.theme.min.css" type="text/css" media="screen"/>
+   
     <!-- Internet Explorer Fixes Stylesheet -->
 
     <!--[if lte IE 7]>

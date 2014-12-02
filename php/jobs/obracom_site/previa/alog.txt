@@ -1,0 +1,67 @@
+INICIO
+POST Array
+(
+    [VendedorEmail] => cia@ciadoescritorio.com.br
+    [TransacaoID] => 357C55AEB2B346209DEB68FC2C74119A
+    [Referencia] => 14-89
+    [Extras] => 0,00
+    [TipoFrete] => FR
+    [ValorFrete] => 0,00
+    [Anotacao] => 
+    [DataTransacao] => 25/11/2014 01:19:30
+    [TipoPagamento] => Boleto
+    [StatusTransacao] => Aguardando Pagto
+    [CliNome] => Cristian Oliveira da Rosa
+    [CliEmail] => c.oliveiradarosa@gmail.com
+    [CliEndereco] => Rua Dom João Becker
+    [CliNumero] => 1852
+    [CliComplemento] => Frente
+    [CliBairro] => Fátima
+    [CliCidade] => Canoas
+    [CliEstado] => RS
+    [CliCEP] => 92200031
+    [CliTelefone] => 54 91140804
+    [NumItens] => 1
+    [Parcelas] => 1
+    [ProdID_1] => 56-189
+    [ProdDescricao_1] => Produto aaaa
+    [ProdValor_1] => 1,00
+    [ProdQuantidade_1] => 1
+    [ProdFrete_1] => 0,00
+    [ProdExtras_1] => 0,00
+)
+
+stdClass Object
+(
+    [VendedorEmail] => cia@ciadoescritorio.com.br
+    [TransacaoID] => 357C55AEB2B346209DEB68FC2C74119A
+    [Referencia] => 14-89
+    [Extras] => 0,00
+    [TipoFrete] => FR
+    [ValorFrete] => 0,00
+    [Anotacao] => 
+    [DataTransacao] => 25/11/2014 01:19:30
+    [TipoPagamento] => Boleto
+    [StatusTransacao] => Aguardando Pagto
+    [CliNome] => Cristian Oliveira da Rosa
+    [CliEmail] => c.oliveiradarosa@gmail.com
+    [CliEndereco] => Rua Dom João Becker
+    [CliNumero] => 1852
+    [CliComplemento] => Frente
+    [CliBairro] => Fátima
+    [CliCidade] => Canoas
+    [CliEstado] => RS
+    [CliCEP] => 92200031
+    [CliTelefone] => 54 91140804
+    [NumItens] => 1
+    [Parcelas] => 1
+    [ProdID_1] => 56-189
+    [ProdDescricao_1] => Produto aaaa
+    [ProdValor_1] => 1,00
+    [ProdQuantidade_1] => 1
+    [ProdFrete_1] => 0,00
+    [ProdExtras_1] => 0,00
+)
+
+pg_notificacao_tipo =  
+ pg_notificacao_codigo = 

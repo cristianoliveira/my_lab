@@ -16,7 +16,7 @@
             
             <form method="get" action="<?php echo SITE_URL ?>/area-cliente/consultar-pedidos" id="form-consultar-pedidos" >
 
-                <p><input type="radio" name="filtro" value="abertos" class="radio" <?php echo (isset($filtro) AND $filtro == 'abertos') ? 'checked="checked"' : '' ?>>Pedidos Abertos</p>
+                <!-- <p><input type="radio" name="filtro" value="abertos" class="radio" <?php echo (isset($filtro) AND $filtro == 'abertos') ? 'checked="checked"' : '' ?>>Pedidos Abertos</p> -->
                 <p><input type="radio" name="filtro" value="todos" class="radio" <?php echo ((isset($filtro) AND $filtro == 'todos') OR ! isset($filtro)) ? 'checked="checked"' : '' ?>>Todos Pedidos</p>
                 <p><input type="radio" name="filtro" value="numero" class="radio" <?php echo (isset($filtro) AND $filtro == 'numero') ? 'checked="checked"' : '' ?>><span>Pesquisa por Número do Pedido: </span>
 	                <input type="text" name="numero_pedido" id="numero_pedido" value="<?php echo isset($numero_pedido) ? $numero_pedido : '' ?>" />

@@ -173,7 +173,7 @@ $corpo = "
 		   <p><strong>Observações:</strong> $observacoes</p><br/>
 
 		   <h3> Responsável pelo pagamento </h3>		   
-		   <p><strong>Nome:</strong> $nomeresp</p>
+		   <p><strong>Nome:</strong> $nomeresp</p>	
 		   <p><strong>Data de nascimento:</strong> $dataresp</p>
 		   <p><strong>Passaporte N°:</strong> $passresp</p>
 		   <p><strong>RG / Passaporte:</strong> $documentoresp</p>

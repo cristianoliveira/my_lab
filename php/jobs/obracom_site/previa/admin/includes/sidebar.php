@@ -83,8 +83,6 @@ switch ($lista2) {
                 </ul>
             </li>
             
-
-            
             <li>
                 <a href="#" class="nav-top-item <?= if_exist($banners_tab, 'default') ?>">
                 Banners
@@ -108,6 +106,8 @@ switch ($lista2) {
                            class="<?= if_exist($destaques_gerenciar,'default') ?>"> Gerenciar </a></li>
                 </ul>
             </li>
+            
+
             
             <li>
                 <a href="#" class="nav-top-item <?= if_exist($enquetes_tab, 'default') ?>">

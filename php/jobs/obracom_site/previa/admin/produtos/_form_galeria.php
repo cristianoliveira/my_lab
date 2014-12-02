@@ -7,9 +7,12 @@
         <a class="produto button botao-cadastrar" href="listar.php">
             Finalizar
         </a>
+         <a class="produto button botao-cadastrar" href="editar.php?cores=1&id=<?= $idProduto ?>">
+                Editar Cores
+         </a>
         
         <div class="galeria-upload-form">
-            <label>Upload da Cor </label>
+            <label>Upload da imagem </label>
                 <input id="imagem" class="text-input" name="imagem_produto" type="hidden" />
             
             <div>

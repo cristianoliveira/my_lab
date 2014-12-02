@@ -34,6 +34,9 @@
     //Seletor de cores
     adicionaCor = function()
     {
+
+        div        = $('<div></div>');
+        div.attr("class","cores");
         quantidade = $('.cor-image-adicionada').length;
        // document.getElementById('cor').color.hidePicker()
         
@@ -45,12 +48,26 @@
         
         novaCorInput = $('#cor-seletor').clone();
         novaCorInput.attr("id"    ,"cor-"+quantidade);
-        novaCorInput.attr("name"  ,"cor["+quantidade+"]");
+        novaCorInput.attr("name"  ,"cor["+quantidade+"]['imagem']");
         novaCorInput.attr("class" ,"cor-input-adicionada");
         novaCorInput.hide();
 
-        novaCor.appendTo('#cor-painel');
-        novaCorInput.appendTo('#cor-painel');
+        novaCorNome = $('#cor-nome').clone();
+        novaCorNome.attr("id"    ,"cor-nome-"+quantidade);
+        novaCorNome.attr("name"  ,"cor["+quantidade+"]['nome']");
+        novaCorNome.attr("class" ,"cor-input-adicionada cor-input-nome");
+        novaCorNome.show();
+
+        labelForNome = $('<label>Nome da cor</label>');
+        labelForNome.attr('for',"cor["+quantidade+"]['nome']");
+
+
+        novaCor.appendTo(div);
+        novaCorInput.appendTo(div);
+        labelForNome.appendTo(div);
+        novaCorNome.appendTo(div);
+
+        div.appendTo('#cor-painel');
     };
 
     $('#cor-seletor').change(function(){

@@ -15,7 +15,7 @@
 		<nav class="menu">
 			<a href="contrato.php">Contrato de Prestação de Serviços de Turismo</a><br/>
 			<a href="ficha.php">Ficha de Reserva e Inscrição</a><br/>
-			<a href="#">Formulário de Autorização de Débito</a>
+			<a href="autorizacao-debito.php">Formulário de Autorização de Débito</a>
 		</nav>
 	</div>
 
@@ -24,7 +24,7 @@
 		<ul>
 			<a href="download.php?arquivo=contrato"><li>Contrato de Prestação de Serviços de Turismo</li></a>
 			<a href="download.php?arquivo=ficha"><li>Ficha de Reserva e Inscrição</li></a>
-			<a href="#"><li>Formulário de Autorização de Débito</li></a>
+			<a href="autorizacao-debito.php"><li>Formulário de Autorização de Débito</li></a>
 		</ul>
 	</div>
 	<div class="clear"></div>
@@ -33,11 +33,15 @@
 	</header>
 
 	<section id="ficha-reserva" class="content">
-		<h2>FICHA DE CONFIRMAÇÃO DE RESERVAS DE PACOTES TURÍSTICOS</h2><br/>
+		<h2>AUTORIZAÇÃO DE DÉBITO - SERVIÇOS DE VIAGENS</h2><br/>
 		<form method="post" action="envia-ficha.php">
 			<table class="tabela bloco1" cellpadding="0" cellspacing="0">
 				<tr>
-					<td colspan="4" class="titulo">Agente de viagem / Agência de viagem</td>
+					<td colspan="4" class="titulo">Detalhes</td>
+				</tr>
+				<tr>
+					<td colspan="3">Autorizo e reconheço o débito em minha conta do cartão de crédito abaixo:</td>
+				    <td>O.S.</td>
 				</tr>
 				<tr>
 					<td><label>Nome/Empresa:</label></td>
@@ -76,6 +80,7 @@
 					<td><input type="text" name="validadereserva" /></td>
 				</tr>
 			</table><br/>
+			
 			<table class="tabela bloco2" cellpadding="0" cellspacing="0">
 				<tr>
 					<td colspan="4" class="titulo">Programa de viagem - pacote turístico</td>

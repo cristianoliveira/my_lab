@@ -4,7 +4,10 @@
         <?php if(isset($produto['id'])) { ?>
             <input id="id" type="hidden" name="id" value="<?= $produto['id'] ?>">
             <a class="produto button botao-cadastrar" href="editar.php?galeria=1&id=<?= $produto['id'] ?>">
-                Editar imagens
+                Editar Imagens
+            </a>
+            <a class="produto button botao-cadastrar" href="editar.php?cores=1&id=<?= $produto['id'] ?>">
+                Editar Cores
             </a>
         
             <input id="editar_galeria" type="hidden" name="editar_galeria" value="true">
@@ -38,52 +41,6 @@
             <input id="imagem" class="text-input" name="imagem" type="file" />
         </div> -->
 
-        <div id="cores">
-            <div>
-                <label>Cores</label>
-                <div>
-                Clique para selecionar
-                    <input id="cor-seletor"
-                           class="cor-seletor"
-                           type="file"
-                           hidden/>
-                    <img id="cor-seletor-preview" src="" />
-                    <input id="adiciona-cor" 
-                           type="button" 
-                           value="+" 
-                          >
-                    <input class="botao-remove" 
-                           type="button" 
-                           value="-" 
-                          >
-                </div>
-                   
-            </div>
-            <div id="cor-painel">
-                <?php 
-                  $i = 0;
-                  if(isset($listCores))
-                     foreach($listCores as $cor) { 
-                ?>
-                    <input id="<?= "cor-$i" ?>" 
-                            name="<?= "cor[$i]" ?>" 
-                            class="cor-adicionada <?= "cor-adicionada-$i" ?> valid" 
-                            type="text" 
-                            maxlength="10" 
-                            value="<?= $cor['cor'] ?>" 
-                            readonly 
-                            style="background-color: #<?= $cor['cor'] ?>;">
-                
-                  <!--    <input id="<?= "remove-$i" ?>" 
-                            class="botao-remove <?= "cor-adicionada-$i" ?>" 
-                            type="button" 
-                            value="-" 
-                            visibility="visible">   -->
-                <?php  $i++;
-                     } 
-                ?>
-            </div>
-        </div>
 		
         <div>
             <label>Nome</label>
@@ -136,7 +93,7 @@
         
         <div>
             <label>Valor Original</label>
-            <input class="text-input small-input mascara-valor required"
+            <input class="text-input small-input required"
                    type="text"
                    id="valor_original"
                    name="valor_original"
@@ -146,7 +103,7 @@
         
         <div>
             <label>Valor Promocional</label>
-            <input class="text-input small-input mascara-valor required"
+            <input class="text-input small-input required"
                    type="text"
                    id="valor_promocional"
                    name="valor_promocional"
@@ -156,7 +113,7 @@
 
         <div>
             <label>Altura</label>
-            <input class="text-input small-input mascara-valor required"
+            <input class="text-input small-input required"
                    type="text"
                    id="altura"
                    name="altura"
@@ -166,7 +123,7 @@
 
         <div>
             <label>Largura</label>
-            <input class="text-input small-input mascara-valor required"
+            <input class="text-input small-input required"
                    type="text"
                    id="largura"
                    name="largura"
@@ -175,7 +132,7 @@
         </div>
         <div>
             <label>Comprimento</label>
-            <input class="text-input small-input mascara-valor required"
+            <input class="text-input small-input required"
                    type="text"
                    id="comprimento"
                    name="comprimento"
@@ -185,7 +142,7 @@
 
         <div>
             <label>Peso</label>
-            <input class="text-input small-input mascara-valor required"
+            <input class="text-input small-input required"
                    type="text"
                    id="peso"
                    name="peso"

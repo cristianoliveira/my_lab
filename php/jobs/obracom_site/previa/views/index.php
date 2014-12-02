@@ -9,10 +9,11 @@
             <div class="ribbon"></div>
             <div id="slider" class="nivoSlider">
 	            <?php
-				foreach ($destaques as $destaque)
-				{
-					echo '<a href="'.$destaque->get_link().'">';
-					echo '<img src="'.SITE_BASE.'/admin/uploads/destaques/'.$destaque->get_imagem().'" alt="'.$destaque->get_titulo().'" />';
+				//foreach ($destaques as $destaque)
+				foreach ($banners as $banner) 
+                {
+					echo '<a href="'.$banner->get_link().'">';
+					echo '<img src="'.SITE_BASE.'/admin/uploads/banners/'.$banner->get_imagem().'" alt="'.$banner->get_titulo().'" style="width:879px !important; height:153px;" />';
 					echo '</a>';
 				}?>
             </div>
@@ -43,10 +44,10 @@
                 </ul>
                 <div class="banner">
                      <?php
-                        foreach ($banners as $banner)
+                        foreach ($destaques as $destaque)
                         {
-                            echo '<a href="'.$banner->get_link().'">';
-                                echo '<img src="'.SITE_BASE.'/admin/uploads/banners/'.$banner->get_imagem().'" alt="'.$banner->get_titulo().'" style="width:729px; height:153px;" />';
+                            echo '<a href="'.$destaque->get_link().'">';
+                                echo '<img src="'.SITE_BASE.'/admin/uploads/destaques/'.$destaque->get_imagem().'" alt="'.$destaque->get_titulo().'" style="width:729px; height:153px;" />';
                             echo '</a>';
                         }?>
                         <!-- <img src="<?php echo SITE_BASE ?>/views/imagens/banner-produtos.jpg" alt="Conheça a linha Forma, da Artesano, na Cia do Escritório" /> -->
