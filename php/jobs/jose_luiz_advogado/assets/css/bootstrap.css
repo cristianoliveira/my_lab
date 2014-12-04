@@ -236,6 +236,9 @@ th {
   }
   .navbar {
     display: none;
+    background-color: white;
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
   }
   .table td,
   .table th {
@@ -3648,8 +3651,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
-  margin-bottom: 20px;
+  min-height: 100px;
+  /*margin-bottom: 20px;*/
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
@@ -3746,7 +3749,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   height: 20px;
-  padding: 15px 15px;
+  padding: 30px 15px;
   font-size: 18px;
   line-height: 20px;
 }
@@ -5544,29 +5547,26 @@ button.close {
 }
 .carousel-indicators li {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   margin: 1px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #fff;
+  background-color: #a82829;
+  /*background-color: rgba(0, 0, 0, 0);*/
+  border: 1px solid #a82829;
   border-radius: 10px;
 }
 .carousel-indicators .active {
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   margin: 0;
-  background-color: #fff;
+  background-color: #a82829;
 }
 .carousel-caption {
-  position: absolute;
-  right: 15%;
-  bottom: 20px;
-  left: 15%;
+  /*position: absolute;*/
   z-index: 10;
-  padding-top: 20px;
+  padding-top: 18%;
   padding-bottom: 20px;
   color: #fff;
   text-align: center;
@@ -5575,6 +5575,7 @@ button.close {
 .carousel-caption .btn {
   text-shadow: none;
 }
+
 @media screen and (min-width: 768px) {
   .carousel-control .glyphicons-chevron-left,
   .carousel-control .glyphicons-chevron-right,

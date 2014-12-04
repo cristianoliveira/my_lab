@@ -1,24 +1,7 @@
-﻿/*=============================================================
-    Authour URI: www.binarytheme.com
-    License: Commons Attribution 3.0
-
-    http://creativecommons.org/licenses/by/3.0/
-
-    100% To use For Personal And Commercial Use.
-    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
-    ========================================================  */
-
-/* =============================================================
-   GENERAL STYLES
- ============================================================ */
-body {
+﻿body {
     font-family: 'Open Sans', sans-serif;
-   
 }
-.pad-top {
-    padding-top:60px;
-}
+
 .text-center {
     text-align:center;
 }
@@ -33,23 +16,29 @@ p {
     font-weight:300;
     line-height:30px;
 }
-.pad-row {
-    padding-top:40px;
-    padding-bottom:40px;
-}
-.pad-bottom {
-    padding-bottom:50px;
-}
-
-/* NAVBAR STYLE */
-
-
-.navbar-inverse .navbar-nav > li > a {
-/*color: #FFF;*/
-}
 
 .navbar-inverse .navbar-brand {
-color: #FFF;
+  color: #FFF;
+  margin-top: 90px;
+}
+
+.navbar-brand{
+  font-family: 'Times New Roman', sans-serif !important;
+}
+
+.navbar-brand h1, h4{
+  margin: 0;
+  color: #a8adad;
+}
+
+.navbar-brand h1{
+  color: #a82829;
+  font-size: 28px;
+}
+
+.navbar-brand h4{
+  font-size: 18px;
+  margin-left: 20%;
 }
 
 .navbar-top-text{
@@ -57,8 +46,27 @@ color: #FFF;
 }
 
 .slide-content{
-    height: 500px;
-    background: green;
+    height: 529px;
+    background-image: url('../img/bg_slider.png');
+}
+
+.slide-content h2{
+  font-size: 42px;
+  margin-bottom: 30px;
+}
+
+.slide-content h4{
+  font-size: 30px;
+  color: #fff !important;
+}
+
+.slide-button {
+  font-size: 16px;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-shadow: none;
+  background-color: #920c08;
 }
 
 @media(max-width:768px){ 
@@ -68,17 +76,6 @@ color: #FFF;
     background: blue;
   }
 
-
-}
-
-/* ADDED PADDING IN NAVBAR */
-
-
-.navbar {
-    /*padding:15px;*/
-     -webkit-transition: background .8s ease-out,padding .8s ease-out;
-        -moz-transition: background .8s ease-out,padding .8s ease-out;
-        transition: background .8s ease-out,padding .8s ease-out;
 }
 
 .navbar-top{
@@ -92,15 +89,112 @@ color: #FFF;
       padding:0px;
 }
 
+.navbar-menu a{
+  color: #a8adad;
+  height: 100px;
+  line-height: 70px !important;
+  border-top: 2px solid white;
+}
 
+.navbar-menu a:hover{
+  border-top: 2px solid #a82829;
+  color: #a82829;
+  background-color: #ccc !important;
+  opacity: 0.7;
+    filter: alpha(opacity=70); 
+}
 
-/* CARUOSEL STYLE OR SLIDESHOW STYLE*/
+.container-top{
+   width: 100%;
+   height: 30px;
+   padding-top: 3px;
+   background-color: #f2f1f1;
+   font-size: 12px;  
+}
 
+.container-top img{
+  float: left;
+}
+
+.container-top-content {
+    padding-left: 8%;
+}
+
+.container-top-content div{
+  margin: 2px 5px;
+}
+
+.container-top-content img{
+  margin: 5px;
+}
+
+.header-wrapper {
+    background-image: url('../img/header_background.png');
+}
 
 .back-light {
     background-color:rgba(0, 0, 0, 0.50);
     padding:10px;
 }
+
+#news{
+    height: 230px;
+}
+
+.news{
+  padding: 5%;
+}
+
+.news h4{
+  color: #a82829;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.news p{
+  width: 600px;
+  margin: 0 auto;
+  line-height: 15px;
+}
+
+.services {
+  padding: 50px;
+}
+
+.services-container {
+  width: 25%;
+  padding: 30px;
+}
+
+@media(max-width:768px){ 
+  
+  .services-container {
+    width: 100%;
+    padding: 50px;
+  }
+
+}
+
+.services-container h3{
+  font-size: 20px;
+  color: #a82829;
+}
+
+.services-container p{
+    line-height: 15px;
+    color: #808080;
+}
+
+.services {
+  padding: 50px;
+}
+
+.justice-symbol {
+  padding: 20px;
+  border-radius: 50%;
+  background-color: #f2f1f1; 
+}
+
 /*NOTE SECION STYLE*/
 .note-sec {
      padding-bottom:50px;
@@ -187,77 +281,7 @@ border-radius: 0px;
     border-top-left-radius: 0px;
  border-top-right-radius: 0px;
 }
-
-
-/*    PORTFOLIO STYLES*/
-
-.portfolio-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.portfolio-items {
-  margin-right: -20px;
-}
-.portfolio-items > li {
-  float: left;
-  padding: 0;
-  margin: 0;
-}
-
-.portfolio-items.col-3 > li {
-  width: 33%;
-}
-
-.portfolio-item .item-main {
-  margin: 0 10px 10px 0;
-  text-align: center;
-  background: #fff;
-  padding: 10px;
-  border:1px solid #E8EAEE;
   
-}
-.portfolio-item img {
-  width: 100%;
-}
-.portfolio-item .portfolio-image {
-  position: relative;
-}
-.portfolio-item h5 {
-  margin: 0;
-padding: 30px 0 30px 0;
-background-color: #000;
-color: #fff;
-font-size: 20px;
-}
-.portfolio-item .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  background-color: rgba(177, 166, 255, 1);
-  text-align: center;
-  vertical-align: middle;
-  -webkit-transition: opacity 300ms;
-  -moz-transition: opacity 300ms;
-  -o-transition: opacity 300ms;
-  transition: opacity 300ms;
-}
-.portfolio-item .overlay .preview {
-  position: relative;
-  top: 50%;
-  display: inline-block;
-  margin-top: -20px;
-}
-.portfolio-item:hover .overlay {
-  opacity: 1;
-}
-
-/*CONTACT STYLES*/
-
-
 .cnt {
 width: 100%;
 min-height: 350px;
@@ -277,7 +301,7 @@ border: 1px solid #e1e1e1;
 
 
 #footer-sec {
-    background-color:#000;
+    background-color:#111111;
     color:#808080;
 }
 
@@ -286,4 +310,13 @@ border: 1px solid #e1e1e1;
     color:#fff;
 }
 
-   
+.footer{
+  width: 100%;
+  margin: 20px;
+  text-align: center;
+}
+
+.footer a{
+  text-decoration: none;
+  color:#808080;
+}
