@@ -30,11 +30,14 @@
             $('.carousel').carousel({
                 interval: 5000 //TIME IN MILLI SECONDS
             })
-            // PRETTYPHOTO FUNCTION 
 
-            $("a.preview").prettyPhoto({
-                social_tools: false
+            $('.news').carousel({
+                interval: 2000
             });
+
+            // $("a.preview").prettyPhoto({
+            //     social_tools: false
+            // });
 
        
 

@@ -80,19 +80,43 @@
                           </div>
 
                           <ol class="carousel-indicators">
-                              <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-                              <li data-target="#carousel-example" data-slide-to="1"></li>
-                              <li data-target="#carousel-example" data-slide-to="2"></li>
+                              <li data-target=".carousel" data-slide-to="0" class="active"></li>
+                              <li data-target=".carousel" data-slide-to="1"></li>
+                              <li data-target=".carousel" data-slide-to="2"></li>
                           </ol>
                       </div>
              </section>
              <section>
-                 <div id="news" class="text-center">
-                   <div class="news">
-                     <h4>Noticias</h4>
-                     <p>bla bala blablbalbalb ablablbalb lbal bl b bla bala blablbalbalb ablablbalb lbal bl bbla bala blablbalbalb ablablbalb lbal bl bbla bala blablbalbalb ablablbalb lbal bl </p>
-                   </div>
-                 </div>
+                <div class="news"  data-ride="carousel">
+                   <div id="news" class="text-center">
+                      <div class="carousel-inner">
+                        <ol class="carousel-indicators">
+                              <li class="hidden" data-target=".news"></li>
+                              <li data-target=".news" data-slide-to="1"></li>
+                              <li data-target=".news" data-slide-to="2"></li>
+                              <li data-target=".news" data-slide-to="3"></li>
+                        </ol>
+                        <div class="item active">
+                           <div class="news-content">
+                             <h4>Noticias Inicial</h4>
+                             <p>bla bala blablbalbalb ablablbalb lbal bl b bla bala blablbalbalb ablablbalb lbal bl bbla bala blablbalbalb ablablbalb lbal bl bbla bala blablbalbalb ablablbalb lbal bl </p>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="news-content">
+                             <h4>Noticias</h4>
+                             <p>bla bala blablbalbalb ablablbalb lbal bl b bla bala blablbalbalb ablablbalb lbal bl bbla bala blablbalbalb ablablbalb lbal bl bbla bala blablbalbalb ablablbalb lbal bl </p>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="news-content">
+                             <h4>Noticias 2</h4>
+                             <p>bla bala blablbalbalb ablablbalb lbal bl b bla bala blablbalbalb ablablbalb lbal bl bbla bala blablbalbalb ablablbalb lbal bl bbla bala blablbalbalb ablablbalb lbal bl </p>
+                           </div>
+                        </div>
+                      </div>
+                   </div>                    
+                </div>
              </section>
     </div>
     <!--/.SLIDESHOW END-->
